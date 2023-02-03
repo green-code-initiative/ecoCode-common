@@ -2,7 +2,7 @@
 
 In order to develop a Sonarqube Plugin in Open source for ecocode, two basics must have been mastered:
 
-* How to develop a Sonarqube plugin 
+* How to develop a Sonarqube plugin
 * Understand and work withe the Gitflow
 
 ### Sonarqube Plugin
@@ -72,7 +72,7 @@ To validate that the rule has been implemented, you need to execute a scan on th
 
 # Publish your work
 
-### Commit your code 
+### Commit your code
 
 Create a new branch following this pattern : <rule_id>-<language>
 Example :
@@ -110,8 +110,8 @@ If you want to be reviewed, review others... It's a win/win situation
 Validate your PR or ask to someone who have the permissions to validate your PR.
 Once PR validated, a github workflow is automatically launched. Thus, the new implemented code is also scan with our internal Sonar to check the implemented code quality.
 Here is the SonarQube : https://sonarcloud.io/organizations/green-code-initiative/projects
-  
+
 ### Close your rule
-  
+
 Once your PR is validated, your rule integrates ecoCode. In https://github.com/cnumr/ecoCode/projects/1, move it from the "In Progress" column to the "Done" column.
 Well done.
