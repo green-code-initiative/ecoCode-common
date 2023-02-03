@@ -1,6 +1,7 @@
 # Basics
 
-In order to develop a Sonarqube Plugin in Open source for ecocode, two basics must have been mastered: 
+In order to develop a Sonarqube Plugin in Open source for ecocode, two basics must have been mastered:
+
 * How to develop a Sonarqube plugin 
 * Understand and work withe the Gitflow
 
@@ -12,9 +13,11 @@ https://docs.sonarqube.org/latest/extend/developing-plugin/
 
 https://medium.com/android-news/gitflow-with-github-c675aa4f606a
 
-### Github CNUMR Ecocode
+### Github GreenCodeInitiative
 
-https://github.com/cnumr/ecoCode/tree/main
+standard part : https://github.com/green-code-initiative/ecoCode
+mobile part : https://github.com/green-code-initiative/ecoCode-mobile
+common part (doc / tools) : https://github.com/green-code-initiative/ecoCode-common
 
 ### 115 green rules details
 
@@ -38,23 +41,28 @@ Java >=11 for Sonarqube plugin Development : https://www.java.com/fr/download/ma
 
 Maven 3 for Sonarqube plugin Development : https://maven.apache.org/download.cgi
 
-Additionnaly, install Git : https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+Git : https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 ### Clone the project
 
-Clone the project with :
+Clone the project with (standard, mobile or/and common) :
 
 ```
-git clone https://github.com/cnumr/ecoCode.git
+git clone https://github.com/green-code-initiative/ecoCode
+git clone https://github.com/green-code-initiative/ecoCode-mobile
+git clone https://github.com/green-code-initiative/ecoCode-common
 ```
 
 ### Start local environment
 
-You will find all the steps to start a Sonarqube dev Environment here : https://github.com/cnumr/ecoCode/blob/main/src/INSTALL.md
+You will find all the steps to start a Sonarqube dev Environment here :
+
+- standard : https://github.com/green-code-initiative/ecoCode/blob/main/INSTALL.md
+- mobile : https://github.com/green-code-initiative/ecoCode-mobile/blob/main/INSTALL.md
 
 ### Choose your rule
 
-Chose a rule in a specific language in the "To do" column : https://github.com/cnumr/ecoCode/projects/1 and move it to the "In progress" 
+Choose a rule in a specific language in the "To do" column : https://github.com/cnumr/ecoCode/projects/1 and move it to the "In progress"
 
 ### Test your development
 
@@ -62,24 +70,26 @@ Each rule needs to have scripts in a specific language (i.e. Python, Rust, JS, P
 
 To validate that the rule has been implemented, you need to execute a scan on those scripts. You will need sonar scanner: https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
 
-
 # Publish your work
 
 ### Commit your code 
 
 Create a new branch following this pattern : <rule_id>-<language>
-Example : 
+Example :
+
 ```
 git checkout -b 47-JS
 ```
 
-Commit your code : 
+Commit your code :
+
 ```
 git add .
 git commit -m "your comments"
 ```
 
 Push your branch :
+
 ```
 git push origin <rule_id>-<language>
 ```
@@ -97,8 +107,11 @@ If you want to be reviewed, review others... It's a win/win situation
 
 ### Validation of a PR
 
-Validate your PR or ask to someone who have the permissions to validate your PR
+Validate your PR or ask to someone who have the permissions to validate your PR.
+Once PR validated, a github workflow is automatically launched. Thus, the new implemented code is also scan with our internal Sonar to check the implemented code quality.
+Here is the SonarQube : https://sonarcloud.io/organizations/green-code-initiative/projects
   
 ### Close your rule
   
-Once your PR is validated, your rule integrates ecoCode. In https://github.com/cnumr/ecoCode/projects/1, move it from the "In Progress" column to the "Done" column. Well done.
+Once your PR is validated, your rule integrates ecoCode. In https://github.com/cnumr/ecoCode/projects/1, move it from the "In Progress" column to the "Done" column.
+Well done.
