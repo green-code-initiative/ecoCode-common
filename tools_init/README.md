@@ -78,10 +78,10 @@ Algorithm
 Scripts
 -------
 
-- check_tags.sh : read tags for all listed rules
-- clean_tag.sh : delete specified tag from all listed rules
-- install_tag.sh : add specified tag to all listed rules
-- install_profile.sh : create new custom profile
+- `check_tags.sh` : read tags for all listed rules
+- `clean_tag.sh` : delete specified tag from all listed rules
+- `install_tag.sh` : add specified tag to all listed rules
+- `install_profile.sh` : create new custom profile
 
 How does it work ?
 ------------------
@@ -91,4 +91,3 @@ How does it work ?
 - launch `install_tags.sh` to add custom tag to your rules
 - launch `check_tags.sh` again to control your rules and tags
 - launch `install_profile.sh` to create profiles with the new rules from plugins
-- 
