@@ -1,5 +1,5 @@
-Rules Tagging system and Creating Quality Profile
-=================================================
+Local environment checker tool
+==============================
 
 Purpose
 -------
