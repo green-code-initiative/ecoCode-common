@@ -3,8 +3,8 @@
 #####################################################
 
 # if tool display DEBUG logs or not
-# DEBUG=0
-DEBUG=1
+DEBUG=0
+# DEBUG=1
 
 # Docker version
 # DOCKER_VERSION_MIN=

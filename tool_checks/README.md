@@ -13,9 +13,15 @@ Requirements
 Tool was created on Mac OSx environment.
 Please feel free to report issues if found.
 
+Tested on :
+
+- macOS / 13.1 & 13.2
+- Ubuntu 22.04.1 LTS
+
 Files
 -------
 
+For Mac OSX and Linux :
 - `_config.sh` : file containing the configuration of checker tool (tools, versions, debug)
 - `_core.sh` : file containing core functions used by checker tool
 - `check_requirements.sh` : tool checker
