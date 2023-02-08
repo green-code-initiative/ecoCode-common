@@ -15,8 +15,8 @@ Please feel free to report issues if found.
 
 Tested on :
 
-- macOS / 13.1 & 13.2
-- Ubuntu 22.04.1 LTS
+- macOS : 12.6.3 / 13.1 / 13.2
+- Ubuntu : 22.04.1 LTS
 
 Files
 -------
