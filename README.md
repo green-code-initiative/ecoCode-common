@@ -1,7 +1,7 @@
 Content
 =======
 
-This repository contains common parts as :
+This repository contains common parts like :
 
-- common documentation : please read MarkDown files (`*.md`) in `doc` directory
-- common tools : if needed, please read README.md files on each tool of `tool` directory
+- documentation : please read MarkDown files (`*.md`) in `doc` directory
+- tools : if needed, please read `README.md` files on each tool of `tool` directory

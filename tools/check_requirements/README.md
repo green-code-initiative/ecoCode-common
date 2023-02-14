@@ -32,5 +32,12 @@ For Mac OSX and Linux :
 How does it work ?
 ------------------
 
+For Mac OSX and Linux :
+
 - change configuration in `_config.sh` file
 - launch `check_requirements.sh` to control local environment
+
+For Windows :
+
+- launch `check_requirements.bat` to control local environment
+- check verions displayed to check if requirements on versions are respected
