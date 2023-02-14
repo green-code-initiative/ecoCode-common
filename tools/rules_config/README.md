@@ -3,6 +3,7 @@ Rules Tagging system and Creating Quality Profile
 
 Purpose
 -------
+
 1. **Rules Tagging system**
 
 Add one new tag to a list of rules (using SonarQube API).
@@ -32,6 +33,7 @@ Requirements
 
 Development Environment
 -----------------------
+
 Differents environment have been used:
 - bash 3.2 on MacOS
 - Ubuntu 20.04.4 LTS (bash 5.0.17(1)-release) with extra jq package (`sudo apt install jq`)
@@ -41,6 +43,7 @@ Concepts
 
 Call Sonar API rest to
 ----------------------
+
 1. **Tags**
 - ... get rule data (included systags array and tags array)
 - ... update rule data i.e tags array

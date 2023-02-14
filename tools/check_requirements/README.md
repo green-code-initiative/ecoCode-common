@@ -22,6 +22,7 @@ Files
 -------
 
 For Mac OSX and Linux :
+
 - `_config.sh` : file containing the configuration of checker tool (tools, versions, debug)
 - `_core.sh` : file containing core functions used by checker tool
 - `check_requirements.sh` : tool checker
