@@ -53,8 +53,8 @@ function check_version_min_java() {
     echo -e " - min version [ ${RED}NON OK${NC} ] : please ${PINK}check or install good version ${NC}"
   fi
 
-  echo -e "    (current class version : $version_class)"
-  echo -e "    (min class version : '$JAVA_CLASS_VERSION_MIN' / min jdk version : '$JAVA_VERSION_MIN')"
+  echo -e "        (current class version : $version_class)"
+  echo -e "        (min class version : '$JAVA_CLASS_VERSION_MIN' / min jdk version : '$JAVA_VERSION_MIN')"
 
 }
 
@@ -74,8 +74,8 @@ function check_version_max_java() {
     echo -e " - max version [ ${RED}NON OK${NC} ] : please ${PINK}check or install good version ${NC}"
   fi
 
-  echo -e "    (current class version : $version_class)"
-  echo -e "    (max class version : '$JAVA_CLASS_VERSION_MAX' / max jdk version : '$JAVA_VERSION_MAX')"
+  echo -e "        (current class version : $version_class)"
+  echo -e "        (max class version : '$JAVA_CLASS_VERSION_MAX' / max jdk version : '$JAVA_VERSION_MAX')"
 
 }
 
@@ -93,7 +93,7 @@ function check_version_min_maven() {
     echo -e " - min version [ ${RED}NON OK${NC} ] : please ${PINK}check or install good version ${NC}"
   fi
 
-  echo -e "    (current version : $version / min version : '$version_min')"
+  echo -e "        (current version : $version / min version : '$version_min')"
 
 }
 
@@ -111,6 +111,6 @@ function check_version_max_maven() {
     echo -e " - max version [ ${RED}NON OK${NC} ] : please ${PINK}check or install good version ${NC}"
   fi
 
-  echo -e "    (current version : $version / max version : '$version_max')"
+  echo -e "        (current version : $version / max version : '$version_max')"
 
 }
