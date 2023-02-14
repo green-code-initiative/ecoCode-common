@@ -15,9 +15,9 @@ https://medium.com/android-news/gitflow-with-github-c675aa4f606a
 
 ### Github GreenCodeInitiative
 
-standard part : https://github.com/green-code-initiative/ecoCode
-mobile part : https://github.com/green-code-initiative/ecoCode-mobile
-common part (doc / tools) : https://github.com/green-code-initiative/ecoCode-common
+- standard part : https://github.com/green-code-initiative/ecoCode
+- mobile part : https://github.com/green-code-initiative/ecoCode-mobile
+- common part (doc / tools) : https://github.com/green-code-initiative/ecoCode-common
 
 ### 115 green rules details
 
