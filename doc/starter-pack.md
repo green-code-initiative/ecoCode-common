@@ -35,15 +35,12 @@ https://olegoaer.perso.univ-pau.fr/android-energy-smells/
 
 Method 1 - Execute script verification (present in this repository in `tool_checks` directory) :
 
-For Mac or Unix OS :
-```
-./check_requirements.sh
-```
+For Mac or Unix OS : `./check_requirements.sh`
 
 For Windows OS :
-```
-./check_requirements.bat
-```
+
+- execute following script : `./check_requirements.bat`
+- then check versions displayed
 
 Method 2 - Check manually your tools :
 
