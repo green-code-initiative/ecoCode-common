@@ -3,8 +3,5 @@ Content
 
 This repository contains common parts as :
 
-- common documentation
-- common tools
-
-
-please check `tools_init/README.md` to have more explanations.
+- common documentation : please read MarkDown files (`*.md`) in `doc` directory
+- common tools : if needed, please read README.md files on each tool of `tool` directory

@@ -53,6 +53,15 @@ Method 2 - Check manually your tools :
 - Maven 3 for Sonarqube plugin Development : https://maven.apache.org/download.cgi
 - Git : https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
+Then launch check commands as follows (and check versions displayed) :
+```
+docker --version
+docker-compose --version
+javap -version
+mvn --version
+git --version
+```
+
 ### Clone the project
 
 Clone the project with (standard, mobile or/and common) :
