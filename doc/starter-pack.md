@@ -31,17 +31,21 @@ https://olegoaer.perso.univ-pau.fr/android-energy-smells/
 
 # Local development
 
-### Prerequesites
+### Requirements
 
-You will need to install Docker : https://docs.docker.com/get-docker/
+Method 1 - Execute script verification (present in this repository in `tool_checks` directory) :
 
-Docker-compose 3.9 : https://docs.docker.com/compose/install/
+```
+./check_requirements.sh
+```
 
-Java >=11 for Sonarqube plugin Development : https://www.java.com/fr/download/manual.jsp
+Method 2 - Check manually your tools :
 
-Maven 3 for Sonarqube plugin Development : https://maven.apache.org/download.cgi
-
-Git : https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+- install Docker : https://docs.docker.com/get-docker/
+- Docker-compose 3.9 : https://docs.docker.com/compose/install/
+- Java >=11 for Sonarqube plugin Development : https://www.java.com/fr/download/manual.jsp
+- Maven 3 for Sonarqube plugin Development : https://maven.apache.org/download.cgi
+- Git : https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 ### Clone the project
 
