@@ -34,7 +34,7 @@ How does it work ?
 
 For Mac OSX and Linux :
 
-- change configuration in `_config.sh` file
+- [OPTIONAL] change configuration in `_config.sh` file
 - launch `check_requirements.sh` to control local environment
 
 For Windows :
