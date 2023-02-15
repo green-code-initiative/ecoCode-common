@@ -15,7 +15,7 @@ Please feel free to report issues if found.
 
 Tested on :
 
-- macOS : 12.6.3 / 13.1 / 13.2
+- macOS : 12.6.3 / 13.1 / 13.2 / M1 pro 13.0.1
 - Ubuntu : 22.04.1 LTS
 - Windows : 10 Famille
 
