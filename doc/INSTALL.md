@@ -91,8 +91,8 @@ When you are connected, generate a new token:
 
 `My Account -> Security -> Generate Tokens`
 
-![img.png](docs/resources/img.png)
-![img_1.png](docs/resources/img_1.png)
+![img.png](resources/img.png)
+![img_1.png](resources/img_1.png)
 
 Start again your services using the token:
 
