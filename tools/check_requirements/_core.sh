@@ -29,9 +29,9 @@ function check_installation() {
 
   declare -a res=`$command 2>/dev/null 1>/dev/null; echo $?`
   if [[ $res == 0 ]]; then
-    echo -e " - installation [ ${GREEN}OK${NC} ]"
+    echo -e "   ✅ installation"
   else
-    echo -e " - installation [ ${RED}NON OK${NC} ] : please ${PINK}check or install tool${NC}"
+    echo -e "   ❌ installation : please ${PINK}check or install tool${NC}"
   fi
   debug "command for check = \"$command 2>/dev/null 1>/dev/null; echo \$?\""
 
@@ -48,9 +48,9 @@ function check_version_min_java() {
   declare -a version_jdk_min=$3
 
   if [[ "$version_class_min" -le "$version_class" ]]; then
-    echo -e " - min version [ ${GREEN}OK${NC} ]"
+    echo -e "   ✅ min version"
   else
-    echo -e " - min version [ ${RED}NON OK${NC} ] : please ${PINK}check or install good version ${NC}"
+    echo -e "   ❌ min version : please ${PINK}check or install good version ${NC}"
   fi
 
   echo -e "        (current class version : $version_class)"
@@ -69,9 +69,9 @@ function check_version_max_java() {
   declare -a version_jdk_max=$3
 
   if [[ "$version_class" -le "$version_class_max" ]]; then
-    echo -e " - max version [ ${GREEN}OK${NC} ]"
+    echo -e "   ✅ max version"
   else
-    echo -e " - max version [ ${RED}NON OK${NC} ] : please ${PINK}check or install good version ${NC}"
+    echo -e "   ❌ max version : please ${PINK}check or install good version ${NC}"
   fi
 
   echo -e "        (current class version : $version_class)"
@@ -88,9 +88,9 @@ function check_version_min_maven() {
   declare -a version_min="$2"
 
   if [[ "$version_min" < "$version" || "$version_min" = "$version" ]]; then
-    echo -e " - min version [ ${GREEN}OK${NC} ]"
+    echo -e "   ✅ min version"
   else
-    echo -e " - min version [ ${RED}NON OK${NC} ] : please ${PINK}check or install good version ${NC}"
+    echo -e "   ❌ min version : please ${PINK}check or install good version ${NC}"
   fi
 
   echo -e "        (current version : $version / min version : '$version_min')"
@@ -106,9 +106,9 @@ function check_version_max_maven() {
   declare -a version_max="$2"
 
   if [[ "$version" < "$version_max" || "$version" = "$version_max" ]]; then
-    echo -e " - max version [ ${GREEN}OK${NC} ]"
+    echo -e "   ✅ max version"
   else
-    echo -e " - max version [ ${RED}NON OK${NC} ] : please ${PINK}check or install good version ${NC}"
+    echo -e "   ❌ max version : please ${PINK}check or install good version ${NC}"
   fi
 
   echo -e "        (current version : $version / max version : '$version_max')"
