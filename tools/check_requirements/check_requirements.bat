@@ -23,6 +23,7 @@ if %ERRORLEVEL% == 0 (
 ) else (
   echo " - installation [ NON OK ] : please check or install tool"
 )
+echo "===> please check version : 11 <= JDK version <= 17"
 
 echo "***** Checking MAVEN -->"
 mvn --version
@@ -31,6 +32,7 @@ if %ERRORLEVEL% == 0 (
 ) else (
   echo " - installation [ NON OK ] : please check or install tool"
 )
+echo "===> please check version : 3.5.2 <= MAVEN version <= 3.8.7"
 
 echo "***** Checking GIT -->"
 git --version
