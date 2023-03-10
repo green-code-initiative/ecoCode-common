@@ -170,29 +170,25 @@ if you only want to start (or stop properly) existing services :
 Howto create a release
 ----------------------
 
-1. add release notes in `CHANGELOG.md` file for next release
-    1. create a new section with title like `Release X.Y.Z`
-        1. ... where `X.Y.Z`is the new release
+1. IF the new release wanted is a major or minor version (`X` or `Y` in `X.Y.Z`)
+   1. THEN modify the old version to the new version in all XML files (with a find/replace)
+   2. ELSE the new corrective version (`Z` in `X.Y.Z`) will be automatic
+2. add release notes in `CHANGELOG.md` file for next release
+    1. Replace `Unreleased` title with the new version like `Release X.Y.Z`
+        1. ... where `X.Y.Z` is the new release
         2. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
-    2. give empty `Unreleased` section
-        1. in majority cases, old content of `Unreleased` section is now the content of the new `Release X.Y.Z` section
-    3. add a new section at the bottom of file with new version
-    4. update `docker-compose.yml` with new SNAPSHOT version
+    2. add above an empty `Unreleased` section with sub-sections (`Added`, `Changed` and `Deleted`)
+    3. add a new section in the list at the bottom of file with new version
+    4. update `docker-compose.yml` with next SNAPSHOT corrective version
     5. commit these modifications
-2. if all is ok, execute `tool_release_1_prepare.sh` to prepare locally the next release and next SNAPSHOT (creation of
-   2 new commits and a tag)
-3. if all is ok, execute `tool_release_2_branch.sh` to create and push a new branch with that release and SNAPSHOT
-4. if all is ok, on github, create a PR based on this new branch to `main` branch
-5. wait that automatic check on the new branch are OK, then check modifications and finally merge it
-   with `Create a merge commit` option
-6. if PR merge is OK, then delete the branch as mentionned when PR merged
-7. wait that automatic check on the `main` branch are OK, and then if all is ok, upgrade your local source code from
-   remote, and go to `main` branch and finally check locally if the
-   new tag is already present on commit starting like `[maven-release-plugin] prepare release ...`. The tag
-   name is the version present in that commit message. The format is `X.Y.Z` (ex : 1.2.3)
-    1. create the new tag locally if not present on that commit
-8. push new tag with `git push --tags`
-9. an automatic workflow started on github and create the new release of plugin
+3. if all is ok, execute `tool_release_1_prepare.sh` to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag) and check these commits and tag
+4. if all is ok, execute `tool_release_2_branch.sh` to create and push a new branch with that release and SNAPSHOT
+5. if all is ok, on github, create a PR based on this new branch to `main` branch
+6. wait that automatic check (Github `Actions` tab) on the new branch are OK, then check modifications and finally merge it with `Create a merge commit` option
+7. if PR merge is OK, then delete the branch as mentionned when PR merged
+8. wait that automatic check on the `main` branch are OK, and then if all is ok, upgrade your local source code from remote, and go to `main` branch
+9. push new tag with `git push --tags`
+10. an automatic workflow started on github and create the new release of plugin
 
 Howto debug a rule (with logs)
 ------------------------------
