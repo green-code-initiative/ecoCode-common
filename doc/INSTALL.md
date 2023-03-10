@@ -6,6 +6,7 @@
   - [Requirements](#requirements-2)
   - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
   - [Reinstall SonarQube (if needed)](#reinstall-sonarqube-if-needed)
+  - [Configuration SonarQube](#configuration-sonarqube)
 - [Howto install Plugin](#howto-install-plugin)
 - [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
 - [Howto create a release](#howto-create-a-release)
@@ -109,6 +110,39 @@ TOKEN=MY_TOKEN docker-compose up --build -d
 # then, install from scratch de SonarQube containers and resources
 ./tool_docker-init.sh
 ```
+
+### Configuration SonarQube
+*Purposes* : Configure SonarQube to have all ecocode plugins rules enabled by default.
+
+Check plugins installation :
+
+- go to your SonarQube homepage `http://localhost:9000/`
+- the first time after initialization, you are suggested to change `admin` password
+- check plugins installation :
+  - go to "Adminitration" tab
+  - go to "Marketplace" sub-tab
+  - go bottom, and clic on "Installed" sub-tab
+  - check here, if you have ecoCode plugins displayed with a SNAPSHOT version
+
+Create a new profile with Ecocode plugins rules :
+
+- go to "Quality Profiles" tab
+- choose your language to create a new profile - ex : `java`
+- click on menu at the end of "Sonar Way" line for this language
+- choose "extend" (or "copy" if you prefer)
+- give a name to new profile (ex : "MyProfileName"), then click on "extend" (or "copy") button
+- in the new page (profile page), click on "Activate more" button (to add new rules)
+- in the new page (rule page), in the left menu, choose "Tag" menu and write "eco" word in search field
+- click on `eco-conception` choice displayed below : all rules with that tag are displayed to the right
+- click on "Bulk Change" button and choose "Activate in MyProfileName", then "Apply"
+
+Make the new profile as default for your language :
+
+- go to "Quality Profiles" tab
+- click on menu at the end of line of your new profile
+- choose "set as Default"
+
+After these 2 steps, all code source for your language will be analyzed with your new Profile (and its activated plugins rules).
 
 Howto install Plugin
 --------------------
