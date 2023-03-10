@@ -174,9 +174,11 @@ Howto create a release
    1. THEN modify the old version to the new version in all XML files (with a find/replace)
    2. ELSE the new corrective version (`Z` in `X.Y.Z`) will be automatic
 2. add release notes in `CHANGELOG.md` file for next release
-    1. Replace `Unreleased` title with the new version like `Release X.Y.Z`
+    1. Replace `Unreleased` title with the new version like `Release X.Y.Z` and the date
         1. ... where `X.Y.Z` is the new release
-        2. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
+        2. ... follow others examples
+        3. ... clean content of current release changelog (delete empty sub-sections)
+        4. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
     2. add above an empty `Unreleased` section with sub-sections (`Added`, `Changed` and `Deleted`)
     3. add a new section in the list at the bottom of file with new version
     4. update `docker-compose.yml` with next SNAPSHOT corrective version
