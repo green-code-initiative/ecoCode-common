@@ -7,7 +7,7 @@
   - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
   - [Reinstall SonarQube (if needed)](#reinstall-sonarqube-if-needed)
   - [Configuration SonarQube](#configuration-sonarqube)
-- [Howto install Plugin](#howto-install-plugin)
+- [Howto install/build Plugin](#howto-installbuild-plugin)
 - [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
 - [Howto create a release](#howto-create-a-release)
 - [Howto debug a rule (with logs)](#howto-debug-a-rule-with-logs)
@@ -95,10 +95,11 @@ When you are connected, generate a new token:
 ![img.png](resources/img.png)
 ![img_1.png](resources/img_1.png)
 
+Change the token in `tool_start_withtoken.sh`.
 Start again your services using the token:
 
 ```sh
-TOKEN=MY_TOKEN docker-compose up --build -d
+./tool_start_withtoken.sh
 ```
 
 ### Reinstall SonarQube (if needed)
@@ -106,6 +107,9 @@ TOKEN=MY_TOKEN docker-compose up --build -d
 ```sh
 # first clean all containers and resources used
 ./tool_docker-clean.sh
+
+# then, build plugins (if not already done)
+./tool_build.sh
 
 # then, install from scratch de SonarQube containers and resources
 ./tool_docker-init.sh
@@ -144,7 +148,7 @@ Make the new profile as default for your language :
 
 After these 2 steps, all code source for your language will be analyzed with your new Profile (and its activated plugins rules).
 
-Howto install Plugin
+Howto install/build Plugin
 --------------------
 
 Install dependencies from the root directory:
@@ -163,7 +167,14 @@ profiles, ...),
 if you only want to start (or stop properly) existing services :
 
 ```sh
+
+# start WITH previously created token (to do : change the token inside script)
+./tool_start_withtoken.sh
+
+# start without previously created token
 ./tool_start.sh
+
+# stop the service
 ./tool_stop.sh
 ```
 
@@ -199,5 +210,7 @@ Howto debug a rule (with logs)
 2. Build plugin JARs with `tool_build.sh`
 3. Launch local Sonar with `tool_docker_init.sh`
 4. Launch a sonar scanner on an exemple project with `mvn verify` command (only the first time), followed
-   by `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=***** -Dsonar.password=***** -X`
+   by :
+   - if token created : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_TOKEN -X`
+   - if login and password : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_LOGIN -Dsonar.password=MY_PASSWORD -X`
 5. logs will appear in console (debug logs will appear if `-X` option is given like above)
