@@ -29,7 +29,7 @@ Howto build the SonarQube ecoCode plugins
 
 ### Build the code
 
-You can build the project code by running the following command in the `src` directory.
+You can build the project code by running the following command in the root directory.
 Maven will download the required dependencies.
 
 ```sh
