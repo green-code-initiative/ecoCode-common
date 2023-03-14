@@ -60,6 +60,10 @@ docker ps
 ```
 
 You should see two lines (one for sonarqube and one for postgres).
+
+Result example : 
+![Result example](resources/docker-ps-result.png)
+
 If there is only postgres, check the logs:
 
 ```sh
@@ -92,8 +96,8 @@ When you are connected, generate a new token:
 
 `My Account -> Security -> Generate Tokens`
 
-![img.png](resources/img.png)
-![img_1.png](resources/img_1.png)
+![Administrator menu](resources/adm-menu.png)
+![Security tab](resources/security-tab.png)
 
 Change the token in `tool_start_withtoken.sh`.
 Start again your services using the token:
