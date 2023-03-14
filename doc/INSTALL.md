@@ -61,7 +61,7 @@ docker ps
 
 You should see two lines (one for sonarqube and one for postgres).
 
-Result example : 
+Result example :
 ![Result example](resources/docker-ps-result.png)
 
 If there is only postgres, check the logs:
@@ -99,12 +99,7 @@ When you are connected, generate a new token:
 ![Administrator menu](resources/adm-menu.png)
 ![Security tab](resources/security-tab.png)
 
-Change the token in `tool_start_withtoken.sh`.
-Start again your services using the token:
-
-```sh
-./tool_start_withtoken.sh
-```
+Instead of login+password authentication, this token can now be used in `sonar.login` variable when you call sonar scanner to send metrics to SonarQube.
 
 ### Reinstall SonarQube (if needed)
 
