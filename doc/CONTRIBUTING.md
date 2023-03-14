@@ -126,7 +126,7 @@ Please check :
 
 ## Join The Project Team
 
-[contributors](https://github.com/green-code-initiative/ecoCode/blob/main/COPYING#-main-contributors)
+[contributors](https://github.com/green-code-initiative/ecoCode#-main-contributors)
 
 ## Attribution
 
