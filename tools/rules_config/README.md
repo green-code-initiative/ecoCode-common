@@ -12,7 +12,7 @@ Why ? because maybe some original SonarQube rules are already ready for being pa
 2. **EcoCode Quality Profile**
 
 Add one new Profile by language forked from SonarWay (using SonarQube API).
-Why ? To use new rules eco-conception from ecocode plugins you will have to create a custom Profile.
+Why ? To use new rules eco-design from ecocode plugins you will have to create a custom Profile.
 The script attach the new rules with the new quality profile.
 
 Requirements

@@ -136,7 +136,7 @@ Create a new profile with Ecocode plugins rules :
 - give a name to new profile (ex : "MyProfileName"), then click on "extend" (or "copy") button
 - in the new page (profile page), click on "Activate more" button (to add new rules)
 - in the new page (rule page), in the left menu, choose "Tag" menu and write "eco" word in search field
-- click on `eco-conception` choice displayed below : all rules with that tag are displayed to the right
+- click on `eco-design` choice displayed below : all rules with that tag are displayed to the right
 - click on "Bulk Change" button and choose "Activate in MyProfileName", then "Apply"
 
 Make the new profile as default for your language :

@@ -94,7 +94,7 @@ function change_parent_profile_sonarapi(){
     echo $(curl -u $SONAR_TOKEN: --request POST "$SONAR_URL/api/qualityprofiles/change_parent?language=$1&qualityProfile=$2&parentQualityProfile=Sonar+way" 2>/dev/null)
 }
 
-### add new rules with label eco-conception from plugins using SonarQube API
+### add new rules with label eco-design from plugins using SonarQube API
 ### $1 :  language
 ### $2 :  key quality Profile
 ### $3 :  tags list in string format separated by comma

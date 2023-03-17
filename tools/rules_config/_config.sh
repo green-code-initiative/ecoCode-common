@@ -19,9 +19,9 @@ SONAR_URL=http://localhost:9000
 # SONAR_URL=
 
 # new tag to add to rules
-# TAG_ECOCONCEPTION=eco-conception
+# TAG_ECOCONCEPTION=eco-design
 # TAG_ECOCONCEPTION=eco-sql
-# TAG_ECOCONCEPTION=eco-conception-test
+# TAG_ECOCONCEPTION=eco-design-test
 TAG_ECOCONCEPTION=test1
 # TAG_ECOCONCEPTION=
 
