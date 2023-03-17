@@ -32,7 +32,7 @@ if %ERRORLEVEL% == 0 (
 ) else (
   echo " - installation [ NON OK ] : please check or install tool"
 )
-echo "===> please check version : 3.5.2 <= MAVEN version <= 3.8.7"
+echo "===> please check version : 3.5.2 <= MAVEN version <= 3.9.0"
 
 echo "***** Checking GIT -->"
 git --version
