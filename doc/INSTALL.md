@@ -7,9 +7,9 @@
   - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
   - [Reinstall SonarQube (if needed)](#reinstall-sonarqube-if-needed)
   - [Configuration SonarQube](#configuration-sonarqube)
-- [Howto install/build Plugin](#howto-installbuild-plugin)
 - [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
-- [Howto create a release](#howto-create-a-release)
+- [Howto install new plugin version](#howto-install-new-plugin-version)
+- [Howto create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
 - [Howto debug a rule (with logs)](#howto-debug-a-rule-with-logs)
 
 Requirements
@@ -147,17 +147,6 @@ Make the new profile as default for your language :
 
 After these 2 steps, all code source for your language will be analyzed with your new Profile (and its activated plugins rules).
 
-Howto install/build Plugin
---------------------
-
-Install dependencies from the root directory:
-
-```sh
-./tool_build.sh
-```
-
-Result : JAR files (one per plugin) will be copied in `lib` repository after build.
-
 Howto start or stop service (already installed)
 -----------------------------------------------
 
@@ -177,7 +166,41 @@ if you only want to start (or stop properly) existing services :
 ./tool_stop.sh
 ```
 
-Howto create a release
+Howto install new plugin version
+--------------------
+
+1. Install dependencies from the root directory:
+
+```sh
+./tool_build.sh
+```
+- [Requirements](#requirements)
+- [Howto build the SonarQube ecoCode plugins](#howto-build-the-sonarqube-ecocode-plugins)
+  - [Requirements](#requirements-1)
+  - [Build the code](#build-the-code)
+- [Howto install SonarQube dev environment](#howto-install-sonarqube-dev-environment)
+  - [Requirements](#requirements-2)
+  - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
+  - [Reinstall SonarQube (if needed)](#reinstall-sonarqube-if-needed)
+  - [Configuration SonarQube](#configuration-sonarqube)
+- [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
+- [Howto install new plugin version](#howto-install-new-plugin-version)
+- [Howto create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
+- [Howto debug a rule (with logs)](#howto-debug-a-rule-with-logs)
+
+Result : JAR files (one per plugin) will be copied in `lib` repository after build.
+
+2. Restart SonarQube
+
+```sh
+# stop the service
+./tool_stop.sh
+
+# start the service
+./tool_start.sh
+```
+
+Howto create a release (core-contributor rights needed)
 ----------------------
 
 1. IF the new release wanted is a major or minor version (`X` or `Y` in `X.Y.Z`)
