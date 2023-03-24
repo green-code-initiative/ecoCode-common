@@ -203,10 +203,10 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 Howto create a release (core-contributor rights needed)
 ----------------------
 
-1. IF the new release wanted is a major or minor version (`X` or `Y` in `X.Y.Z`)
-   1. THEN modify the old version to the new version in all XML files (with a find/replace)
+1. *new version process* : IF the new release wanted is a major or minor version (`X` or `Y` in `X.Y.Z`)
+   1. THEN modify the old version to the new version in all XML/YML files (with a find/replace)
    2. ELSE the new corrective version (`Z` in `X.Y.Z`) will be automatic
-2. add release notes in `CHANGELOG.md` file for next release
+2. `CHANGELOG.md` : add release notes for next release
     1. Replace `Unreleased` title with the new version like `Release X.Y.Z` and the date
         1. ... where `X.Y.Z` is the new release
         2. ... follow others examples
@@ -216,14 +216,15 @@ Howto create a release (core-contributor rights needed)
     3. add a new section in the list at the bottom of file with new version
     4. update `docker-compose.yml` with next SNAPSHOT corrective version
     5. commit these modifications
-3. if all is ok, execute `tool_release_1_prepare.sh` to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag) and check these commits and tag
-4. if all is ok, execute `tool_release_2_branch.sh` to create and push a new branch with that release and SNAPSHOT
-5. if all is ok, on github, create a PR based on this new branch to `main` branch
-6. wait that automatic check (Github `Actions` tab) on the new branch are OK, then check modifications and finally merge it with `Create a merge commit` option
-7. if PR merge is OK, then delete the branch as mentionned when PR merged
-8. wait that automatic check on the `main` branch are OK, and then if all is ok, upgrade your local source code from remote, and go to `main` branch
-9. push new tag with `git push --tags`
-10. an automatic workflow started on github and create the new release of plugin
+3. `tool_release_1_prepare.sh` : *IF ALL IS OK*, execute this script to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag) and check these commits and tag
+4. `tool_release_2_branch.sh` : *IF ALL IS OK*, execute this script to create and push a new branch with that release and SNAPSHOT
+5. *PR* : *IF ALL IS OK*, on github, create a PR based on this new branch to `main` branch
+6. *check Github Action + merge PR* : wait that automatic check (Github `Actions` tab) on the new branch are OK, then check modifications and finally merge it with `Create a merge commit` option
+7. *IF ALL IS OK* and if PR merge is OK, then delete the branch as mentionned when PR merged
+8. *check Github Action + update local* : wait that automatic check on the `main` branch are OK, and then *IF ALL IS OK*, upgrade your local source code from remote, and go to `main` branch
+9. *push tag* : push new tag with `git push --tags`
+10. *check release* : an automatic workflow started on github and create the new release of plugin
+11. `docker-compose.yml` : check and modify (if needed) the version in this file to the new SNAPSHOT version
 
 Howto debug a rule (with logs)
 ------------------------------
