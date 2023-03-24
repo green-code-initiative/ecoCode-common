@@ -29,15 +29,13 @@ https://medium.com/android-news/gitflow-with-github-c675aa4f606a
 - common part (doc / tools) : https://github.com/green-code-initiative/ecoCode-common
 - several test project repositories
 
-### 115 green rules details
+### 115 web rules details
 
-https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html
+https://github.com/cnumr/best-practices
 
-If you don't understand what a rule means, take a look at the link above. Mouse over in order to have more details.
+### 40+ android/iOS rules details
 
-### 40 android rules details
-
-https://olegoaer.perso.univ-pau.fr/android-energy-smells/
+https://github.com/cnumr/best-practices-mobile
 
 # Local development
 
