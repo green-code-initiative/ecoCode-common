@@ -9,6 +9,15 @@ In order to develop a Sonarqube Plugin in Open source for ecocode, two basics mu
 
 https://docs.sonarqube.org/latest/extend/developing-plugin/
 
+#### How a SonarQube plugin works
+
+Code is parsed to be transformed as AST. AST will allow you to access one or more nodes of your code.
+For example, you’ll be able to access of all your `for` loop, to explore content etc.
+
+To better understand AST structure, you can use the [AST Explorer](https://astexplorer.net/).
+
+JavaScript plugin works differently because it does not use AST. [More information here](javascript-plugin/README.md)
+
 ### Gitflow
 
 https://medium.com/android-news/gitflow-with-github-c675aa4f606a
@@ -18,6 +27,7 @@ https://medium.com/android-news/gitflow-with-github-c675aa4f606a
 - standard part : https://github.com/green-code-initiative/ecoCode
 - mobile part : https://github.com/green-code-initiative/ecoCode-mobile
 - common part (doc / tools) : https://github.com/green-code-initiative/ecoCode-common
+- several test project repositories
 
 ### 115 green rules details
 
