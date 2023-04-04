@@ -3,7 +3,7 @@
 In order to develop a Sonarqube Plugin in Open source for ecocode, two basics must have been mastered:
 
 * How to develop a Sonarqube plugin
-* Understand and work withe the Gitflow
+* Understand and work with the Gitflow
 
 ### Sonarqube Plugin
 
