@@ -41,3 +41,8 @@ For Windows :
 
 - launch `check_requirements.bat` to control local environment
 - check verions displayed to check if requirements on versions are respected
+
+Screenshot
+----------
+
+![Screenshot](resources/check_require-capture.png)
