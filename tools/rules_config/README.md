@@ -22,27 +22,24 @@ Requirements
   - add new token in personal account settings to communicate with Sonar API
   - Got **'Admininister: Quality Profiles'** global permission on your account.
 - Check `_config.sh` file :
-  - debug mode (`DEBUG` variable) : 0 to disable, 1 to enable
-  - simulation mode (`SIMULATION` variable) : 0 to disable, 1 to enable
-  - Sonar token (`SONAR_TOKEN` variable) : put here the new added token previously
-  - Sonar URL (`SONAR_URL` variable) : put here your custom Sonar URL ("http://localhost:9000" by default)
-  - name of tag to add (`TAG_ECOCONCEPTION` variable) : the name of the new tag to add to a list of rules
+  - **Sonar token** (`SONAR_TOKEN` variable) : put here the new added token previously
+  - **Simulation mode** (`SIMULATION` variable) : 0 to disable, 1 to enable
+  - **Sonar URL** (`SONAR_URL` variable) : put here your custom Sonar URL ("http://localhost:9000" by default)
+  - Name of tag to add (`TAG_ECOCONCEPTION` variable) : the name of the new tag to add to a list of rules
+  - Debug mode (`DEBUG` variable) : 0 to disable, 1 to enable
   - rules keys list (string format separated with one comma) (`RULES_KEYS` variable) : specify here the list of all keys of rules that you want to add th new tag
-  - name of profile to add (`PROFILE_ECOCONCEPTION` variable) : the name of the new profile to add for each language
-  - language keys list (string format separated with one comma) (`PROFILES_LANGUAGE_KEYS` variable) : specify here the list of all keys language that you want to add the new ecocode quality profile
+  - Name of profile to add (`PROFILE_ECOCONCEPTION` variable) : the name of the new profile to add for each language
+  - Language keys list (string format separated with one comma) (`PROFILES_LANGUAGE_KEYS` variable) : specify here the list of all keys language that you want to add the new ecocode quality profile
 
-Development Environment
------------------------
+Environment / prerequisites
+---------------------------
 
-Differents environment have been used:
+Different environments have been used:
 - bash 3.2 on MacOS
 - Ubuntu 20.04.4 LTS (bash 5.0.17(1)-release) with extra jq package (`sudo apt install jq`)
 
-Concepts
---------
-
-Call Sonar API rest to
-----------------------
+Call Sonar API rest
+-------------------
 
 1. **Tags**
 - ... get rule data (included systags array and tags array)
@@ -64,7 +61,7 @@ tags array seems to be the editable part. It's editable from :
 - Sonar API calls
 
 Algorithm
-=========
+---------
 
 1. **Tags**
 
@@ -86,11 +83,12 @@ Scripts
 - `install_tag.sh` : add specified tag to all listed rules
 - `install_profile.sh` : create new custom profile
 
-How does it work ?
-------------------
+How to
+------
 
-- change configuration in `_config.sh` file : check requirements above
-- launch `check_tags.sh` to control your rules and tags
-- launch `install_tags.sh` to add custom tag to your rules
-- launch `check_tags.sh` again to control your rules and tags
-- launch `install_profile.sh` to create profiles with the new rules from plugins
+1. change configuration in `_config.sh` file : check requirements above
+2. launch `check_tags.sh` to control your rules and tags
+3. launch `install_tag.sh` to add custom tag to your rules (change SIMULATION=0 in configration to do real calls)
+4. launch `check_tags.sh` again to control your rules and tags
+5. launch `install_profile.sh` to create profiles with the new rules from plugins
+
