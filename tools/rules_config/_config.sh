@@ -26,8 +26,8 @@ TAG_ECOCONCEPTION=test1
 # TAG_ECOCONCEPTION=
 
 # list of rule keys that will be updated with new tag
-RULES_KEYS=css:S4655,php:S2014,Web:ItemTagNotWithinContainerTagCheck,Web:DoctypePresenceCheck
-# RULES_KEYS=
+#RULES_KEYS=css:S4655,Web:DoctypePresenceCheck
+RULES_KEYS=Web:DoctypePresenceCheck
 
 # name quality profile
 PROFILE_ECOCONCEPTION="EcoCodeProfile"
