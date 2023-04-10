@@ -24,8 +24,6 @@ debug() {
 ### Read FILEPATH_SONAR_RULES_REUSED file to extract RULES_KEYS
 function read_sonar_rules_reused {
   debug "Read file ${FILEPATH_SONAR_RULES_REUSED}"
-  linenumber=1
-  interal_field_separator='|'
   rules_keys=""
   {
     #Skip header file markdown
