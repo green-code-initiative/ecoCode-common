@@ -6,7 +6,7 @@ Purpose
 
 1. **Rules Tagging system**
 
-Add one new tag to a list of rules (using SonarQube API).
+Add one new tag to a list of rules from `SONAR_RULES_REUSED.md` (using SonarQube API).
 Why ? because maybe some original SonarQube rules are already ready for being part of this plugin
 
 2. **EcoCode Quality Profile**
@@ -27,7 +27,7 @@ Requirements
   - Sonar token (`SONAR_TOKEN` variable) : put here the new added token previously
   - Sonar URL (`SONAR_URL` variable) : put here your custom Sonar URL ("http://localhost:9000" by default)
   - name of tag to add (`TAG_ECOCONCEPTION` variable) : the name of the new tag to add to a list of rules
-  - rules keys list (string format separated with one comma) (`RULES_KEYS` variable) : specify here the list of all keys of rules that you want to add th new tag
+  - file path to `SONAR_RULES_REUSED.md` (`FILEPATH_SONAR_RULES_REUSED` variable) : filepath in the local folder. Contains all rules.
   - name of profile to add (`PROFILE_ECOCONCEPTION` variable) : the name of the new profile to add for each language
   - language keys list (string format separated with one comma) (`PROFILES_LANGUAGE_KEYS` variable) : specify here the list of all keys language that you want to add the new ecocode quality profile
 
@@ -68,7 +68,7 @@ Algorithm
 
 1. **Tags**
 
-- get rules data (rules list from config file)
+- get rules data (rules list from parsing `SONAR_RULES_REUSED.md`)
 - check if new tag to add (from config file) already exists on systags array or tags array
 - add new tag to all existing tags if necessary
 
@@ -94,3 +94,12 @@ How does it work ?
 - launch `install_tags.sh` to add custom tag to your rules
 - launch `check_tags.sh` again to control your rules and tags
 - launch `install_profile.sh` to create profiles with the new rules from plugins
+
+Contributing ?
+--------------
+
+**You want to add new pre-existing rule from Sonar ?**
+- You have to find the sonar key from **"RULES"** view on Sonarqube
+- adding a new line to `SONAR_RULES_REUSED.md` with this key
+- add references to justify this value
+- Create a Pull Request following #CONTRIBUTING.md
