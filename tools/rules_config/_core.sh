@@ -39,8 +39,8 @@ function read_sonar_rules_reused {
       done
     done
   } < $FILEPATH_SONAR_RULES_REUSED
-  debug "Extracting rules: ${rules_keys::-1} \n"
-  RULES_KEYS=${rules_keys::-1}
+  RULES_KEYS=$(echo $rules_keys | sed 's/.$//')
+  debug "Extracting rules: $RULES_KEYS \n"
 }
 
 ### build array with all rules
