@@ -21,6 +21,28 @@ debug() {
   fi
 }
 
+### Read FILEPATH_SONAR_RULES_REUSED file to extract RULES_KEYS
+function read_sonar_rules_reused {
+  debug "Read file ${FILEPATH_SONAR_RULES_REUSED}"
+  rules_keys=""
+  {
+    #Skip header file markdown
+    read -r
+    read -r
+    while IFS='|' read -ra line; do
+      col=0;
+      for substr in "${line[@]}"; do
+        if [ $col -eq 1 ]; then
+          rules_keys="$rules_keys$(echo $substr | xargs),"
+        fi
+        col=$((col+1))
+      done
+    done
+  } < $FILEPATH_SONAR_RULES_REUSED
+  RULES_KEYS=$(echo $rules_keys | sed 's/.$//')
+  debug "Extracting rules: $RULES_KEYS \n"
+}
+
 ### build array with all rules
 ### $1 : the variable to set into the computed response (using it by reference)
 declare -a RULES_ARRAY
@@ -126,6 +148,9 @@ function validate_parameters() {
 ###########################################################################################
 #    C O R E     I N I T I A L I Z A T I O N    ( /!\ /!\ /!\ NOT to modify)
 ###########################################################################################
+
+### export rules keys from markdown documentation
+read_sonar_rules_reused
 
 ### transform string list of rules keys (separated by a ,) to an array
 build_rules_array

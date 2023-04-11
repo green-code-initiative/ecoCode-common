@@ -25,9 +25,8 @@ SONAR_URL=http://localhost:9000
 TAG_ECOCONCEPTION=test1
 # TAG_ECOCONCEPTION=
 
-# list of rule keys that will be updated with new tag
-RULES_KEYS=css:S4655,php:S2014,Web:ItemTagNotWithinContainerTagCheck
-# RULES_KEYS=
+# filepath to markdown doc containing rule keys that will be updated with new tag
+FILEPATH_SONAR_RULES_REUSED='./SONAR_RULES_REUSED.md'
 
 # name quality profile
 PROFILE_ECOCONCEPTION="EcoCodeProfile"
