@@ -1,35 +1,44 @@
-#####################################################
-#    C O N F I G U R A T I O N    (to modify)
-#####################################################
+############################################
+#    C O N F I G U R A T I O N   F I L E
+############################################
+
+
+#####
+# common configuration ("install_tag.sh" / "check_tag.sh" / "clean_tag.sh" / "install_profile.sh")
+#####
 
 # if tool display DEBUG logs or not
 # DEBUG=0
 DEBUG=1
 
 # if tool simulate the add tag process if new tag has to be added
-# SIMULATION=0
-SIMULATION=1
+SIMULATION=0
+#SIMULATION=1
 
 # your sonar token (previously created in SONAR to secure communication with it)
-SONAR_TOKEN=f8be019004bce93e4f111251f8b1e6a8b665a252
-# SONAR_TOKEN=
+# first input param of your script shell
+SONAR_TOKEN=$1
 
-# WARNING : let "http" instead of "https" (beacuse you could have a TLS problem)
+# WARNING : let "http" instead of "https" (because you could have a TLS problem)
 SONAR_URL=http://localhost:9000
-# SONAR_URL=
 
-# new tag to add to rules
-# TAG_ECOCONCEPTION=eco-design
-# TAG_ECOCONCEPTION=eco-sql
-# TAG_ECOCONCEPTION=eco-design-test
-TAG_ECOCONCEPTION=test1
-# TAG_ECOCONCEPTION=
+# new tag to add to rules (tagging tools) or to use for rules added to new profiles created (install_profile tool)
+TAG_ECODESIGN=ecocode
+
+
+#####
+# additional configuration for "install_profile.sh" tool
+#####
 
 # filepath to markdown doc containing rule keys that will be updated with new tag
 FILEPATH_SONAR_RULES_REUSED='./SONAR_RULES_REUSED.md'
 
-# name quality profile
-PROFILE_ECOCONCEPTION="EcoCodeProfile"
+# name quality profile to create with "install_profile.sh" tool
+PROFILE_ECODESIGN="EcoCodeProfile"
 
-# create profile for each langage
+# programming languages list to create with "install_profile.sh" tool
 PROFILES_LANGUAGE_KEYS=php,py,java
+
+# if we want to set created profiles as default profile for each language
+IS_PROFILE_ECODESIGN_DEFAULT=1
+#IS_PROFILE_ECODESIGN_DEFAULT=0

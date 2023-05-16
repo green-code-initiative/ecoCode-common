@@ -7,7 +7,7 @@
 debug "SONAR_TOKEN : $SONAR_TOKEN"
 debug "SONAR_URL : $SONAR_URL"
 debug "RULES_KEYS : $RULES_KEYS"
-debug "TAG_ECOCONCEPTION : $TAG_ECOCONCEPTION"
+debug "TAG_ECODESIGN : $TAG_ECODESIGN"
 
 # check SonarQube API connection
 check_sonarapi
