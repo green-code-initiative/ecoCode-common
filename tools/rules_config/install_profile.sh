@@ -5,8 +5,8 @@
 debug "SONAR_TOKEN : $SONAR_TOKEN"
 debug "SONAR_URL : $SONAR_URL"
 debug "RULES_KEYS : $RULES_KEYS"
-debug "TAG_ECOCONCEPTION : $TAG_ECOCONCEPTION"
-debug "PROFILE_ECOCONCEPTION : $PROFILE_ECOCONCEPTION"
+debug "TAG_ECODESIGN : $TAG_ECODESIGN"
+debug "PROFILE_ECODESIGN : $PROFILE_ECODESIGN"
 debug "PROFILES_LANGUAGE_KEYS : $PROFILES_LANGUAGE_KEYS"
 
 # check SonarQube API connection
@@ -19,15 +19,18 @@ for language in "${PROFILES_LANGUAGE_ARRAY[@]}"
 do
   echo -e "\n*****  Processing profile language ${BLUE}$language${NC}  *****"
 
-  create_profile_sonarapi "$language" "$PROFILE_ECOCONCEPTION"
-  change_parent_profile_sonarapi "$language" "$PROFILE_ECOCONCEPTION"
-
+  create_profile_sonarapi "$language" "$PROFILE_ECODESIGN"
+  change_parent_profile_sonarapi "$language" "$PROFILE_ECODESIGN"
 
   # get profile data from Sonar API
-  res_json=$(search_profile_sonarapi $language $PROFILE_ECOCONCEPTION)
+  res_json=$(search_profile_sonarapi $language $PROFILE_ECODESIGN)
   key_profile=$(echo "$res_json" | jq -r '.profiles[].key')
 
-  activate_rules_ecocode_profile_sonarapi "$language" "$key_profile" "$TAG_ECOCONCEPTION"
+  activate_rules_ecocode_profile_sonarapi "$language" "$key_profile" "$TAG_ECODESIGN"
+
+  if [ $IS_PROFILE_ECODESIGN_DEFAULT == 1 ]; then
+    set_default_profile "$language" "$PROFILE_ECODESIGN"
+  fi
 
   nb_profile_update+=1
 done

@@ -5,7 +5,7 @@
 debug "SONAR_TOKEN : $SONAR_TOKEN"
 debug "SONAR_URL : $SONAR_URL"
 debug "RULES_KEYS : $RULES_KEYS"
-debug "TAG_ECOCONCEPTION : $TAG_ECOCONCEPTION"
+debug "TAG_ECODESIGN : $TAG_ECODESIGN"
 
 # check SonarQube API connection
 check_sonarapi
@@ -29,7 +29,7 @@ do
   while read -r tag ; do
     debug "  Processing tag $tag"
 
-    if [ "$tag" == "$TAG_ECOCONCEPTION" ]; then
+    if [ "$tag" == "$TAG_ECODESIGN" ]; then
       is_tag_found=1
     else
       # only keep tags aren't the newone
@@ -43,13 +43,13 @@ do
   # check if tag was found on tags array
   # if found, use built tag list (without tag) and call Sonar API to update tags of the current rule
   if [ $is_tag_found == 1 ]; then
-    echo -e "  Tag ${MAGENTA}$TAG_ECOCONCEPTION${NC} ${GREEN}FOUND${NC} in tags array : we will delete it from rule '$rule_key'"
+    echo -e "  Tag ${MAGENTA}$TAG_ECODESIGN${NC} ${GREEN}FOUND${NC} in tags array : we will delete it from rule '$rule_key'"
 
     update_rule_sonarapi "$rule_key" "$tags_string"
 
     nb_rules_updated+=1
   else
-    echo -e "  Tag ${MAGENTA}$TAG_ECOCONCEPTION${NC} ${RED}NOT FOUND${NC} in tags array : no need to delete it"
+    echo -e "  Tag ${MAGENTA}$TAG_ECODESIGN${NC} ${RED}NOT FOUND${NC} in tags array : no need to delete it"
   fi
 
 done

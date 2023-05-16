@@ -5,8 +5,8 @@
 - [Howto install SonarQube dev environment](#howto-install-sonarqube-dev-environment)
   - [Requirements](#requirements-2)
   - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
-  - [Reinstall SonarQube (if needed)](#reinstall-sonarqube-if-needed)
   - [Configuration SonarQube](#configuration-sonarqube)
+- [Howto reinstall SonarQube (if needed)](#howto-reinstall-sonarqube-if-needed)
 - [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
 - [Howto install new plugin version](#howto-install-new-plugin-version)
 - [Howto create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
@@ -85,23 +85,42 @@ wsl -d docker-desktop
 sysctl -w vm.max_map_count=262144
 ```
 
-Go to http://localhost:9000 and use these credentials:
+### Configuration SonarQube
 
-```txt
-login: admin
-password: admin
-```
+*Purposes* : Configure SonarQube to have all ecocode plugins rules enabled by default.
 
-When you are connected, generate a new token:
+#### Change password
 
-`My Account -> Security -> Generate Tokens`
+- go to your SonarQube homepage `http://localhost:9000/`
+- use default credentials : `admin`/ `admin`
+- the first time after first connexion, you are suggested to change `admin` password
+
+#### Check plugins installation
+
+- go to "Adminitration" tab
+- go to "Marketplace" sub-tab
+- go bottom, and clic on "Installed" sub-tab
+- check here, if you have ecoCode plugins displayed with a SNAPSHOT version
+
+#### Generate access token
+
+When you are connected, generate a new token on `My Account -> Security -> Generate Tokens`
 
 ![Administrator menu](resources/adm-menu.png)
 ![Security tab](resources/security-tab.png)
 
-Instead of login+password authentication, this token can now be used in `sonar.login` variable when you call sonar scanner to send metrics to SonarQube.
+Instead of login+password authentication, this token can now be used as value for `sonar.login` variable when needed (examples : call sonar scanner to send metrics to SonarQube, on use internal tools, ...)
 
-### Reinstall SonarQube (if needed)
+#### Initialize default profiles for `ecocode` plugins
+
+- use tool `install_profile.sh` in `ecocode-common` repository (inside directory `tools/rules_config`)
+  - if you want, you can check default configuration of this tool in `_config.sh` file
+- launch followed command : `./install_profile.sh <MY_SONAR_TOKEN>`
+
+After this step, all code source for your language will be analyzed with your new Profile (and its activated plugins rules).
+
+Howto reinstall SonarQube (if needed)
+-----------------------------------------------
 
 ```sh
 # first clean all containers and resources used
@@ -113,39 +132,6 @@ Instead of login+password authentication, this token can now be used in `sonar.l
 # then, install from scratch de SonarQube containers and resources
 ./tool_docker-init.sh
 ```
-
-### Configuration SonarQube
-*Purposes* : Configure SonarQube to have all ecocode plugins rules enabled by default.
-
-Check plugins installation :
-
-- go to your SonarQube homepage `http://localhost:9000/`
-- the first time after initialization, you are suggested to change `admin` password
-- check plugins installation :
-  - go to "Adminitration" tab
-  - go to "Marketplace" sub-tab
-  - go bottom, and clic on "Installed" sub-tab
-  - check here, if you have ecoCode plugins displayed with a SNAPSHOT version
-
-Create a new profile with Ecocode plugins rules :
-
-- go to "Quality Profiles" tab
-- choose your language to create a new profile - ex : `java`
-- click on menu at the end of "Sonar Way" line for this language
-- choose "extend" (or "copy" if you prefer)
-- give a name to new profile (ex : "MyProfileName"), then click on "extend" (or "copy") button
-- in the new page (profile page), click on "Activate more" button (to add new rules)
-- in the new page (rule page), in the left menu, choose "Tag" menu and write "eco" word in search field
-- click on `eco-design` choice displayed below : all rules with that tag are displayed to the right
-- click on "Bulk Change" button and choose "Activate in MyProfileName", then "Apply"
-
-Make the new profile as default for your language :
-
-- go to "Quality Profiles" tab
-- click on menu at the end of line of your new profile
-- choose "set as Default"
-
-After these 2 steps, all code source for your language will be analyzed with your new Profile (and its activated plugins rules).
 
 Howto start or stop service (already installed)
 -----------------------------------------------
@@ -181,8 +167,8 @@ Howto install new plugin version
 - [Howto install SonarQube dev environment](#howto-install-sonarqube-dev-environment)
   - [Requirements](#requirements-2)
   - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
-  - [Reinstall SonarQube (if needed)](#reinstall-sonarqube-if-needed)
   - [Configuration SonarQube](#configuration-sonarqube)
+- [Howto reinstall SonarQube (if needed)](#howto-reinstall-sonarqube-if-needed)
 - [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
 - [Howto install new plugin version](#howto-install-new-plugin-version)
 - [Howto create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)

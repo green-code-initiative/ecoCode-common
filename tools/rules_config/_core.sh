@@ -124,22 +124,29 @@ function activate_rules_ecocode_profile_sonarapi(){
     echo $(curl -u $SONAR_TOKEN: --request POST "$SONAR_URL/api/qualityprofiles/activate_rules?languages=$1&targetKey=$2&tags=$3" 2>/dev/null)
 }
 
+### set a profile as default for an language using SonarQube API
+### $1 :  language
+### $2 :  qualityProfile (name)
+function set_default_profile(){
+    echo $(curl -u $SONAR_TOKEN: --request POST "$SONAR_URL/api/qualityprofiles/set_default?language=$1&qualityProfile=$2" 2>/dev/null)
+}
+
 ### validate configuration parameters
 function validate_parameters() {
-  if [ -z "$TAG_ECOCONCEPTION" ]; then
-    echo -e "ERROR - ${RED}config parameter 'TAG_ECOCONCEPTION' is NOT valid${NC} : it can't be empty"
+  if [ -z "$TAG_ECODESIGN" ]; then
+    echo -e "ERROR - ${RED}config parameter 'TAG_ECODESIGN' is NOT valid${NC} : it can't be empty (please check _config.sh file)"
     exit 1
   fi
   if [ -z "$SONAR_TOKEN" ]; then
-    echo -e "ERROR - ${RED}config parameter 'SONAR_TOKEN' is NOT valid${NC} : it can't be empty"
+    echo -e "ERROR - ${RED}config parameter 'SONAR_TOKEN' is NOT valid${NC} : it can't be empty (please give it as first input parameter of script)"
     exit 1
   fi
   if [ -z "$SONAR_URL" ]; then
-    echo -e "ERROR - ${RED}config parameter 'SONAR_URL' is NOT valid${NC} : it can't be empty"
+    echo -e "ERROR - ${RED}config parameter 'SONAR_URL' is NOT valid${NC} : it can't be empty (please check _config.sh file)"
     exit 1
   fi
   if [ -z "$RULES_KEYS" ]; then
-    echo -e "ERROR - ${RED}config parameter 'RULES_KEYS' is NOT valid${NC} : it can't be empty"
+    echo -e "ERROR - ${RED}config parameter 'RULES_KEYS' is NOT valid${NC} : it can't be empty (please check _config.sh file)"
     exit 1
   fi
 }
