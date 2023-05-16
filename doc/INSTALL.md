@@ -6,7 +6,7 @@
   - [Requirements](#requirements-2)
   - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
   - [Configuration SonarQube](#configuration-sonarqube)
-  - [Reinstall SonarQube (if needed)](#reinstall-sonarqube-if-needed)
+- [Howto reinstall SonarQube (if needed)](#howto-reinstall-sonarqube-if-needed)
 - [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
 - [Howto install new plugin version](#howto-install-new-plugin-version)
 - [Howto create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
@@ -119,7 +119,8 @@ Instead of login+password authentication, this token can now be used as value fo
 
 After this step, all code source for your language will be analyzed with your new Profile (and its activated plugins rules).
 
-### Reinstall SonarQube (if needed)
+Howto reinstall SonarQube (if needed)
+-----------------------------------------------
 
 ```sh
 # first clean all containers and resources used
@@ -167,7 +168,7 @@ Howto install new plugin version
   - [Requirements](#requirements-2)
   - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
   - [Configuration SonarQube](#configuration-sonarqube)
-  - [Reinstall SonarQube (if needed)](#reinstall-sonarqube-if-needed)
+- [Howto reinstall SonarQube (if needed)](#howto-reinstall-sonarqube-if-needed)
 - [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
 - [Howto install new plugin version](#howto-install-new-plugin-version)
 - [Howto create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
