@@ -109,6 +109,13 @@ function create_profile_sonarapi() {
     echo $(curl -u $SONAR_TOKEN: --request POST "$SONAR_URL/api/qualityprofiles/create?language=$1&name=$2" 2>/dev/null)
 }
 
+### delete profile using SonarQube API
+### $1 :  language
+### $2 :  qualityProfile (qualityProfile)
+function delete_profile_sonarapi() {
+    echo $(curl -u $SONAR_TOKEN: --request POST "$SONAR_URL/api/qualityprofiles/delete?language=$1&qualityProfile=$2" 2>/dev/null)
+}
+
 ### change parent profile with Sonar Way using SonarQube API
 ### $1 :  language
 ### $2 :  qualityProfile (name)
