@@ -212,6 +212,29 @@ Howto create a release (core-contributor rights needed)
 10. *check release* : an automatic workflow started on github and create the new release of plugin
 11. `docker-compose.yml` : check and modify (if needed) the version in this file to the new SNAPSHOT version
 
+Howto publish new release on SonarQube Marketplace
+--------------------------------------------------
+
+1. Create a fork of [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties.git)
+2. Change corresponding plugin metadata file (for `ecocode-java`: [ecocodejava.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodejava.properties), for `ecocode-php`: [ecocodephp.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodephp.properties), for `ecocode-python`: [ecocodepython.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodepython.properties)): 
+   * Append new version to `publicVersions` value (comma separated value)
+   * Add following properties (where `X.X.X` is new release to publish):
+     * `X.X.X.description`: a summary of main changes for user for this version
+     * `X.X.X.sqVersions`: supported range version of SonarQube
+     * `X.X.X.date`: Release date of plugin (on GitHub Release page)
+     * `X.X.X.downloadUrl`: link to doanwload this specific release
+     * `X.X.X.changelogUrl`: link to detailed change log of this release
+3. Create a Pull-Request for those modifications on [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties/pulls) to annonce new release of the corresponding plugin, with:
+   * a summary of main changes for user
+   * the download link
+   * the link to detailed release note
+   * the link to SonarCloud corresponding project
+
+Additional information:
+* [check description of previous merged Pull-Requests](https://github.com/SonarSource/sonar-update-center-properties/pulls?q=is%3Apr+is%3Amerged)
+* [github.com - SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties)
+* [sonar community - Deploying to the Marketplace](https://community.sonarsource.com/t/deploying-to-the-marketplace/35236)
+
 Howto debug a rule (with logs)
 ------------------------------
 
