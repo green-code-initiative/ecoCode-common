@@ -163,7 +163,7 @@ if you only want to start (or stop properly) existing services :
 
 Result : JAR files (one per plugin) will be copied in `lib` repository after build.
 
-1. Restart SonarQube
+2. Restart SonarQube
 
 ```sh
 # stop the service
