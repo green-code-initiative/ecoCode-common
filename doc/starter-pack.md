@@ -1,4 +1,27 @@
-# Basics
+# Starter Pack to develop on EcoCode
+
+- [Basics](#basics)
+  - [Sonarqube Plugin](#sonarqube-plugin)
+    - [How a SonarQube plugin works](#how-a-sonarqube-plugin-works)
+  - [Gitflow](#gitflow)
+  - [Github GreenCodeInitiative](#github-greencodeinitiative)
+  - [115 web rules details](#115-web-rules-details)
+  - [40+ android/iOS rules details](#40-androidios-rules-details)
+- [Local development](#local-development)
+  - [Requirements](#requirements)
+  - [Clone the project](#clone-the-project)
+  - [Start local environment](#start-local-environment)
+  - [Choose your rule](#choose-your-rule)
+  - [Test your development](#test-your-development)
+- [Publish your work](#publish-your-work)
+  - [Commit your code](#commit-your-code)
+  - [Open pull request](#open-pull-request)
+  - [Review others development](#review-others-development)
+  - [Validation of a PR](#validation-of-a-pr)
+  - [Close your rule](#close-your-rule)
+
+
+## Basics
 
 In order to develop a Sonarqube Plugin in Open source for ecocode, two basics must have been mastered:
 
@@ -38,7 +61,7 @@ https://github.com/cnumr/best-practices
 
 https://github.com/cnumr/best-practices-mobile
 
-# Local development
+## Local development
 
 ### Requirements
 
@@ -96,7 +119,7 @@ Each rule needs to have scripts in a specific language (i.e. Python, Rust, JS, P
 
 To validate that the rule has been implemented, you need to execute a scan on those scripts. You will need sonar scanner: https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
 
-# Publish your work
+## Publish your work
 
 ### Commit your code
 

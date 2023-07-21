@@ -1,4 +1,11 @@
-# Code of Conduct - Ecocode
+# Code of Conduct - EcoCode
+
+- [Our Pledge](#our-pledge)
+- [Our Standards](#our-standards)
+- [Our Responsibilities](#our-responsibilities)
+- [Scope](#scope)
+- [Enforcement](#enforcement)
+- [Attribution](#attribution)
 
 ## Our Pledge
 

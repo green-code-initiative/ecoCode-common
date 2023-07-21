@@ -1,14 +1,17 @@
-Local environment checker tool
-==============================
+# Local environment checker tool
 
-Purpose
--------
+- [Purpose](#purpose)
+- [Requirements](#requirements)
+- [Files](#files)
+- [How does it work ?](#how-does-it-work-)
+- [Screenshot](#screenshot)
+
+## Purpose
 
 Tool to check local development environment.
 Some requirements are mandatories (tools and versions) before beginning development on plugin.
 
-Requirements
-------------
+## Requirements
 
 Tool was created on Mac OSx environment.
 Please feel free to report issues if found.
@@ -19,8 +22,7 @@ Tested on :
 - Ubuntu : 22.04.1 LTS
 - Windows : 10 Famille
 
-Files
--------
+## Files
 
 For Mac OSX and Linux :
 
@@ -29,8 +31,7 @@ For Mac OSX and Linux :
 - `check_requirements.sh` : tool checker for Mac OS and Ubuntu
 - `check_requirements.bat` : tool checker for Windows OS
 
-How does it work ?
-------------------
+## How does it work ?
 
 For Mac OSX and Linux :
 
@@ -42,7 +43,6 @@ For Windows :
 - launch `check_requirements.bat` to control local environment
 - check verions displayed to check if requirements on versions are respected
 
-Screenshot
-----------
+## Screenshot
 
 ![Screenshot](resources/check_require-capture.png)
