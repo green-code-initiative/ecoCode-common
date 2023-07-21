@@ -160,27 +160,10 @@ if you only want to start (or stop properly) existing services :
 ```sh
 ./tool_build.sh
 ```
-- [Global Requirements](#global-requirements)
-- [HOWTO build the SonarQube ecoCode plugins](#howto-build-the-sonarqube-ecocode-plugins)
-  - [Requirements](#requirements)
-  - [Build the code](#build-the-code)
-- [HOWTO install SonarQube dev environment](#howto-install-sonarqube-dev-environment)
-  - [Requirements](#requirements-1)
-  - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
-  - [Configuration SonarQube](#configuration-sonarqube)
-    - [Change password](#change-password)
-    - [Check plugins installation](#check-plugins-installation)
-    - [Generate access token](#generate-access-token)
-    - [Initialize default profiles for `ecocode` plugins](#initialize-default-profiles-for-ecocode-plugins)
-- [HOWTO reinstall SonarQube (if needed)](#howto-reinstall-sonarqube-if-needed)
-- [HOWTO start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
-- [HOWTO install new plugin version](#howto-install-new-plugin-version)
-- [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
-- [HOWTO debug a rule (with logs)](#howto-debug-a-rule-with-logs)
 
 Result : JAR files (one per plugin) will be copied in `lib` repository after build.
 
-2. Restart SonarQube
+1. Restart SonarQube
 
 ```sh
 # stop the service
