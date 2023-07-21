@@ -123,7 +123,7 @@ return new MyClass() {
 
 ### Line wrapping
 
-90 characters is the *preferred* line length we aim for. In some cases the preferred length can be achieved by refactoring code slightly. In other cases it's  just not possible.
+90 characters is the _preferred_ line length we aim for. In some cases the preferred length can be achieved by refactoring code slightly. In other cases it's  just not possible.
 
 90 is not a hard limit. Lines between 90-105 are perfectly acceptable in many cases where it aids readability and where wrapping has the opposite effect of reducing readability. This is a judgement call and it's also important to seek consistency. Many times you can learn by looking how specific situations are handled in other parts of the code.
 
