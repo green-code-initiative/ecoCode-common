@@ -18,6 +18,7 @@
 - [Publish your work](#publish-your-work)
   - [Commit your code](#commit-your-code)
   - [Open pull request](#open-pull-request)
+    - [Definition Of Done of a PR](#definition-of-done-of-a-pr)
   - [Review others development](#review-others-development)
   - [Validation of a PR](#validation-of-a-pr)
   - [Close your rule](#close-your-rule)
@@ -151,6 +152,18 @@ You may have to log with your account : <https://docs.github.com/en/authenticati
 ### Open pull request
 
 Once your code is pushed and tested, open a PR between your branch and "main" : <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request>
+
+#### Definition Of Done of a PR
+
+To have the best PR, we strongly recommend you to follow this check-list :
+
+- [ ] Implement rule
+- [ ] Add documentation and code tags on the rule, along with triggering and non triggering examples
+- [ ] Write Unit tests (triggering and non triggering cases)
+- [ ] Update RULES.md (remove the rule line)
+- [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
+- [ ] Create PR on the real test project to add a triggering case
+- [ ] Fix potential SonarCloud issues / out-of-date warnings
 
 ### Review others development
 
