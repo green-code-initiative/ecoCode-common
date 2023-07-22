@@ -1,3 +1,5 @@
+# Code Style Guide - EcoCode
+
 - [Introduction](#introduction)
 - [Source File Basics](#source-file-basics)
 	- [File encoding: UTF-8](#file-encoding-utf-8)
@@ -7,6 +9,7 @@
 	- [Java source file organization](#java-source-file-organization)
 - [Formatting](#formatting)
 	- [Braces](#braces)
+		- [Block-like constructs: K\&R style](#block-like-constructs-kr-style)
 	- [Line wrapping](#line-wrapping)
 	- [Blank Lines](#blank-lines)
 - [Class declaration](#class-declaration)
@@ -23,6 +26,7 @@
 	- [Field and method references](#field-and-method-references)
 	- [Local variable type inference](#local-variable-type-inference)
 	- [Some rules from experience](#some-rules-from-experience)
+		- [Protections against ClassCast exceptions](#protections-against-classcast-exceptions)
 - [Javadoc](#javadoc)
 	- [Javadoc formatting](#javadoc-formatting)
 - [Tests](#tests)
@@ -31,6 +35,7 @@
 	- [Assertions](#assertions)
 	- [Mocking](#mocking)
 	- [Some rules from experience](#some-rules-from-experience-1)
+		- [Unit tests](#unit-tests)
 
 ## Introduction
 
@@ -46,15 +51,15 @@ Source files must be encoded using `UTF-8`.
 
 ### Indentation
 
-**In progress**
+> In Progresss
 
 ## Source file structure
 
 A source file consists of the following, in this exact order:
 
-* Package statement
-* Import statements
-* Exactly one top-level class
+- Package statement
+- Import statements
+- Exactly one top-level class
 
 Exactly one blank line separates each of the above sections.
 
@@ -89,36 +94,36 @@ Above all, the organization of the code should feel _natural_.
 
 Braces mostly follow the _Kernighan and Ritchie style_ (a.k.a., "Egyptian brackets") for nonempty blocks and block-like constructs:
 
-* No line break before the opening brace but prefixed by a single space
-* Line break after the opening brace
-* Line break before the closing brace
-* Line break after the closing brace if that brace terminates a statement or the body of a method, constructor, or named class
-* Line break before else, catch and finally statements
+- No line break before the opening brace but prefixed by a single space
+- Line break after the opening brace
+- Line break before the closing brace
+- Line break after the closing brace if that brace terminates a statement or the body of a method, constructor, or named class
+- Line break before else, catch and finally statements
 
 Example:
 
 ```java
 return new MyClass() {
-	@Override 
-	public void method() {
-		if (condition()) {
-			something();
-		}
-		else {
-			try {
-				alternative();
-			} 
-			catch (ProblemException ex) {
-				recover();
-			}
-		}
-	}
+  @Override
+  public void method() {
+    if (condition()) {
+      something();
+    }
+    else {
+      try {
+        alternative();
+      }
+      catch (ProblemException ex) {
+        recover();
+      }
+    }
+  }
 };
 ```
 
 ### Line wrapping
 
-90 characters is the *preferred* line length we aim for. In some cases the preferred length can be achieved by refactoring code slightly. In other cases it's  just not possible.
+90 characters is the _preferred_ line length we aim for. In some cases the preferred length can be achieved by refactoring code slightly. In other cases it's  just not possible.
 
 90 is not a hard limit. Lines between 90-105 are perfectly acceptable in many cases where it aids readability and where wrapping has the opposite effect of reducing readability. This is a judgement call and it's also important to seek consistency. Many times you can learn by looking how specific situations are handled in other parts of the code.
 
@@ -131,10 +136,8 @@ The one big exception to the above line wrapping rules is Javadoc where we aim t
 When wrapping a lengthy expression, 90 characters is the length at which we aim to wrap. Put the separator symbols at the end of the line rather on the next line (comma separated arguments, etc). For instance:
 
 ```java
-if (thisLengthyMethodCall(param1, param2) && anotherCheck() &&
-        yetAnotherCheck()) {
-
-    // ....
+if (thisLengthyMethodCall(param1, param2) && anotherCheck() && yetAnotherCheck()) {
+  // ....
 }
 ```
 
@@ -142,19 +145,17 @@ if (thisLengthyMethodCall(param1, param2) && anotherCheck() &&
 
 Add two blank lines before the following elements:
 
-* `static {}` block
-* Fields
-* Constructors
-* Inner classes
+- `static {}` block
+- Fields
+- Constructors
+- Inner classes
 
 Add one blank line after a method signature that is multiline, i.e.
 
 ```java
 @Override
-protected Object invoke(FooBarOperationContext context, 
-        AnotherSuperLongName name) {
-
-    // code here
+protected Object invoke(FooBarOperationContext context, AnotherSuperLongName name) {
+  // code here
 }
 ```
 
@@ -196,15 +197,15 @@ Avoid using single characters as variable names. For instance prefer `Method met
 
 ### File history
 
-* A file should look like it was crafted by a single author, not like a history of changes
-* Don't artificially spread things out that belong together
+- A file should look like it was crafted by a single author, not like a history of changes
+- Don't artificially spread things out that belong together
 
 ### Organization of setter methods
 
 Choose wisely where to add a new setter method; it should not be simply added at the end of the list. Perhaps the setter is related to another setter or relates to a group. In that case it should be placed near related methods.
 
-* Setter order should reflect order of importance, not historical order
-* Ordering of _fields_ and _setters_ should be **consistent**
+- Setter order should reflect order of importance, not historical order
+- Ordering of _fields_ and _setters_ should be **consistent**
 
 ### Ternary Operator
 
@@ -282,10 +283,10 @@ BeanDefinition parse(Element element, ParserContext parserContext);
 
 In particular, please note:
 
-* Use an imperative style (i.e. _Return_ and not _Returns_) for the first sentence.
-* No blank lines between the description and the parameter descriptions.
-* If the description is defined with multiple paragraphs, start each of them with `<p>`.
-* If a parameter description needs to be wrapped, do not indent subsequent lines (see `parserContext`).
+- Use an imperative style (i.e. _Return_ and not _Returns_) for the first sentence.
+- No blank lines between the description and the parameter descriptions.
+- If the description is defined with multiple paragraphs, start each of them with `<p>`.
+- If a parameter description needs to be wrapped, do not indent subsequent lines (see `parserContext`).
 
 The Javadoc of a class has some extra rules that are illustrated by the sample below:
 
@@ -307,14 +308,14 @@ The Javadoc of a class has some extra rules that are illustrated by the sample b
  */
 ```
 
-* The order of tags for class-level Javadoc is: `@author`, `@since`, `@param`, `@see`, `@deprecated`.
-* The order of tags for method-level Javadoc is: `@param`, `@return`, `@throws`, `@since`, `@see`, `@deprecated`.
-* In contrast to method-level Javadoc, the paragraphs of a class description *are* separated by blank lines.
+- The order of tags for class-level Javadoc is: `@author`, `@since`, `@param`, `@see`, `@deprecated`.
+- The order of tags for method-level Javadoc is: `@param`, `@return`, `@throws`, `@since`, `@see`, `@deprecated`.
+- In contrast to method-level Javadoc, the paragraphs of a class description *are* separated by blank lines.
 
 The following are additional general rules to apply when writing Javadoc:
 
-* Use `{@code}` to wrap code statements or values such as `null`.
-* If a type is only referenced by a `{@link}` element, use the fully qualified name in order to avoid an unnecessary `import` declaration.
+- Use `{@code}` to wrap code statements or values such as `null`.
+- If a type is only referenced by a `{@link}` element, use the fully qualified name in order to avoid an unnecessary `import` declaration.
 
 ## Tests
 

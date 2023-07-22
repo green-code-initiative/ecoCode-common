@@ -1,25 +1,29 @@
-- [Requirements](#requirements)
-- [Howto build the SonarQube ecoCode plugins](#howto-build-the-sonarqube-ecocode-plugins)
-  - [Requirements](#requirements-1)
+# Install notes - EcoCode
+
+- [Global Requirements](#global-requirements)
+- [HOWTO build the SonarQube ecoCode plugins](#howto-build-the-sonarqube-ecocode-plugins)
+  - [Requirements](#requirements)
   - [Build the code](#build-the-code)
-- [Howto install SonarQube dev environment](#howto-install-sonarqube-dev-environment)
-  - [Requirements](#requirements-2)
+- [HOWTO install SonarQube dev environment](#howto-install-sonarqube-dev-environment)
+  - [Requirements](#requirements-1)
   - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
   - [Configuration SonarQube](#configuration-sonarqube)
-- [Howto reinstall SonarQube (if needed)](#howto-reinstall-sonarqube-if-needed)
-- [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
-- [Howto install new plugin version](#howto-install-new-plugin-version)
-- [Howto create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
-- [Howto debug a rule (with logs)](#howto-debug-a-rule-with-logs)
+    - [Change password](#change-password)
+    - [Check plugins installation](#check-plugins-installation)
+    - [Generate access token](#generate-access-token)
+    - [Initialize default profiles for `ecocode` plugins](#initialize-default-profiles-for-ecocode-plugins)
+- [HOWTO reinstall SonarQube (if needed)](#howto-reinstall-sonarqube-if-needed)
+- [HOWTO start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
+- [HOWTO install new plugin version](#howto-install-new-plugin-version)
+- [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
+- [HOWTO debug a rule (with logs)](#howto-debug-a-rule-with-logs)
 
-Requirements
-------------
+## Global Requirements
 
 - Docker
 - Docker-compose
 
-Howto build the SonarQube ecoCode plugins
------------------------------------------
+## HOWTO build the SonarQube ecoCode plugins
 
 ### Requirements
 
@@ -38,8 +42,7 @@ Maven will download the required dependencies.
 
 Each plugin is generated in its own `<plugin>/target` directory, but they are also copied to the `lib` directory.
 
-Howto install SonarQube dev environment
----------------------------------------
+## HOWTO install SonarQube dev environment
 
 ### Requirements
 
@@ -119,8 +122,7 @@ Instead of login+password authentication, this token can now be used as value fo
 
 After this step, all code source for your language will be analyzed with your new Profile (and its activated plugins rules).
 
-Howto reinstall SonarQube (if needed)
------------------------------------------------
+## HOWTO reinstall SonarQube (if needed)
 
 ```sh
 # first clean all containers and resources used
@@ -133,8 +135,7 @@ Howto reinstall SonarQube (if needed)
 ./tool_docker-init.sh
 ```
 
-Howto start or stop service (already installed)
------------------------------------------------
+## HOWTO start or stop service (already installed)
 
 Once you did the installation a first time (and then you did custom configuration like quality gates, quality
 profiles, ...),
@@ -152,27 +153,13 @@ if you only want to start (or stop properly) existing services :
 ./tool_stop.sh
 ```
 
-Howto install new plugin version
---------------------
+## HOWTO install new plugin version
 
 1. Install dependencies from the root directory:
 
 ```sh
 ./tool_build.sh
 ```
-- [Requirements](#requirements)
-- [Howto build the SonarQube ecoCode plugins](#howto-build-the-sonarqube-ecocode-plugins)
-  - [Requirements](#requirements-1)
-  - [Build the code](#build-the-code)
-- [Howto install SonarQube dev environment](#howto-install-sonarqube-dev-environment)
-  - [Requirements](#requirements-2)
-  - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
-  - [Configuration SonarQube](#configuration-sonarqube)
-- [Howto reinstall SonarQube (if needed)](#howto-reinstall-sonarqube-if-needed)
-- [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
-- [Howto install new plugin version](#howto-install-new-plugin-version)
-- [Howto create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
-- [Howto debug a rule (with logs)](#howto-debug-a-rule-with-logs)
 
 Result : JAR files (one per plugin) will be copied in `lib` repository after build.
 
@@ -186,8 +173,7 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 ./tool_start.sh
 ```
 
-Howto create a release (core-contributor rights needed)
-----------------------
+## HOWTO create a release (core-contributor rights needed)
 
 1. *new version process* : IF the new release wanted is a major or minor version (`X` or `Y` in `X.Y.Z`)
    1. THEN modify the old version to the new version in all XML/YML files (with a find/replace)
@@ -212,8 +198,7 @@ Howto create a release (core-contributor rights needed)
 10. *check release* : an automatic workflow started on github and create the new release of plugin
 11. `docker-compose.yml` : check and modify (if needed) the version in this file to the new SNAPSHOT version
 
-Howto debug a rule (with logs)
-------------------------------
+## HOWTO debug a rule (with logs)
 
 1. Add logs like in [OptimizeReadFileExceptions](https://github.com/green-code-initiative/ecoCode/blob/main/java-plugin/src/main/java/fr/greencodeinitiative/java/checks/OptimizeReadFileExceptions.java) class file
 2. Build plugin JARs with `tool_build.sh`
