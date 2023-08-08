@@ -186,8 +186,7 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
         4. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
     2. add above an empty `Unreleased` section with sub-sections (`Added`, `Changed` and `Deleted`)
     3. add a new section in the list at the bottom of file with new version
-    4. update `docker-compose.yml` with next SNAPSHOT corrective version
-    5. commit these modifications
+    4. commit these modifications
 3. `tool_release_1_prepare.sh` : *IF ALL IS OK*, execute this script to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag) and check these commits and tag
 4. `tool_release_2_branch.sh` : *IF ALL IS OK*, execute this script to create and push a new branch with that release and SNAPSHOT
 5. *PR* : *IF ALL IS OK*, on github, create a PR based on this new branch to `main` branch
