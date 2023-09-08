@@ -157,6 +157,7 @@ Once your code is pushed and tested, open a PR between your branch and "main" : 
 
 To have the best PR, we strongly recommend you to follow this check-list :
 
+- [ ] Check if rule doesn't exist in SonarQube yet
 - [ ] Implement rule
 - [ ] Add documentation and code tags on the rule, along with triggering and non triggering examples
 - [ ] Write Unit tests (triggering and non triggering cases)
