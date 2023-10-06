@@ -10,6 +10,7 @@
   - [Suggesting Enhancements](#suggesting-enhancements)
     - [Before Submitting an Enhancement](#before-submitting-an-enhancement)
     - [How Do I Submit a Good Enhancement Suggestion?](#how-do-i-submit-a-good-enhancement-suggestion)
+  - [How Do I Suggest a New Rule ?](#how-do-i-suggest-a-new-rule-)
   - [Your First Code Contribution](#your-first-code-contribution)
   - [Improving The Documentation](#improving-the-documentation)
 - [Styleguides](#styleguides)
@@ -107,6 +108,12 @@ Enhancement suggestions are tracked as GitHub issues.
 - **Explain why this enhancement would be useful** to most Ecocode users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
 
 When you create an issue, a template is given to you.
+
+### How Do I Suggest a New Rule ?
+
+- first of all, check if rule isn't existing yet (in `RULES.md` or in Sonarqube native rules list)
+- if it isn't exist, create a new issue in `ecocode` repository : choose `new rule template`
+- fill the template and submit issue
 
 ### Your First Code Contribution
 
