@@ -4,7 +4,7 @@
 - [Requirements](#requirements)
 - [Files](#files)
 - [How does it work ?](#how-does-it-work-)
-- [Screenshot](#screenshots)
+- [Screenshots](#screenshots)
 
 ## Purpose
 
