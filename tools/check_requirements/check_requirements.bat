@@ -25,7 +25,14 @@ if errorlevel 1 (
 
 echo.
 
-:: Check Java
+:: Check Java and Java Class Version
+echo public class TempClass {^
+public static void main(String[] args) {^
+double version = Double.parseDouble(System.getProperty("java.class.version"));^
+System.out.print((int) version);^
+}^
+} > TempClass.java
+
 call javap -version >nul 2>&1
 if errorlevel 1 (
     echo [FAIL] Java is not installed.
@@ -42,30 +49,24 @@ if errorlevel 1 (
             echo [OK] Java version !JAVA_VERSION! is within the acceptable range ^(%JAVA_VERSION_MIN% - %JAVA_VERSION_MAX%^).
         )
     )
-)
-:: Check Java Class Version
-echo public class TempClass {^
-public static void main(String[] args) {^
-double version = Double.parseDouble(System.getProperty("java.class.version"));^
-System.out.print((int) version);^
-}^
-} > TempClass.java
 
-call javac TempClass.java
-FOR /F %%i IN ('java TempClass') DO SET CLASS_VERSION=%%i
-del TempClass.java TempClass.class
+    call javac TempClass.java
+    FOR /F %%i IN ('java TempClass') DO SET CLASS_VERSION=%%i
+    del TempClass.class
 
-if defined CLASS_VERSION (
-    if %CLASS_VERSION% lss %JAVA_CLASS_VERSION_MIN% (
-        echo [FAIL] Java Class version %CLASS_VERSION% is below the minimum required ^(%JAVA_CLASS_VERSION_MIN%^).
-    ) else if %CLASS_VERSION% gtr %JAVA_CLASS_VERSION_MAX% (
-        echo [FAIL] Java Class version %CLASS_VERSION% is above the maximum allowed ^(%JAVA_CLASS_VERSION_MAX%^).
+    if defined CLASS_VERSION (
+        if !CLASS_VERSION! lss %JAVA_CLASS_VERSION_MIN% (
+            echo [FAIL] Java Class version !CLASS_VERSION! is below the minimum required ^(%JAVA_CLASS_VERSION_MIN%^).
+        ) else if !CLASS_VERSION! gtr %JAVA_CLASS_VERSION_MAX% (
+            echo [FAIL] Java Class version !CLASS_VERSION! is above the maximum allowed ^(%JAVA_CLASS_VERSION_MAX%^).
+        ) else (
+            echo [OK] Java Class version !CLASS_VERSION! is within the acceptable range ^(%JAVA_CLASS_VERSION_MIN% - %JAVA_CLASS_VERSION_MAX%^).
+        )
     ) else (
-        echo [OK] Java Class version %CLASS_VERSION% is within the acceptable range ^(%JAVA_CLASS_VERSION_MIN% - %JAVA_CLASS_VERSION_MAX%^).
+        echo [WARN] Failed to determine Java Class Version.
     )
-) else (
-    echo [WARN] Failed to determine Java Class Version.
 )
+del TempClass.java
 
 echo.
 
