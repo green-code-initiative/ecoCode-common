@@ -26,7 +26,6 @@ Tested on :
 
 For Mac OSX and Linux :
 
-- `_config.sh` : file for loading configuration parameters
 - `_core.sh` : file containing core functions used by checker tool
 - `check_requirements.sh` : tool checker for Mac OS and Ubuntu
 
