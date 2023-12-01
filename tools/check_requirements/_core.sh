@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. _config.sh
-
 ###########################################################################################
 #    C O R E     ( /!\ /!\ /!\ NOT to modify)
 ###########################################################################################
@@ -12,6 +10,20 @@ GREY='\033[38;5;240m'
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
+
+# Import configurations from config.txt
+while IFS="=" read -r key value || [ -n "$key" ]; do
+    # Remove inline comments and trim whitespace
+    key=$(echo "$key" | sed 's/\s*#.*//')
+    value=$(echo "$value" | sed 's/\s*#.*//')
+
+    # Skip empty lines
+    if [[ -z $key ]]; then
+        continue
+    fi
+
+    declare "$key=$value"
+done < config.txt
 
 ### display debug logs if DEBUG enabled
 ### $1 : message to log
