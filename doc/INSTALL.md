@@ -17,7 +17,9 @@
 - [HOWTO install new plugin version](#howto-install-new-plugin-version)
 - [HOWTO debug a rule (with logs)](#howto-debug-a-rule-with-logs)
 - [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
-
+- [HOWTO deploy a new release on SonarQube MarketPlace (core-contributor rights needed)](#howto-deploy-a-new-release-on-sonarqube-marketplace-core-contributor-rights-needed)
+  - [New release from scratch](#new-release-from-scratch)
+  - [New release of existing plugin](#new-release-of-existing-plugin)
 
 ## Global Requirements
 
@@ -216,3 +218,16 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
     1. revert the previous commit for this temporary process (like commit [64bf7be](https://github.com/green-code-initiative/ecoCode/commit/64bf7bed1993374a5a56ec171f55447da6b06461) and [06b2ed4](https://github.com/green-code-initiative/ecoCode/commit/06b2ed411ef8dff7f4fe998277b99506e55811b5) )
     2. commit it and push it
 13. `docker-compose.yml` : check and modify (if needed) the version in this file to the new SNAPSHOT version
+
+## HOWTO deploy a new release on SonarQube MarketPlace (core-contributor rights needed)
+
+### New release from scratch
+
+- process : [SonarSource documentation - requirements](https://community.sonarsource.com/t/deploying-to-the-marketplace/35236#requirements-1)
+
+### New release of existing plugin
+
+- process : [SonarSource documentation - new release](https://community.sonarsource.com/t/deploying-to-the-marketplace/35236#announcing-new-releases-2)
+- examples :
+  - [PR example 1](https://github.com/SonarSource/sonar-update-center-properties/pull/389)
+  - [PR example 2](https://github.com/SonarSource/sonar-update-center-properties/pull/409)
