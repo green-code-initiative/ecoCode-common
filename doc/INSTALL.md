@@ -15,8 +15,9 @@
 - [HOWTO reinstall SonarQube (if needed)](#howto-reinstall-sonarqube-if-needed)
 - [HOWTO start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
 - [HOWTO install new plugin version](#howto-install-new-plugin-version)
-- [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
 - [HOWTO debug a rule (with logs)](#howto-debug-a-rule-with-logs)
+- [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
+
 
 ## Global Requirements
 
@@ -173,6 +174,17 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 ./tool_start.sh
 ```
 
+## HOWTO debug a rule (with logs)
+
+1. Add logs like in [OptimizeReadFileExceptions](https://github.com/green-code-initiative/ecoCode/blob/main/java-plugin/src/main/java/fr/greencodeinitiative/java/checks/OptimizeReadFileExceptions.java) class file
+2. Build plugin JARs with `tool_build.sh`
+3. Launch local Sonar with `tool_docker_init.sh`
+4. Launch a sonar scanner on an exemple project with `mvn verify` command (only the first time), followed
+   by :
+   - if token created : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_TOKEN -X`
+   - if login and password : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_LOGIN -Dsonar.password=MY_PASSWORD -X`
+5. logs will appear in console (debug logs will appear if `-X` option is given like above)
+
 ## HOWTO create a release (core-contributor rights needed)
 
 1. *new version process* : IF the new release wanted is a major or minor version (`X` or `Y` in `X.Y.Z`)
@@ -196,14 +208,3 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 9. *push tag* : push new tag with `git push --tags`
 10. *check release* : an automatic workflow started on github and create the new release of plugin
 11. `docker-compose.yml` : check and modify (if needed) the version in this file to the new SNAPSHOT version
-
-## HOWTO debug a rule (with logs)
-
-1. Add logs like in [OptimizeReadFileExceptions](https://github.com/green-code-initiative/ecoCode/blob/main/java-plugin/src/main/java/fr/greencodeinitiative/java/checks/OptimizeReadFileExceptions.java) class file
-2. Build plugin JARs with `tool_build.sh`
-3. Launch local Sonar with `tool_docker_init.sh`
-4. Launch a sonar scanner on an exemple project with `mvn verify` command (only the first time), followed
-   by :
-   - if token created : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_TOKEN -X`
-   - if login and password : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_LOGIN -Dsonar.password=MY_PASSWORD -X`
-5. logs will appear in console (debug logs will appear if `-X` option is given like above)
