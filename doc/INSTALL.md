@@ -190,7 +190,12 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 1. *new version process* : IF the new release wanted is a major or minor version (`X` or `Y` in `X.Y.Z`)
    1. THEN modify the old version to the new version in all XML/YML files (with a find/replace)
    2. ELSE the new corrective version (`Z` in `X.Y.Z`) will be automatic
-2. `CHANGELOG.md` : add release notes for next release
+2. *TEMPORARY process* for `ecocode-rules-specifications` project :
+   - for now, `ecocode-rules-specifications` module is released and deployed on maven central manually
+   - while it is'nt an automatic process (work in progress) and java plugin is'nt put on an external and independant github repository, we have to make code modification to be able to release java-plugin module
+     1. make the same modification as commit [72ed3fb](https://github.com/green-code-initiative/ecoCode/commit/72ed3fb1d6004f1abbcc7db575d08c221bb40786)
+     2. commit it and push it
+3. `CHANGELOG.md` : add release notes for next release
     1. Replace `Unreleased` title with the new version like `Release X.Y.Z` and the date
         1. ... where `X.Y.Z` is the new release
         2. ... follow others examples
@@ -199,12 +204,15 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
     2. add above an empty `Unreleased` section with sub-sections (`Added`, `Changed` and `Deleted`)
     3. add a new section in the list at the bottom of file with new version
     4. commit these modifications
-3. `tool_release_1_prepare.sh` : *IF ALL IS OK*, execute this script to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag) and check these commits and tag
-4. `tool_release_2_branch.sh` : *IF ALL IS OK*, execute this script to create and push a new branch with that release and SNAPSHOT
-5. *PR* : *IF ALL IS OK*, on github, create a PR based on this new branch to `main` branch
-6. *check Github Action + merge PR* : wait that automatic check (Github `Actions` tab) on the new branch are OK, then check modifications and finally merge it with `Create a merge commit` option
-7. *IF ALL IS OK* and if PR merge is OK, then delete the branch as mentionned when PR merged
-8. *check Github Action + update local* : wait that automatic check on the `main` branch are OK, and then *IF ALL IS OK*, upgrade your local source code from remote, and go to `main` branch
-9. *push tag* : push new tag with `git push --tags`
-10. *check release* : an automatic workflow started on github and create the new release of plugin
-11. `docker-compose.yml` : check and modify (if needed) the version in this file to the new SNAPSHOT version
+4. `tool_release_1_prepare.sh` : *IF ALL IS OK*, execute this script to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag) and check these commits and tag
+5. `tool_release_2_branch.sh` : *IF ALL IS OK*, execute this script to create and push a new branch with that release and SNAPSHOT
+6. *PR* : *IF ALL IS OK*, on github, create a PR based on this new branch to `main` branch
+7. *check Github Action + merge PR* : wait that automatic check (Github `Actions` tab) on the new branch are OK, then check modifications and finally merge it with `Create a merge commit` option
+8. *IF ALL IS OK* and if PR merge is OK, then check if the branch is deleted as mentionned when PR merged (or delete it manually)
+9. *check Github Action + update local* : wait that automatic check on the `main` branch are OK, and then *IF ALL IS OK*, upgrade your local source code from remote, and go to `main` branch
+10. *push tag* : push new tag with `git push --tags`
+11. *check release* : an automatic workflow started on github and create the new release of plugin
+12. *TEMPORARY process* for `ecocode-rules-specifications` project :
+    1. revert the previous commit for this temporary process (like commit [64bf7be](https://github.com/green-code-initiative/ecoCode/commit/64bf7bed1993374a5a56ec171f55447da6b06461) and [06b2ed4](https://github.com/green-code-initiative/ecoCode/commit/06b2ed411ef8dff7f4fe998277b99506e55811b5) )
+    2. commit it and push it
+13. `docker-compose.yml` : check and modify (if needed) the version in this file to the new SNAPSHOT version
