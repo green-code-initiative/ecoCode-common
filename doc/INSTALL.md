@@ -219,17 +219,39 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
     2. commit it and push it
 13. `docker-compose.yml` : check and modify (if needed) the version in this file to the new SNAPSHOT version
 
-## HOWTO deploy a new release on SonarQube MarketPlace (core-contributor rights needed)
+Howto publish new release on SonarQube Marketplace
+--------------------------------------------------
 
 ### New release from scratch
 
-- process : [SonarSource documentation - requirements](https://community.sonarsource.com/t/deploying-to-the-marketplace/35236#requirements-1)
-- documentation : [README.md](https://github.com/SonarSource/sonar-update-center-properties/blob/master/README.md)
-- examples :
-  - [PR example 1](https://github.com/SonarSource/sonar-update-center-properties/pull/389)
-  - [PR example 2](https://github.com/SonarSource/sonar-update-center-properties/pull/409)
+1. Create a fork of [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties.git)
+2. Change corresponding plugin metadata file (for `ecocode-java`: [ecocodejava.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodejava.properties), for `ecocode-php`: [ecocodephp.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodephp.properties), for `ecocode-python`: [ecocodepython.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodepython.properties)): 
+   * Append new version to `publicVersions` value (comma separated value)
+   * Add following properties (where `X.X.X` is new release to publish):
+     * `X.X.X.description`: a summary of main changes for user for this version
+     * `X.X.X.sqVersions`: supported range version of SonarQube
+     * `X.X.X.date`: Release date of plugin (on GitHub Release page)
+     * `X.X.X.downloadUrl`: link to doanwload this specific release
+     * `X.X.X.changelogUrl`: link to detailed change log of this release
+3. Create a Pull-Request for those modifications on [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties/pulls) to annonce new release of the corresponding plugin, with:
+   * a summary of main changes for user
+   * the download link
+   * the link to detailed release note
+   * the link to SonarCloud corresponding project
+
+Additional information:
+* [check description of previous merged Pull-Requests](https://github.com/SonarSource/sonar-update-center-properties/pulls?q=is%3Apr+is%3Amerged)
+* [github.com - SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties)
+* [sonar community - Deploying to the Marketplace](https://community.sonarsource.com/t/deploying-to-the-marketplace/35236)
+* documentation : [README.md](https://github.com/SonarSource/sonar-update-center-properties/blob/master/README.md)
+
+Examples :
+* [PR example 1](https://github.com/SonarSource/sonar-update-center-properties/pull/389)
+* [PR example 2](https://github.com/SonarSource/sonar-update-center-properties/pull/409)
 
 ### New release of existing plugin
+
+... quite like "New release from scratch" section above but ...
 
 - process : [SonarSource documentation - new release](https://community.sonarsource.com/t/deploying-to-the-marketplace/35236#announcing-new-releases-2)
 - documentation : [README.md](https://github.com/SonarSource/sonar-update-center-properties/blob/master/README.md)
