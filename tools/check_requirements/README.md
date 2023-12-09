@@ -4,17 +4,17 @@
 - [Requirements](#requirements)
 - [Files](#files)
 - [How does it work ?](#how-does-it-work-)
-- [Screenshot](#screenshot)
+- [Screenshots](#screenshots)
 
 ## Purpose
 
 Tool to check local development environment.
-Some requirements are mandatories (tools and versions) before beginning development on plugin.
+Some requirements are mandatory (tools and versions) before beginning development on the plugin.
 
 ## Requirements
 
 Tool was created on Mac OSx environment.
-Please feel free to report issues if found.
+Please feel free to report any issues found.
 
 Tested on :
 
@@ -26,23 +26,35 @@ Tested on :
 
 For Mac OSX and Linux :
 
-- `_config.sh` : file containing the configuration of checker tool (tools, versions, debug)
 - `_core.sh` : file containing core functions used by checker tool
 - `check_requirements.sh` : tool checker for Mac OS and Ubuntu
-- `check_requirements.bat` : tool checker for Windows OS
-
-## How does it work ?
-
-For Mac OSX and Linux :
-
-- [OPTIONAL] change configuration in `_config.sh` file
-- launch `check_requirements.sh` to control local environment
 
 For Windows :
 
-- launch `check_requirements.bat` to control local environment
-- check verions displayed to check if requirements on versions are respected
+- `check_requirements.bat` : tool checker for Windows
 
-## Screenshot
+Common files:
+
+- `config.txt` : file containing the configuration of checker tool (tools, versions, debug)
+
+## How does it work?
+
+- [OPTIONAL] change the configuration in `config.txt` file
+
+For Mac OSX and Linux :
+
+- launch `check_requirements.sh` to check the local environment
+
+For Windows :
+
+- launch `check_requirements.bat` to check the local environment
+
+## Screenshots
+
+For Mac OSX and Linux :
 
 ![Screenshot](resources/check_require-capture.png)
+
+For Windows :
+
+![Screenshot](resources/check_require-capture-windows.png)

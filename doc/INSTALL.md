@@ -15,8 +15,11 @@
 - [HOWTO reinstall SonarQube (if needed)](#howto-reinstall-sonarqube-if-needed)
 - [HOWTO start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
 - [HOWTO install new plugin version](#howto-install-new-plugin-version)
-- [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
 - [HOWTO debug a rule (with logs)](#howto-debug-a-rule-with-logs)
+- [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
+- [HOWTO deploy a new release on SonarQube MarketPlace (core-contributor rights needed)](#howto-deploy-a-new-release-on-sonarqube-marketplace-core-contributor-rights-needed)
+  - [New release from scratch](#new-release-from-scratch)
+  - [New release of existing plugin](#new-release-of-existing-plugin)
 
 ## Global Requirements
 
@@ -173,30 +176,6 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 ./tool_start.sh
 ```
 
-## HOWTO create a release (core-contributor rights needed)
-
-1. *new version process* : IF the new release wanted is a major or minor version (`X` or `Y` in `X.Y.Z`)
-   1. THEN modify the old version to the new version in all XML/YML files (with a find/replace)
-   2. ELSE the new corrective version (`Z` in `X.Y.Z`) will be automatic
-2. `CHANGELOG.md` : add release notes for next release
-    1. Replace `Unreleased` title with the new version like `Release X.Y.Z` and the date
-        1. ... where `X.Y.Z` is the new release
-        2. ... follow others examples
-        3. ... clean content of current release changelog (delete empty sub-sections)
-        4. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
-    2. add above an empty `Unreleased` section with sub-sections (`Added`, `Changed` and `Deleted`)
-    3. add a new section in the list at the bottom of file with new version
-    4. commit these modifications
-3. `tool_release_1_prepare.sh` : *IF ALL IS OK*, execute this script to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag) and check these commits and tag
-4. `tool_release_2_branch.sh` : *IF ALL IS OK*, execute this script to create and push a new branch with that release and SNAPSHOT
-5. *PR* : *IF ALL IS OK*, on github, create a PR based on this new branch to `main` branch
-6. *check Github Action + merge PR* : wait that automatic check (Github `Actions` tab) on the new branch are OK, then check modifications and finally merge it with `Create a merge commit` option
-7. *IF ALL IS OK* and if PR merge is OK, then delete the branch as mentionned when PR merged
-8. *check Github Action + update local* : wait that automatic check on the `main` branch are OK, and then *IF ALL IS OK*, upgrade your local source code from remote, and go to `main` branch
-9. *push tag* : push new tag with `git push --tags`
-10. *check release* : an automatic workflow started on github and create the new release of plugin
-11. `docker-compose.yml` : check and modify (if needed) the version in this file to the new SNAPSHOT version
-
 ## HOWTO debug a rule (with logs)
 
 1. Add logs like in [OptimizeReadFileExceptions](https://github.com/green-code-initiative/ecoCode/blob/main/java-plugin/src/main/java/fr/greencodeinitiative/java/checks/OptimizeReadFileExceptions.java) class file
@@ -207,3 +186,73 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
    - if token created : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_TOKEN -X`
    - if login and password : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_LOGIN -Dsonar.password=MY_PASSWORD -X`
 5. logs will appear in console (debug logs will appear if `-X` option is given like above)
+
+## HOWTO create a release (core-contributor rights needed)
+
+1. *new version process* : IF the new release wanted is a major or minor version (`X` or `Y` in `X.Y.Z`)
+   1. THEN modify the old version to the new version in all XML/YML files (with a find/replace)
+   2. ELSE the new corrective version (`Z` in `X.Y.Z`) will be automatic
+2. *TEMPORARY process* for `ecocode-rules-specifications` project :
+   - for now, `ecocode-rules-specifications` module is released and deployed on maven central manually
+   - while it is'nt an automatic process (work in progress) and java plugin is'nt put on an external and independant github repository, we have to make code modification to be able to release java-plugin module
+     1. make the same modification as commit [72ed3fb](https://github.com/green-code-initiative/ecoCode/commit/72ed3fb1d6004f1abbcc7db575d08c221bb40786)
+     2. commit it and push it
+3. `CHANGELOG.md` : add release notes for next release
+    1. Replace `Unreleased` title with the new version like `Release X.Y.Z` and the date
+        1. ... where `X.Y.Z` is the new release
+        2. ... follow others examples
+        3. ... clean content of current release changelog (delete empty sub-sections)
+        4. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
+    2. add above an empty `Unreleased` section with sub-sections (`Added`, `Changed` and `Deleted`)
+    3. add a new section in the list at the bottom of file with new version
+    4. commit these modifications
+4. `tool_release_1_prepare.sh` : *IF ALL IS OK*, execute this script to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag) and check these commits and tag
+5. `tool_release_2_branch.sh` : *IF ALL IS OK*, execute this script to create and push a new branch with that release and SNAPSHOT
+6. *PR* : *IF ALL IS OK*, on github, create a PR based on this new branch to `main` branch
+7. *check Github Action + merge PR* : wait that automatic check (Github `Actions` tab) on the new branch are OK, then check modifications and finally merge it with `Create a merge commit` option
+8. *IF ALL IS OK* and if PR merge is OK, then check if the branch is deleted as mentionned when PR merged (or delete it manually)
+9. *check Github Action + update local* : wait that automatic check on the `main` branch are OK, and then *IF ALL IS OK*, upgrade your local source code from remote, and go to `main` branch
+10. *push tag* : push new tag with `git push --tags`
+11. *check release* : an automatic workflow started on github and create the new release of plugin
+12. *TEMPORARY process* for `ecocode-rules-specifications` project :
+    1. revert the previous commit for this temporary process (like commit [64bf7be](https://github.com/green-code-initiative/ecoCode/commit/64bf7bed1993374a5a56ec171f55447da6b06461) and [06b2ed4](https://github.com/green-code-initiative/ecoCode/commit/06b2ed411ef8dff7f4fe998277b99506e55811b5) )
+    2. commit it and push it
+13. `docker-compose.yml` : check and modify (if needed) the version in this file to the new SNAPSHOT version
+
+Howto publish new release on SonarQube Marketplace
+--------------------------------------------------
+
+### New release from scratch
+
+1. Create a fork of [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties.git)
+2. Change corresponding plugin metadata file (for `ecocode-java`: [ecocodejava.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodejava.properties), for `ecocode-php`: [ecocodephp.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodephp.properties), for `ecocode-python`: [ecocodepython.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodepython.properties)): 
+   * Append new version to `publicVersions` value (comma separated value)
+   * Add following properties (where `X.X.X` is new release to publish):
+     * `X.X.X.description`: a summary of main changes for user for this version
+     * `X.X.X.sqVersions`: supported range version of SonarQube
+     * `X.X.X.date`: Release date of plugin (on GitHub Release page)
+     * `X.X.X.downloadUrl`: link to doanwload this specific release
+     * `X.X.X.changelogUrl`: link to detailed change log of this release
+3. Create a Pull-Request for those modifications on [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties/pulls) to annonce new release of the corresponding plugin, with:
+   * a summary of main changes for user
+   * the download link
+   * the link to detailed release note
+   * the link to SonarCloud corresponding project
+
+Additional information:
+* [check description of previous merged Pull-Requests](https://github.com/SonarSource/sonar-update-center-properties/pulls?q=is%3Apr+is%3Amerged)
+* [github.com - SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties)
+* [sonar community - Deploying to the Marketplace](https://community.sonarsource.com/t/deploying-to-the-marketplace/35236)
+* documentation : [README.md](https://github.com/SonarSource/sonar-update-center-properties/blob/master/README.md)
+
+Examples :
+* [PR example 1](https://github.com/SonarSource/sonar-update-center-properties/pull/389)
+* [PR example 2](https://github.com/SonarSource/sonar-update-center-properties/pull/409)
+
+### New release of existing plugin
+
+... quite like "New release from scratch" section above but ...
+
+- process : [SonarSource documentation - new release](https://community.sonarsource.com/t/deploying-to-the-marketplace/35236#announcing-new-releases-2)
+- documentation : [README.md](https://github.com/SonarSource/sonar-update-center-properties/blob/master/README.md)
+- example : [PR example](https://github.com/SonarSource/sonar-update-center-properties/pull/468)
