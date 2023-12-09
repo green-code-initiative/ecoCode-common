@@ -22,6 +22,10 @@
   - [Review others development](#review-others-development)
   - [Validation of a PR](#validation-of-a-pr)
   - [Close your rule](#close-your-rule)
+- [Development Processes](#development-processes)
+  - [Deprecation of existing rule](#deprecation-of-existing-rule)
+    - [STEP 1 : deprecate rule](#step-1--deprecate-rule)
+    - [STEP 2 : remove rule](#step-2--remove-rule)
 
 ## Basics
 
@@ -181,3 +185,31 @@ Here is the SonarQube : <https://sonarcloud.io/organizations/green-code-initiati
 
 Once your PR is validated, your rule integrates ecoCode. In <https://github.com/cnumr/ecoCode/projects/1>, move it from the "In Progress" column to the "Done" column.
 Well done.
+
+## Development Processes
+
+### Deprecation of existing rule
+
+If you want to deprecate an existing rule, you have to follow 2 steps as described below.
+
+#### STEP 1 : deprecate rule
+
+This step is done on next release of plugin (example : version N).
+
+1. Upgrade the rule implementation to add deprecation information : in plugin repository containing the rule implementation, add a new `@DeprecatedRule` annotation on the rule class
+2. Upgrade rules documentation
+   1. in plugin repository containing the rule implementation, in `RULES.md` file, move rule line from standard rules array to deprecated rules array
+   2. in `ecoCode-rules-specification` repository, add deprecation to current rule
+
+Thus in next release of plugin, the rule will be still present but displayed as deprecated in SonarQube UI.
+
+#### STEP 2 : remove rule
+
+This step is done on release N+2.
+
+1. Clean implementation code of the rule :
+   1. in plugin repository containing the rule implementation
+      1. delete rule class, clean all references to the rule
+      2. delete unit test classes
+   2. in plugin real test project repository, clean rule test classes
+2. Upgrade rules documentation : in plugin repository containing the rule implementation, in `RULES.md` file, mark the rule as deleted
