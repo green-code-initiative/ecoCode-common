@@ -289,44 +289,44 @@ Because publish process of `ecocode-rules-specifications` on Maven Central needs
 - click on "Run workflow" list button
 - choose a tag version (and not a branch because SNAPSHOT version won't be published on Maven Central)
 - click on "Run workflow" button
-- check Workflow launched on Actions tab
-- 20 minutes later (becasue of Maven central internal process), check on maven central if new version is published
+- check launched workflow on Actions tab
+- 20 minutes later (because of Maven central internal process), check on maven central if new version is published
 
 ## HOWTO configure publish process on Maven Central (core-contributor rights needed)
-
-- change "MAVEN_GPG" variables : security GPG configuration (public an private keys) for Maven Central
 
 ### Update OSSRH token
 
 #### What is OSSRH token ?
 
-`OSSRH_TOKEN` and `OSSRH_USERNAME` are used to communicate between Github and Sonatype Nexus system for publish process to Maven Central.
+`OSSRH_TOKEN` and `OSSRH_USERNAME` are used for communication between Github and Sonatype Nexus system for publish process to Maven Central.
+
 These variables are stored in Github Secrets available `Settings` tab of `ecoCode` repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
 
 #### Why change these variables ?
 
 Values are get from a specific Sonatype Nexus account.
+
 Actually, `ecoCode` Sonatype Nexus account was used to generate values corresponding to `OSSRH_TOKEN` and `OSSRH_USERNAME` variables.
 
-If we want use another account, we need to change these values by generating new ones.
+If we want use another account, we need to change these values by generating new ones on this new account.
 
 #### How to generate new values and update Github Secrets ?
 
 1. Go to [Sonatype Nexus](https://oss.sonatype.org/)
-2. Login with `ecoCode` account
+2. Login with account (ex : `ecoCode`)
 3. Go to `Profile` tab
 4. Go to `User Token` sub-tab present in top list (`Summary` value is selected by default)
 5. Click on `Access User Token` button
-6. new values will be generated and displayed
-7. copy these values and paste them in Github Secrets in `ecoCode` repository, respectively in `OSSRH_TOKEN` (the password) and `OSSRH_USERNAME` variables (the username)
+6. New values will be generated and displayed
+7. Copy these values and paste them in Github Secrets in `ecoCode` repository, respectively in `OSSRH_TOKEN` variable (the password) and `OSSRH_USERNAME` variable (the username)
 8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-configure-publish-process-on-maven-central))
 
 ### Update GPG Maven Central keys
 
 #### What is GPG Maven Central keys ?
 
-GPG system is used to sign JAR files before publish process to Maven Central.
-We have to generate public and private keys and store them in Github Secrets with `MAVEN_GPG_PRIVATE_KEY` and `MAVEN_GPG_PASSPHRASE` variables.
+GPG system is used to sign JAR files before publishing them to Maven Central.
+We have to generate public and private keys, and store them in Github Secrets with `MAVEN_GPG_PRIVATE_KEY` and `MAVEN_GPG_PASSPHRASE` variables.
 
 These GPG keys are stored in Github Secrets available `Settings` tab of `ecoCode` repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
 
@@ -334,17 +334,17 @@ Values are generated on local machine with "gpg" command line tool.
 
 #### How to install and use GPG command line tool ?
 
-on MAC OS :
+on MAC OS (for the moment) :
 
 - `brew install gpg` to install tool
-- `gpg --version` to check version
+- `gpg --version` to check version of GPG tool
 - `gpg --gen-key` to generate private and public keys : WARNING, you need to remember passphrase used to generate keys
-- `gpg --list-keys` to list keys
-- `gpg --keyserver keyserver.ubuntu.com --send-keys <MY_PUBLIC_KEY>` to send public key to keyserver : MANDATORY to publish on Maven Central
+- `gpg --list-keys` to list keys (and display expiration date)
+- `gpg --keyserver keyserver.ubuntu.com --send-keys <MY_PUBLIC_KEY>` to send public key to one fo web key servers : MANDATORY to publish on Maven Central
 - `gpg --keyserver keyserver.ubuntu.com --recv-keys <MY_PUBLIC_KEY>` to get public key from keyserver : TO check if our public key is ok and known by keyserver
-- `gpg --output private.pgp --armor --export-secret-key "<MY_PUBLIC_KEY>"` to export private key in a file
+- `gpg --output private.pgp --armor --export-secret-key "<MY_PUBLIC_KEY>"` to export private key to a local file
 
-Version of GPG command line tool used to generate keys :
+For information, version of GPG command line tool :
 ```sh
 ❯❯❯ gpg --version
 
@@ -355,7 +355,7 @@ License GNU GPL-3.0-or-later <https://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 
-Home: /Users/ddecarvalho/.gnupg
+Home: <MY_HOME>/.gnupg
 Algorithmes pris en charge :
 Clef publique : RSA, ELG, DSA, ECDH, ECDSA, EDDSA
 Chiffrement : IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256,
@@ -367,12 +367,12 @@ Compression : Non compressé, ZIP, ZLIB, BZIP2
 #### Why change these variables ?
 
 We can check expiration date with `gpg --list-keys` command.
-Current keys are valid until 2026-08-07.
+Current keys are valid until **2026-08-07**.
 If we want to upgrade these keys, we need to generate new ones and reconfigure Github Secrets.
 
 #### How to generate new values and update Github Secrets ?
 
-1. Generate new keys with `gpg --gen-key` command : we need to give passphrase
+1. Generate new keys with `gpg --gen-key` command : we need to give a passphrase (you can give old one)
 2. Send public key to keyserver with `gpg --keyserver keyserver.ubuntu.com --send-keys <MY_PUBLIC_KEY>` command
 3. Check and get public key from keyserver with `gpg --keyserver keyserver.ubuntu.com --recv-keys <MY_PUBLIC_KEY>` command
 4. Export private key to a local `private.pgp` file with `gpg --output private.pgp --armor --export-secret-key "<MY_PUBLIC_KEY>"`
