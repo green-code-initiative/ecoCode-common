@@ -299,6 +299,7 @@ Because publish process of `ecocode-rules-specifications` on Maven Central needs
 #### What is OSSRH token ?
 
 `OSSRH_TOKEN` and `OSSRH_USERNAME` are used for communication between Github and Sonatype Nexus system for publish process to Maven Central.
+Nexus URL : https://s01.oss.sonatype.org/
 
 These variables are stored in Github Secrets available `Settings` tab of `ecoCode` repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
 
