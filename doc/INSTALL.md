@@ -17,9 +17,22 @@
 - [HOWTO install new plugin version](#howto-install-new-plugin-version)
 - [HOWTO debug a rule (with logs)](#howto-debug-a-rule-with-logs)
 - [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
-- [Howto publish new release on SonarQube Marketplace](#howto-publish-new-release-on-sonarqube-marketplace)
+- [HOWTO publish new release on SonarQube Marketplace](#howto-publish-new-release-on-sonarqube-marketplace)
   - [New release from scratch](#new-release-from-scratch)
   - [New release of existing plugin](#new-release-of-existing-plugin)
+- [HOWTO publish a new version of ecocode-rules-specifications on Maven Central](#howto-publish-a-new-version-of-ecocode-rules-specifications-on-maven-central)
+  - [Requirements](#requirements-2)
+  - [Maven Central publish process](#maven-central-publish-process)
+- [HOWTO configure publish process on Maven Central (core-contributor rights needed)](#howto-configure-publish-process-on-maven-central-core-contributor-rights-needed)
+  - [Update OSSRH token](#update-ossrh-token)
+    - [What is OSSRH token ?](#what-is-ossrh-token-)
+    - [Why change these variables ?](#why-change-these-variables-)
+    - [How to generate new values and update Github Secrets ?](#how-to-generate-new-values-and-update-github-secrets-)
+  - [Update GPG Maven Central keys](#update-gpg-maven-central-keys)
+    - [What is GPG Maven Central keys ?](#what-is-gpg-maven-central-keys-)
+    - [How to install and use GPG command line tool ?](#how-to-install-and-use-gpg-command-line-tool-)
+    - [Why change these variables ?](#why-change-these-variables--1)
+    - [How to generate new values and update Github Secrets ?](#how-to-generate-new-values-and-update-github-secrets--1)
 
 ## Global Requirements
 
@@ -219,35 +232,36 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
    3. **check Action** launch and result on new tag
 8. **upgrade `docker-compose.yml`** file (if exists) with new SNAPSHOT version
 
-Howto publish new release on SonarQube Marketplace
---------------------------------------------------
+## HOWTO publish new release on SonarQube Marketplace
 
 ### New release from scratch
 
 1. Create a fork of [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties.git)
 2. Change corresponding plugin metadata file (for `ecocode-java`: [ecocodejava.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodejava.properties), for `ecocode-php`: [ecocodephp.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodephp.properties), for `ecocode-python`: [ecocodepython.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodepython.properties)): 
-   * Append new version to `publicVersions` value (comma separated value)
-   * Add following properties (where `X.X.X` is new release to publish):
-     * `X.X.X.description`: a summary of main changes for user for this version
-     * `X.X.X.sqVersions`: supported range version of SonarQube
-     * `X.X.X.date`: Release date of plugin (on GitHub Release page)
-     * `X.X.X.downloadUrl`: link to doanwload this specific release
-     * `X.X.X.changelogUrl`: link to detailed change log of this release
+   - Append new version to `publicVersions` value (comma separated value)
+   - Add following properties (where `X.X.X` is new release to publish):
+     - `X.X.X.description`: a summary of main changes for user for this version
+     - `X.X.X.sqVersions`: supported range version of SonarQube
+     - `X.X.X.date`: Release date of plugin (on GitHub Release page)
+     - `X.X.X.downloadUrl`: link to doanwload this specific release
+     - `X.X.X.changelogUrl`: link to detailed change log of this release
 3. Create a Pull-Request for those modifications on [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties/pulls) to annonce new release of the corresponding plugin, with:
-   * a summary of main changes for user
-   * the download link
-   * the link to detailed release note
-   * the link to SonarCloud corresponding project
+   - a summary of main changes for user
+   - the download link
+   - the link to detailed release note
+   - the link to SonarCloud corresponding project
 
 Additional information:
-* [check description of previous merged Pull-Requests](https://github.com/SonarSource/sonar-update-center-properties/pulls?q=is%3Apr+is%3Amerged)
-* [github.com - SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties)
-* [sonar community - Deploying to the Marketplace](https://community.sonarsource.com/t/deploying-to-the-marketplace/35236)
-* documentation : [README.md](https://github.com/SonarSource/sonar-update-center-properties/blob/master/README.md)
+
+- [check description of previous merged Pull-Requests](https://github.com/SonarSource/sonar-update-center-properties/pulls?q=is%3Apr+is%3Amerged)
+- [github.com - SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties)
+- [sonar community - Deploying to the Marketplace](https://community.sonarsource.com/t/deploying-to-the-marketplace/35236)
+- documentation : [README.md](https://github.com/SonarSource/sonar-update-center-properties/blob/master/README.md)
 
 Examples :
-* [PR example 1](https://github.com/SonarSource/sonar-update-center-properties/pull/389)
-* [PR example 2](https://github.com/SonarSource/sonar-update-center-properties/pull/409)
+
+- [PR example 1](https://github.com/SonarSource/sonar-update-center-properties/pull/389)
+- [PR example 2](https://github.com/SonarSource/sonar-update-center-properties/pull/409)
 
 ### New release of existing plugin
 
@@ -256,3 +270,113 @@ Examples :
 - process : [SonarSource documentation - new release](https://community.sonarsource.com/t/deploying-to-the-marketplace/35236#announcing-new-releases-2)
 - documentation : [README.md](https://github.com/SonarSource/sonar-update-center-properties/blob/master/README.md)
 - example : [PR example](https://github.com/SonarSource/sonar-update-center-properties/pull/468)
+
+## HOWTO publish a new version of ecocode-rules-specifications on Maven Central
+
+### Requirements
+
+You need write rights to use Maven Central publish process (mainteners or core-team members).
+
+**Create a new release of `ecoCode` repository** : please see above [HOWTO create a release](#howto-create-a-release-core-contributor-rights-needed).
+
+Why create a new release before ?
+Because publish process of `ecocode-rules-specifications` on Maven Central needs a tag on `ecoCode` repository.
+
+### Maven Central publish process
+
+- go to "Action" tab of `ecoCode` reposiroty
+- click on "Publish to Maven Central" workflow
+- click on "Run workflow" list button
+- choose a tag version (and not a branch because SNAPSHOT version won't be published on Maven Central)
+- click on "Run workflow" button
+- check Workflow launched on Actions tab
+- 20 minutes later (becasue of Maven central internal process), check on maven central if new version is published
+
+## HOWTO configure publish process on Maven Central (core-contributor rights needed)
+
+- change "MAVEN_GPG" variables : security GPG configuration (public an private keys) for Maven Central
+
+### Update OSSRH token
+
+#### What is OSSRH token ?
+
+`OSSRH_TOKEN` and `OSSRH_USERNAME` are used to communicate between Github and Sonatype Nexus system for publish process to Maven Central.
+These variables are stored in Github Secrets available `Settings` tab of `ecoCode` repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
+
+#### Why change these variables ?
+
+Values are get from a specific Sonatype Nexus account.
+Actually, `ecoCode` Sonatype Nexus account was used to generate values corresponding to `OSSRH_TOKEN` and `OSSRH_USERNAME` variables.
+
+If we want use another account, we need to change these values by generating new ones.
+
+#### How to generate new values and update Github Secrets ?
+
+1. Go to [Sonatype Nexus](https://oss.sonatype.org/)
+2. Login with `ecoCode` account
+3. Go to `Profile` tab
+4. Go to `User Token` sub-tab present in top list (`Summary` value is selected by default)
+5. Click on `Access User Token` button
+6. new values will be generated and displayed
+7. copy these values and paste them in Github Secrets in `ecoCode` repository, respectively in `OSSRH_TOKEN` (the password) and `OSSRH_USERNAME` variables (the username)
+8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-configure-publish-process-on-maven-central))
+
+### Update GPG Maven Central keys
+
+#### What is GPG Maven Central keys ?
+
+GPG system is used to sign JAR files before publish process to Maven Central.
+We have to generate public and private keys and store them in Github Secrets with `MAVEN_GPG_PRIVATE_KEY` and `MAVEN_GPG_PASSPHRASE` variables.
+
+These GPG keys are stored in Github Secrets available `Settings` tab of `ecoCode` repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
+
+Values are generated on local machine with "gpg" command line tool.
+
+#### How to install and use GPG command line tool ?
+
+on MAC OS :
+
+- `brew install gpg` to install tool
+- `gpg --version` to check version
+- `gpg --gen-key` to generate private and public keys : WARNING, you need to remember passphrase used to generate keys
+- `gpg --list-keys` to list keys
+- `gpg --keyserver keyserver.ubuntu.com --send-keys <MY_PUBLIC_KEY>` to send public key to keyserver : MANDATORY to publish on Maven Central
+- `gpg --keyserver keyserver.ubuntu.com --recv-keys <MY_PUBLIC_KEY>` to get public key from keyserver : TO check if our public key is ok and known by keyserver
+- `gpg --output private.pgp --armor --export-secret-key "<MY_PUBLIC_KEY>"` to export private key in a file
+
+Version of GPG command line tool used to generate keys :
+```sh
+❯❯❯ gpg --version
+
+gpg (GnuPG) 2.4.3
+libgcrypt 1.10.2
+Copyright (C) 2023 g10 Code GmbH
+License GNU GPL-3.0-or-later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Home: /Users/ddecarvalho/.gnupg
+Algorithmes pris en charge :
+Clef publique : RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+Chiffrement : IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256,
+              TWOFISH, CAMELLIA128, CAMELLIA192, CAMELLIA256
+Hachage : SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+Compression : Non compressé, ZIP, ZLIB, BZIP2
+```
+
+#### Why change these variables ?
+
+We can check expiration date with `gpg --list-keys` command.
+Current keys are valid until 2026-08-07.
+If we want to upgrade these keys, we need to generate new ones and reconfigure Github Secrets.
+
+#### How to generate new values and update Github Secrets ?
+
+1. Generate new keys with `gpg --gen-key` command : we need to give passphrase
+2. Send public key to keyserver with `gpg --keyserver keyserver.ubuntu.com --send-keys <MY_PUBLIC_KEY>` command
+3. Check and get public key from keyserver with `gpg --keyserver keyserver.ubuntu.com --recv-keys <MY_PUBLIC_KEY>` command
+4. Export private key to a local `private.pgp` file with `gpg --output private.pgp --armor --export-secret-key "<MY_PUBLIC_KEY>"`
+5. Open this local file and copy content (only content between `-----BEGIN PGP PRIVATE KEY BLOCK-----` and `-----END PGP PRIVATE KEY BLOCK-----` included)
+6. Paste this content in `MAVEN_GPG_PRIVATE_KEY` variable in Github Secrets
+7. If you changed the passphrase in first step, paste it in `MAVEN_GPG_PASSPHRASE` variable in Github Secrets
+8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-configure-publish-process-on-maven-central))
