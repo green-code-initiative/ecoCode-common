@@ -17,7 +17,7 @@
 - [HOWTO install new plugin version](#howto-install-new-plugin-version)
 - [HOWTO debug a rule (with logs)](#howto-debug-a-rule-with-logs)
 - [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
-- [HOWTO deploy a new release on SonarQube MarketPlace (core-contributor rights needed)](#howto-deploy-a-new-release-on-sonarqube-marketplace-core-contributor-rights-needed)
+- [Howto publish new release on SonarQube Marketplace](#howto-publish-new-release-on-sonarqube-marketplace)
   - [New release from scratch](#new-release-from-scratch)
   - [New release of existing plugin](#new-release-of-existing-plugin)
 
@@ -189,35 +189,35 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 
 ## HOWTO create a release (core-contributor rights needed)
 
-1. *new version process* : IF the new release wanted is a major or minor version (`X` or `Y` in `X.Y.Z`)
-   1. THEN modify the old version to the new version in all XML/YML files (with a find/replace)
-   2. ELSE the new corrective version (`Z` in `X.Y.Z`) will be automatic
-2. *TEMPORARY process* for `ecocode-rules-specifications` project :
-   - for now, `ecocode-rules-specifications` module is released and deployed on maven central manually
-   - while it is'nt an automatic process (work in progress) and java plugin is'nt put on an external and independant github repository, we have to make code modification to be able to release java-plugin module
-     1. make the same modification as commit [72ed3fb](https://github.com/green-code-initiative/ecoCode/commit/72ed3fb1d6004f1abbcc7db575d08c221bb40786)
-     2. commit it and push it
-3. `CHANGELOG.md` : add release notes for next release
-    1. Replace `Unreleased` title with the new version like `Release X.Y.Z` and the date
+1. IF **new release wanted** is a **major** or **minor** version (`X` or `Y` in `X.Y.Z`)
+   1. **THEN** **modify the old version** to the new version in **all XML/YML files**
+   2. **ELSE** **no modification** needed : the new corrective version (`Z` in `X.Y.Z`) will be automatic
+2. **upgrade `CHANGELOG.md`** : add release notes for next release
+    1. **Replace `Unreleased` title** with the new version like `Release X.Y.Z` and the date
         1. ... where `X.Y.Z` is the new release
         2. ... follow others examples
         3. ... clean content of current release changelog (delete empty sub-sections)
         4. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
-    2. add above an empty `Unreleased` section with sub-sections (`Added`, `Changed` and `Deleted`)
-    3. add a new section in the list at the bottom of file with new version
-    4. commit these modifications
-4. `tool_release_1_prepare.sh` : *IF ALL IS OK*, execute this script to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag) and check these commits and tag
-5. `tool_release_2_branch.sh` : *IF ALL IS OK*, execute this script to create and push a new branch with that release and SNAPSHOT
-6. *PR* : *IF ALL IS OK*, on github, create a PR based on this new branch to `main` branch
-7. *check Github Action + merge PR* : wait that automatic check (Github `Actions` tab) on the new branch are OK, then check modifications and finally merge it with `Create a merge commit` option
-8. *IF ALL IS OK* and if PR merge is OK, then check if the branch is deleted as mentionned when PR merged (or delete it manually)
-9. *check Github Action + update local* : wait that automatic check on the `main` branch are OK, and then *IF ALL IS OK*, upgrade your local source code from remote, and go to `main` branch
-10. *push tag* : push new tag with `git push --tags`
-11. *check release* : an automatic workflow started on github and create the new release of plugin
-12. *TEMPORARY process* for `ecocode-rules-specifications` project :
-    1. revert the previous commit for this temporary process (like commit [64bf7be](https://github.com/green-code-initiative/ecoCode/commit/64bf7bed1993374a5a56ec171f55447da6b06461) and [06b2ed4](https://github.com/green-code-initiative/ecoCode/commit/06b2ed411ef8dff7f4fe998277b99506e55811b5) )
-    2. commit it and push it
-13. `docker-compose.yml` : check and modify (if needed) the version in this file to the new SNAPSHOT version
+    2. **add above an empty `Unreleased`** section with sub-sections (`Added`, `Changed` and `Deleted`)
+    3. **add a new section in the list at the bottom** of file with new version
+    4. **commit** these modifications
+3. prepare locally next release and next snapshot :
+   1. **execute `tool_release_1_prepare.sh`** script to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag)
+   2. **check locally** these 2 commits and tag
+4. create and push new local branch : 
+   1. **execute `tool_release_2_branch.sh`** to create and push a new branch with that release and SNAPSHOT
+   2. **check on github** that this new branch is created and pushed
+5. create new github PR :
+   1. on github, **create a new PR** based on this new branch to `main` branch
+   2. **check Action** launch and result for this new PR
+6. merge PR
+   1. **merge PR** on `main` branch with `Create a merge commit` option
+   2. **check Action** launch and result on `main` branch
+7. push new tag crated previously :
+   1. locally, **go to and update `main`** branch
+   2. **execute `git push --tags`** to push new previously created tag
+   3. **check Action** launch and result on new tag
+8. **upgrade `docker-compose.yml`** file (if exists) with new SNAPSHOT version
 
 Howto publish new release on SonarQube Marketplace
 --------------------------------------------------
