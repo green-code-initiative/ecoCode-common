@@ -1,3 +1,8 @@
+<style>
+red { color: red }
+yellow { color: yellow }
+</style>
+
 # Install notes - EcoCode
 
 - [Global Requirements](#global-requirements)
@@ -189,7 +194,7 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 
 ## HOWTO create a release (core-contributor rights needed)
 
-1. IF **new release wanted** is a **major** or **minor** version (`X` or `Y` in `X.Y.Z`)
+1. IF <red>new release wanted</red> is a <red>major</red> or <red>minor</red> version (`X` or `Y` in `X.Y.Z`)
    1. **THEN** **modify the old version** to the new version in **all XML/YML files**
    2. **ELSE** **no modification** needed : the new corrective version (`Z` in `X.Y.Z`) will be automatic
 2. **upgrade `CHANGELOG.md`** : add release notes for next release
