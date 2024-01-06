@@ -226,7 +226,7 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 6. merge PR
    1. **merge PR** on `main` branch with `Create a merge commit` option
    2. **check Action** launch and result on `main` branch
-7. push new tag crated previously :
+7. push new tag created previously :
    1. locally, **go to and update `main`** branch
    2. **execute `git push --tags`** to push new previously created tag
    3. **check Action** launch and result on new tag
