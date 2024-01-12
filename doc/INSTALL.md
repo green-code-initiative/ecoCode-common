@@ -236,8 +236,9 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 
 ### New release from scratch
 
-1. Create a fork of [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties.git)
-2. Change corresponding plugin metadata file (for `ecocode-java`: [ecocodejava.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodejava.properties), for `ecocode-php`: [ecocodephp.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodephp.properties), for `ecocode-python`: [ecocodepython.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodepython.properties)): 
+1. Create a fork of [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties.git) and clone it locally
+2. Create a new branch
+3. Change corresponding plugin metadata file (for `ecocode-java`: [ecocodejava.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodejava.properties), for `ecocode-php`: [ecocodephp.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodephp.properties), for `ecocode-python`: [ecocodepython.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodepython.properties)): 
    - Append new version to `publicVersions` value (comma separated value)
    - Add following properties (where `X.X.X` is new release to publish):
      - `X.X.X.description`: a summary of main changes for user for this version
@@ -245,7 +246,8 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
      - `X.X.X.date`: Release date of plugin (on GitHub Release page)
      - `X.X.X.downloadUrl`: link to doanwload this specific release
      - `X.X.X.changelogUrl`: link to detailed change log of this release
-3. Create a Pull-Request for those modifications on [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties/pulls) to annonce new release of the corresponding plugin, with:
+4. Commit and push modifications on your fork
+5. Create a Pull-Request for those modifications on [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties/pulls) to annonce new release of the corresponding plugin, with:
    - a summary of main changes for user
    - the download link
    - the link to detailed release note
@@ -320,7 +322,7 @@ If we want use another account, we need to change these values by generating new
 5. Click on `Access User Token` button
 6. New values will be generated and displayed
 7. Copy these values and paste them in Github Secrets in `ecoCode` repository, respectively in `OSSRH_TOKEN` variable (the password) and `OSSRH_USERNAME` variable (the username)
-8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-configure-publish-process-on-maven-central))
+8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-publish-a-new-version-of-ecocode-rules-specifications-on-maven-central))
 
 ### Update GPG Maven Central keys
 
@@ -347,7 +349,7 @@ on MAC OS (for the moment) :
 
 For information, version of GPG command line tool :
 ```sh
-❯❯❯ gpg --version
+$$ gpg --version
 
 gpg (GnuPG) 2.4.3
 libgcrypt 1.10.2
@@ -357,12 +359,12 @@ This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 
 Home: <MY_HOME>/.gnupg
-Algorithmes pris en charge :
-Clef publique : RSA, ELG, DSA, ECDH, ECDSA, EDDSA
-Chiffrement : IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256,
+Algorithmes pris en charge :
+Clef publique : RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+Chiffrement : IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256,
               TWOFISH, CAMELLIA128, CAMELLIA192, CAMELLIA256
-Hachage : SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
-Compression : Non compressé, ZIP, ZLIB, BZIP2
+Hachage : SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+Compression : Non compressé, ZIP, ZLIB, BZIP2
 ```
 
 #### Why change these variables ?
@@ -380,4 +382,4 @@ If we want to upgrade these keys, we need to generate new ones and reconfigure G
 5. Open this local file and copy content (only content between `-----BEGIN PGP PRIVATE KEY BLOCK-----` and `-----END PGP PRIVATE KEY BLOCK-----` included)
 6. Paste this content in `MAVEN_GPG_PRIVATE_KEY` variable in Github Secrets
 7. If you changed the passphrase in first step, paste it in `MAVEN_GPG_PASSPHRASE` variable in Github Secrets
-8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-configure-publish-process-on-maven-central))
+8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-publish-a-new-version-of-ecocode-rules-specifications-on-maven-central))
