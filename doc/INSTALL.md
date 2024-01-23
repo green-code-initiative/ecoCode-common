@@ -216,7 +216,7 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
     4. **commit** these modifications
 3. prepare locally next release and next snapshot :
    1. **execute `tool_release_1_prepare.sh`** script to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag)
-   2. **check locally** these 2 commits and tag
+   2. DON'T PUSH, just **check locally** these 2 commits and tag
 4. create and push new local branch : 
    1. **execute `tool_release_2_branch.sh`** to create and push a new branch with that release and SNAPSHOT
    2. **check on github** that this new branch is created and pushed
