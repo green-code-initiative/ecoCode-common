@@ -293,6 +293,7 @@ Because publish process of `ecocode-rules-specifications` on Maven Central needs
 - click on "Run workflow" button
 - check launched workflow on Actions tab
 - 20 minutes later (because of Maven central internal process), check on maven central if new version is published
+  - check here : https://central.sonatype.com/artifact/io.ecocode/ecocode-rules-specifications/versions
 
 ## HOWTO configure publish process on Maven Central (core-contributor rights needed)
 
