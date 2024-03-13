@@ -165,9 +165,10 @@ To have the best PR, we strongly recommend you to follow this check-list :
 - [ ] Implement rule
 - [ ] Add documentation and code tags on the rule, along with triggering and non triggering examples
 - [ ] Write Unit tests (triggering and non triggering cases)
-- [ ] Update RULES.md (remove the rule line)
+- [ ] Update RULES.md
 - [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
 - [ ] Create PR on the real test project to add a triggering case
+- [ ] Create PR on the `ecocode` repository to add the new rule definition (`ecocode-rules-specifications`)
 - [ ] Fix potential SonarCloud issues / out-of-date warnings
 
 ### Review others development
