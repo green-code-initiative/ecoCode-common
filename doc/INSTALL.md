@@ -1,5 +1,7 @@
-# Install notes - EcoCode
+Install notes - EcoCode
+---
 
+- [Install notes - EcoCode](#install-notes---ecocode)
 - [Global Requirements](#global-requirements)
 - [HOWTO build the SonarQube ecoCode plugins](#howto-build-the-sonarqube-ecocode-plugins)
   - [Requirements](#requirements)
@@ -16,6 +18,7 @@
 - [HOWTO start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
 - [HOWTO install new plugin version](#howto-install-new-plugin-version)
 - [HOWTO debug a rule (with logs)](#howto-debug-a-rule-with-logs)
+- [HOWTO manage license inside code](#howto-manage-license-inside-code)
 - [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
 - [HOWTO publish new release on SonarQube Marketplace](#howto-publish-new-release-on-sonarqube-marketplace)
   - [New release from scratch](#new-release-from-scratch)
@@ -199,6 +202,20 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
    - if token created : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_TOKEN -X`
    - if login and password : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_LOGIN -Dsonar.password=MY_PASSWORD -X`
 5. logs will appear in console (debug logs will appear if `-X` option is given like above)
+
+## HOWTO manage license inside code
+
+documentation of maven plugin "license" : https://oss.carbou.me/license-maven-plugin/#goals
+
+1. check license in code
+```
+mvn license:check
+```
+
+2. update license in code where license isn't exist
+```
+mvn license:format
+```
 
 ## HOWTO create a release (core-contributor rights needed)
 
