@@ -119,7 +119,13 @@ You will find all the steps to start a Sonarqube dev Environment here :
 
 ### Choose your rule
 
-Choose a rule in a specific language in the "To do" column : <https://github.com/cnumr/ecoCode/projects/1> and move it to the "In progress"
+Pick a plugin in the following table and check if a rule is waiting to be implemented.
+
+| Plugin Language | Plugin Rules Ideas                                                                                                |
+|-----------------|-------------------------------------------------------------------------------------------------------------------|
+| Java            | https://github.com/green-code-initiative/ecoCode-java/issues?q=is%3Aissue+is%3Aopen+label%3A%F0%9F%92%A1rule-idea |
+|                 |                                                                                                                   |
+
 
 ### Test your development
 
