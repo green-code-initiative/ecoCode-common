@@ -1,37 +1,37 @@
 # Starter Pack to develop on EcoCode
 
 - [Starter Pack to develop on EcoCode](#starter-pack-to-develop-on-ecocode)
-  - [Basics](#basics)
+  - [Basic Explanations](#basic-explanations)
     - [Sonarqube Plugin](#sonarqube-plugin)
       - [How a SonarQube plugin works](#how-a-sonarqube-plugin-works)
     - [Gitflow](#gitflow)
-    - [Github GreenCodeInitiative](#github-greencodeinitiative)
-    - [References](#references)
+    - [Github Green-Code-Initiative](#github-green-code-initiative)
+    - [Some rules references](#some-rules-references)
       - [115 web rules details](#115-web-rules-details)
       - [40+ android/iOS rules details](#40-androidios-rules-details)
   - [Local development](#local-development)
     - [Requirements](#requirements)
-      - [Method 1 - Automatic check](#method-1---automatic-check)
-      - [Method 2 - Manual check](#method-2---manual-check)
-    - [Clone the project](#clone-the-project)
+      - [Method 1 - Automatic check (default method)](#method-1---automatic-check-default-method)
+      - [Method 2 - Manual check (if above "method 1" doesn't work)](#method-2---manual-check-if-above-method-1-doesnt-work)
+    - [Get source code](#get-source-code)
     - [Start local environment](#start-local-environment)
-    - [Choose your rule](#choose-your-rule)
-    - [Test your development](#test-your-development)
+    - [Choose the rule you want to implement](#choose-the-rule-you-want-to-implement)
+    - [Test your rule implementation](#test-your-rule-implementation)
   - [Publish your work](#publish-your-work)
+    - [Check the completion of your work : Definition Of Done](#check-the-completion-of-your-work--definition-of-done)
     - [Commit your code](#commit-your-code)
     - [Open pull request](#open-pull-request)
-      - [Definition Of Done of a PR](#definition-of-done-of-a-pr)
     - [Review others development](#review-others-development)
     - [Validation of a PR](#validation-of-a-pr)
     - [Close your rule](#close-your-rule)
-  - [Development Processes](#development-processes)
+  - [Different development processes](#different-development-processes)
     - [Deprecation of existing rule](#deprecation-of-existing-rule)
       - [STEP 1 : deprecate rule](#step-1--deprecate-rule)
       - [STEP 2 : remove rule](#step-2--remove-rule)
 
-## Basics
+## Basic Explanations
 
-In order to develop a Sonarqube Plugin in Open source for ecocode, two basics must have been mastered:
+In order to develop a Sonarqube Plugin in Open source for ecocode, two basics must have been understood :
 
 - How to develop a Sonarqube plugin
 - Understand and work with the Gitflow
@@ -52,9 +52,9 @@ JavaScript plugin works differently because it does not use AST. [More informati
 
 ### Gitflow
 
-<https://medium.com/android-news/gitflow-with-github-c675aa4f606a>
+What is GtiFlow and how it works : <https://medium.com/android-news/gitflow-with-github-c675aa4f606a>
 
-### Github GreenCodeInitiative
+### Github Green-Code-Initiative
 
 - common part (doc / tools) : <https://github.com/green-code-initiative/ecoCode-common>
 - rules specification : <https://github.com/green-code-initiative/ecoCode>
@@ -62,7 +62,7 @@ JavaScript plugin works differently because it does not use AST. [More informati
 - several standard repositories
 - several test project repositories
 
-### References
+### Some rules references
 
 #### 115 web rules details
 
@@ -74,9 +74,11 @@ JavaScript plugin works differently because it does not use AST. [More informati
 
 ## Local development
 
+This section is to help you to install and configure your first environment to develop with us !!!
+
 ### Requirements
 
-#### Method 1 - Automatic check
+#### Method 1 - Automatic check (default method)
 
 Execute script verification (present in this repository in `tool_checks` directory) :
 
@@ -89,13 +91,13 @@ For Windows OS :
 
 PS : if you have some problems with this script, please feel free to create a new issue here <https://github.com/green-code-initiative/ecoCode-common/issues>
 
-#### Method 2 - Manual check
+#### Method 2 - Manual check (if above "method 1" doesn't work)
 
-- install Docker : <https://docs.docker.com/get-docker/>
-- Docker-compose : <https://docs.docker.com/compose/install/>
-- Java JDK (and not only JRE) for Sonarqube plugin Development : <https://www.java.com/fr/download/manual.jsp>
-- Maven for Sonarqube plugin Development : <https://maven.apache.org/download.cgi>
-- Git : <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
+- `Docker` : <https://docs.docker.com/get-docker/>
+- `Docker-compose` : <https://docs.docker.com/compose/install/>
+- `Java` JDK (and not only JRE) for Sonarqube plugin Development : <https://www.java.com/fr/download/manual.jsp>
+- `Maven` for Sonarqube plugin Development : <https://maven.apache.org/download.cgi>
+- `Git` : <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
 
 If you want, you can check following file to know what are min and max versions for each tool : <https://github.com/green-code-initiative/ecoCode-common/blob/main/tools/check_requirements/config.txt>
 
@@ -109,7 +111,7 @@ mvn --version
 git --version
 ```
 
-### Clone the project
+### Get source code
 
 Clone the project with (standard, mobile or/and common) : please see all availables repositories here <https://github.com/orgs/green-code-initiative/repositories?type=all>
 
@@ -120,26 +122,37 @@ git clone git@github.com:green-code-initiative/ecoCode-java.git
 
 ### Start local environment
 
-You will find all steps to start a local Sonarqube dev Environment here :
+You will find all steps to start and configure your local Sonarqube dev Environment here :
 
-<https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-install-sonarqube-dev-environment>
+- 1st step - build your local plugin: <https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-build-the-sonarqube-ecocode-plugins>
+- 2nd step - launch local Sonarqube with your built local plugin : <https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-install-sonarqube-dev-environment>
+- 3rd step - check that local environment is running perfectly : choose one of repositories with suffix "test-project" and read `README.md` file (example : <https://github.com/green-code-initiative/ecoCode-java-test-project/tree/main>)
 
-### Choose your rule
+### Choose the rule you want to implement
 
-Pick a plugin in the following table and check if a rule is waiting to be implemented.
+Once your local environment is running, you can pick a rule in the following table and check if a rule is waiting to be implemented : <https://github.com/green-code-initiative/ecoCode/blob/main/RULES.md#rules-support-matrix-by-techno>
 
-| Plugin Language | Plugin Rules Ideas                                                                                                |
-|-----------------|-------------------------------------------------------------------------------------------------------------------|
-| Java            | https://github.com/green-code-initiative/ecoCode-java/issues?q=is%3Aissue+is%3Aopen+label%3A%F0%9F%92%A1rule-idea |
-|                 |                                                                                                                   |
-
-### Test your development
+### Test your rule implementation
 
 Each rule needs to have scripts in a specific language (i.e. Python, Rust, JS, PHP and JAVA) in order to test directly inside Sonarqube that the rule has been implemented.
 
 To validate that the rule has been implemented, you need to execute a scan on those scripts. You will need sonar scanner: <https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/>
 
 ## Publish your work
+
+### Check the completion of your work : Definition Of Done
+
+To have the best PR, we strongly recommend you to follow this check-list :
+
+- [ ] Check if rule doesn't exist in SonarQube yet
+- [ ] Implement rule
+- [ ] Add documentation and code tags on the rule, along with triggering and non triggering examples
+- [ ] Write Unit tests (triggering and non triggering cases)
+- [ ] Update RULES.md
+- [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
+- [ ] Create PR on the real test project to add a triggering case
+- [ ] Create PR on the `ecocode` repository to add the new rule definition (`ecocode-rules-specifications`)
+- [ ] Fix potential SonarCloud issues / out-of-date warnings
 
 ### Commit your code
 
@@ -169,20 +182,6 @@ You may have to log with your account : <https://docs.github.com/en/authenticati
 
 Once your code is pushed and tested, open a PR between your branch and "main" : <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request>
 
-#### Definition Of Done of a PR
-
-To have the best PR, we strongly recommend you to follow this check-list :
-
-- [ ] Check if rule doesn't exist in SonarQube yet
-- [ ] Implement rule
-- [ ] Add documentation and code tags on the rule, along with triggering and non triggering examples
-- [ ] Write Unit tests (triggering and non triggering cases)
-- [ ] Update RULES.md
-- [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
-- [ ] Create PR on the real test project to add a triggering case
-- [ ] Create PR on the `ecocode` repository to add the new rule definition (`ecocode-rules-specifications`)
-- [ ] Fix potential SonarCloud issues / out-of-date warnings
-
 ### Review others development
 
 Ask to people to review your PR. Once two people, at least, have reviewed, you can validate your PR
@@ -199,7 +198,7 @@ Here is the SonarQube : <https://sonarcloud.io/organizations/green-code-initiati
 Once your PR is validated, your rule integrates ecoCode. In <https://github.com/cnumr/ecoCode/projects/1>, move it from the "In Progress" column to the "Done" column.
 Well done.
 
-## Development Processes
+## Different development processes
 
 ### Deprecation of existing rule
 
