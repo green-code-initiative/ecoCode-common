@@ -80,13 +80,14 @@ This section is to help you to install and configure your first environment to d
 
 #### Method 1 - Automatic check (default method)
 
-Execute script verification (present in this repository in `tool_checks` directory) :
+In the current repository, go to `tools/check_requirements` directory.
+Next, execute script verification () :
 
 For Mac or Unix OS : `./check_requirements.sh`
 
 For Windows OS :
 
-- execute following script : `./check_requirements.bat`
+- execute script : `./check_requirements.bat`
 - then check versions displayed
 
 PS : if you have some problems with this script, please feel free to create a new issue here <https://github.com/green-code-initiative/ecoCode-common/issues>
@@ -115,7 +116,7 @@ git --version
 
 Clone the project with (standard, mobile or/and common) : please see all availables repositories here <https://github.com/orgs/green-code-initiative/repositories?type=all>
 
-Example (with SSH) :
+Example for Java plugin (with SSH) :
 ```sh
 git clone git@github.com:green-code-initiative/ecoCode-java.git
 ```
@@ -125,12 +126,14 @@ git clone git@github.com:green-code-initiative/ecoCode-java.git
 You will find all steps to start and configure your local Sonarqube dev Environment here :
 
 - 1st step - build your local plugin: <https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-build-the-sonarqube-ecocode-plugins>
-- 2nd step - launch local Sonarqube with your built local plugin : <https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-install-sonarqube-dev-environment>
-- 3rd step - check that local environment is running perfectly : choose one of repositories with suffix "test-project" and read `README.md` file (example : <https://github.com/green-code-initiative/ecoCode-java-test-project/tree/main>)
+- 2nd step - launch local Sonarqube (with installation of previous local plugin built) : <https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-install-sonarqube-dev-environment>
+- 3rd step - check that local environment is running perfectly : choose one of repositories with suffix "test-project" (ex : <https://github.com/green-code-initiative/ecoCode-java-test-project/tree/main>)
+  - next, launch script `tool_send_to_sonar.sh` (using previous secruitty token created on the first step)
+  - finally, open local SonarQube GUI (<http://localhost:9000>) to verify if alone project raises ecoCode errors
 
 ### Choose the rule you want to implement
 
-Once your local environment is running, you can pick a rule in the following table and check if a rule is waiting to be implemented : <https://github.com/green-code-initiative/ecoCode/blob/main/RULES.md#rules-support-matrix-by-techno>
+Once your local environment is running, you can pick a rule waiting to be implemented : <https://github.com/green-code-initiative/ecoCode/blob/main/RULES.md#rules-support-matrix-by-techno>
 
 ### Test your rule implementation
 
