@@ -160,7 +160,7 @@ Once your local environment is running, you can pick a rule waiting to be implem
 
 Many ways to do this : 
 
-- fisrt way : : choose a rule in following table present here <https://github.com/green-code-initiative/ecoCode/blob/main/RULES.md#rules-support-matrix-by-techno>
+- fisrt way : choose a rule in following table present here <https://github.com/green-code-initiative/ecoCode/blob/main/RULES.md#rules-support-matrix-by-techno>
 - preferred and second way : pick a plugin in the following table and check if a rule is waiting to be implemented.
 
 | Plugin Language | Plugin Rules Ideas                                                                                                |
