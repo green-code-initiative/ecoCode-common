@@ -156,7 +156,19 @@ please see section above `Initialize local development`
 
 ### Choose the rule you want to implement
 
-Once your local environment is running, you can pick a rule waiting to be implemented : <https://github.com/green-code-initiative/ecoCode/blob/main/RULES.md#rules-support-matrix-by-techno>
+Once your local environment is running, you can pick a rule waiting to be implemented.
+
+Many ways to do this : 
+
+- fisrt way : : choose a rule in following table present here <https://github.com/green-code-initiative/ecoCode/blob/main/RULES.md#rules-support-matrix-by-techno>
+- preferred and second way : pick a plugin in the following table and check if a rule is waiting to be implemented.
+
+| Plugin Language | Plugin Rules Ideas                                                                                                |
+|-----------------|-------------------------------------------------------------------------------------------------------------------|
+| Java            | https://github.com/green-code-initiative/ecoCode-java/issues?q=is%3Aissue+is%3Aopen+label%3A%F0%9F%92%A1rule-idea |
+|                 |                                                                                                                   |
+
+
 
 ### Test your rule implementation
 
