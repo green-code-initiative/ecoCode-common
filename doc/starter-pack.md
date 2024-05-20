@@ -9,16 +9,18 @@
     - [Some rules references](#some-rules-references)
       - [115 web rules details](#115-web-rules-details)
       - [40+ android/iOS rules details](#40-androidios-rules-details)
-  - [Local development](#local-development)
+  - [Initialize local development](#initialize-local-development)
     - [Requirements](#requirements)
       - [Method 1 - Automatic check (default method)](#method-1---automatic-check-default-method)
       - [Method 2 - Manual check (if above "method 1" doesn't work)](#method-2---manual-check-if-above-method-1-doesnt-work)
     - [Get source code](#get-source-code)
     - [Start local environment](#start-local-environment)
+  - [`Definition Of Done` for new rule implementation](#definition-of-done-for-new-rule-implementation)
+  - [Implement a new rule](#implement-a-new-rule)
+    - [Requirements](#requirements-1)
     - [Choose the rule you want to implement](#choose-the-rule-you-want-to-implement)
     - [Test your rule implementation](#test-your-rule-implementation)
   - [Publish your work](#publish-your-work)
-    - [Check the completion of your work : Definition Of Done](#check-the-completion-of-your-work--definition-of-done)
     - [Commit your code](#commit-your-code)
     - [Open pull request](#open-pull-request)
     - [Review others development](#review-others-development)
@@ -72,7 +74,7 @@ What is GtiFlow and how it works : <https://medium.com/android-news/gitflow-with
 
 <https://github.com/cnumr/best-practices-mobile>
 
-## Local development
+## Initialize local development
 
 This section is to help you to install and configure your first environment to develop with us !!!
 
@@ -131,6 +133,27 @@ You will find all steps to start and configure your local Sonarqube dev Environm
   - next, launch script `tool_send_to_sonar.sh` (using previous secruitty token created on the first step)
   - finally, open local SonarQube GUI (<http://localhost:9000>) to verify if alone project raises ecoCode errors
 
+## `Definition Of Done` for new rule implementation
+
+For a new rule implementation, we strongly recommend you to follow this check-list during :
+
+- [ ] Check if rule doesn't exist in SonarQube yet (`RULES.md` file or `ecocode-rules-specifications` module in `ecoCode` repository)
+- [ ] Create PR on the `ecocode` repository to add the new rule definition (`ecocode-rules-specifications`)
+  - [ ] You can use local SNAPSHOT version of `ecocode-rules-specifications` in your specific language repository to go forward
+- [ ] Implement rule in your local specific language repository
+- [ ] Add documentation and code tags on the rule, along with triggering and non triggering examples
+- [ ] Write Unit tests (triggering and non triggering cases)
+- [ ] Update RULES.md
+- [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
+- [ ] Create PR on the real test project to add a triggering case
+- [ ] Fix potential SonarCloud issues / out-of-date warnings
+
+## Implement a new rule
+
+### Requirements
+
+please see section above `Initialize local development`
+
 ### Choose the rule you want to implement
 
 Once your local environment is running, you can pick a rule waiting to be implemented : <https://github.com/green-code-initiative/ecoCode/blob/main/RULES.md#rules-support-matrix-by-techno>
@@ -142,20 +165,6 @@ Each rule needs to have scripts in a specific language (i.e. Python, Rust, JS, P
 To validate that the rule has been implemented, you need to execute a scan on those scripts. You will need sonar scanner: <https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/>
 
 ## Publish your work
-
-### Check the completion of your work : Definition Of Done
-
-To have the best PR, we strongly recommend you to follow this check-list :
-
-- [ ] Check if rule doesn't exist in SonarQube yet
-- [ ] Implement rule
-- [ ] Add documentation and code tags on the rule, along with triggering and non triggering examples
-- [ ] Write Unit tests (triggering and non triggering cases)
-- [ ] Update RULES.md
-- [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
-- [ ] Create PR on the real test project to add a triggering case
-- [ ] Create PR on the `ecocode` repository to add the new rule definition (`ecocode-rules-specifications`)
-- [ ] Fix potential SonarCloud issues / out-of-date warnings
 
 ### Commit your code
 
