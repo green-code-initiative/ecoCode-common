@@ -45,12 +45,12 @@ But ... we are going to help you more specifically for `ecoCode` project in foll
 
 #### How a SonarQube plugin works
 
-Code is parsed to be transformed as AST. AST will allow you to access one or more nodes of your code.
-For example, you’ll be able to access of all your `for` loop, to explore content etc.
+Code is parsed to be transformed as an [AST (Abstract Syntax Tree)](https://en.wikipedia.org/wiki/Abstract_syntax_tree). This AST will allow you to access one or more nodes of your code.
+For example, you’ll be able to access of all the `for` loops, to explore content etc.
 
-To better understand AST structure, you can use the [AST Explorer](https://astexplorer.net/).
+To better understand AST structure, you can use the [AST Explorer](https://astexplorer.net/) and select the language of the code you want to explore.
 
-JavaScript plugin works differently because it does not use AST. [More information here](javascript-plugin/README.md)
+The JavaScript Sonar plugin works differently because it doesn't parse the code to transform it into an AST itself, it use the ESLint engine which will do it itself ([More information here](https://github.com/green-code-initiative/ecoCode-javascript/blob/main/CONTRIBUTING.md)). The good part is that it means that all Ecocode JavaScript rules are made available both to Sonar and to [ESLint](https://eslint.org/) through an [Ecocode ESLint plugin](https://www.npmjs.com/package/@ecocode/eslint-plugin).
 
 ### Gitflow
 
