@@ -46,9 +46,7 @@ Install notes - EcoCode
 
 ### Requirements
 
-- Java >= 11.0.17
-- Mvn 3
-- SonarQube 9.4 to 10.3
+check requirements : https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/starter-pack.md#requirements
 
 ### Build the code
 
