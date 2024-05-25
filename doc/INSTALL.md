@@ -18,6 +18,9 @@ Install notes - EcoCode
 - [HOWTO start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
 - [HOWTO install new plugin version](#howto-install-new-plugin-version)
 - [HOWTO debug a rule (with logs)](#howto-debug-a-rule-with-logs)
+- [HOWTO Depreciate an existing rule](#howto-depreciate-an-existing-rule)
+  - [STEP 1 : deprecate rule](#step-1--deprecate-rule)
+  - [STEP 2 : remove rule](#step-2--remove-rule)
 - [HOWTO manage license inside code](#howto-manage-license-inside-code)
 - [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
 - [HOWTO publish new release on SonarQube Marketplace](#howto-publish-new-release-on-sonarqube-marketplace)
@@ -200,6 +203,32 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
    - if token created : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_TOKEN -X`
    - if login and password : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_LOGIN -Dsonar.password=MY_PASSWORD -X`
 5. logs will appear in console (debug logs will appear if `-X` option is given like above)
+
+## HOWTO Depreciate an existing rule
+
+If you want to deprecate an existing rule, you have to follow 2 steps as described below.
+
+### STEP 1 : deprecate rule
+
+This step is done on next release of plugin (example : version N).
+
+1. Upgrade the rule implementation to add deprecation information : in plugin repository containing the rule implementation, add a new `@DeprecatedRule` annotation on the rule class
+2. Upgrade rules documentation
+   1. in plugin repository containing the rule implementation, in `RULES.md` file, move rule line from standard rules array to deprecated rules array
+   2. in `ecoCode-rules-specification` repository, add deprecation to current rule
+
+Thus in next release of plugin, the rule will be still present but displayed as deprecated in SonarQube UI.
+
+### STEP 2 : remove rule
+
+This step is done on release N+2.
+
+1. Clean implementation code of the rule :
+   1. in plugin repository containing the rule implementation
+      1. delete rule class, clean all references to the rule
+      2. delete unit test classes
+   2. in plugin real test project repository, clean rule test classes
+2. Upgrade rules documentation : in plugin repository containing the rule implementation, in `RULES.md` file, mark the rule as deleted
 
 ## HOWTO manage license inside code
 

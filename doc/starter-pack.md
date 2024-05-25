@@ -15,10 +15,10 @@
       - [Method 2 - Manual check (if above "method 1" doesn't work)](#method-2---manual-check-if-above-method-1-doesnt-work)
     - [Get source code](#get-source-code)
     - [Start local environment](#start-local-environment)
-  - [`Definition Of Done` for new rule implementation](#definition-of-done-for-new-rule-implementation)
   - [Implement a new rule](#implement-a-new-rule)
     - [Requirements](#requirements-1)
     - [Choose the rule you want to implement](#choose-the-rule-you-want-to-implement)
+    - [Check `Definition Of Done` for new rule implementation](#check-definition-of-done-for-new-rule-implementation)
     - [Test your rule implementation](#test-your-rule-implementation)
   - [Publish your work](#publish-your-work)
     - [Commit your code](#commit-your-code)
@@ -26,10 +26,6 @@
     - [Review others development](#review-others-development)
     - [Validation of a PR](#validation-of-a-pr)
     - [Close your rule](#close-your-rule)
-  - [Different development processes](#different-development-processes)
-    - [Deprecation of existing rule](#deprecation-of-existing-rule)
-      - [STEP 1 : deprecate rule](#step-1--deprecate-rule)
-      - [STEP 2 : remove rule](#step-2--remove-rule)
 
 ## Basic Explanations
 
@@ -133,21 +129,6 @@ You will find all steps to start and configure your local Sonarqube dev Environm
   - next, launch script `tool_send_to_sonar.sh` (using previous secruitty token created on the first step)
   - finally, open local SonarQube GUI (<http://localhost:9000>) to verify if alone project raises ecoCode errors
 
-## `Definition Of Done` for new rule implementation
-
-For a new rule implementation, we strongly recommend you to follow this check-list during :
-
-- [ ] Check if rule doesn't exist in SonarQube yet (`RULES.md` file or `ecocode-rules-specifications` module in `ecoCode` repository)
-- [ ] Create PR on the `ecocode` repository to add the new rule definition (`ecocode-rules-specifications`)
-  - [ ] You can use local SNAPSHOT version of `ecocode-rules-specifications` in your specific language repository to go forward
-- [ ] Implement rule in your local specific language repository
-- [ ] Add documentation and code tags on the rule, along with triggering and non triggering examples
-- [ ] Write Unit tests (triggering and non triggering cases)
-- [ ] Update RULES.md
-- [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
-- [ ] Create PR on the real test project to add a triggering case
-- [ ] Fix potential SonarCloud issues / out-of-date warnings
-
 ## Implement a new rule
 
 ### Requirements
@@ -160,21 +141,41 @@ Once your local environment is running, you can pick a rule waiting to be implem
 
 Many ways to do this : 
 
-- fisrt way : choose a rule in following table present here <https://github.com/green-code-initiative/ecoCode/blob/main/RULES.md#rules-support-matrix-by-techno>
-- preferred and second way : pick a plugin in the following table and check if a rule is waiting to be implemented.
+- first and preferred way : pick a plugin in the table bottom and check if a rule is waiting to be implemented.
 
 | Plugin Language | Plugin Rules Ideas                                                                                                |
 |-----------------|-------------------------------------------------------------------------------------------------------------------|
 | Java            | https://github.com/green-code-initiative/ecoCode-java/issues?q=is%3Aissue+is%3Aopen+label%3A%F0%9F%92%A1rule-idea |
 |                 |                                                                                                                   |
 
+- second way : choose a rule in following tables 
+  - [Web rules](https://github.com/green-code-initiative/ecoCode/blob/main/RULES.md)
+  - [Android (Java) rules](https://github.com/green-code-initiative/ecoCode-android/blob/main/android-plugin/RULES.md)
+  - [iOS (Swift) rules](https://github.com/green-code-initiative/ecoCode-ios/blob/main/RULES.md)
+- third way : Go and give a hand to the [spotters team](https://github.com/green-code-initiative/ecoCode-challenge/blob/main/spotters.md) who will give you some rules to implement
 
+### Check `Definition Of Done` for new rule implementation
+
+For a new rule implementation, we strongly recommend you to follow this check-list during :
+
+- [ ] Check if rule doesn't exist in SonarQube yet (`RULES.md` file or `ecocode-rules-specifications` module in `ecoCode` repository)
+- [ ] Create PR on the `ecocode` repository to add the new rule definition (`ecocode-rules-specifications`)
+  - [ ] You can use local SNAPSHOT version of `ecocode-rules-specifications` in your specific language repository to go forward
+- [ ] Implement rule in your local specific language repository
+- [ ] Add documentation and code tags on the rule, along with triggering and non triggering examples
+- [ ] Write Unit tests (triggering and non triggering cases)
+- [ ] Update RULES.md
+- [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
+- [ ] Create PR on the real test project to add a triggering case (check [local procedure](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/starter-pack.md#start-local-environment))
+- [ ] Fix potential SonarCloud issues / out-of-date warnings
 
 ### Test your rule implementation
 
-Each rule needs to have scripts in a specific language (i.e. Python, Rust, JS, PHP and JAVA) in order to test directly inside Sonarqube that the rule has been implemented.
+- First kind of test : Unit tests (please check `Definition of Done` above)
+- Second kind of test : End-to-End tests in a real local environment (please check `Definition of Done` above and [local procedure](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/starter-pack.md#start-local-environment) )
 
-To validate that the rule has been implemented, you need to execute a scan on those scripts. You will need sonar scanner: <https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/>
+> Each rule needs to have scripts in a specific language (i.e. Python, Rust, JS, PHP and JAVA) in order to test directly inside Sonarqube that the rule has been implemented.
+> To validate that the rule has been implemented, you need to execute a scan on those scripts. You will need sonar scanner: <https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/>
 
 ## Publish your work
 
@@ -221,31 +222,3 @@ Here is the SonarQube : <https://sonarcloud.io/organizations/green-code-initiati
 
 Once your PR is validated, your rule integrates ecoCode. In <https://github.com/cnumr/ecoCode/projects/1>, move it from the "In Progress" column to the "Done" column.
 Well done.
-
-## Different development processes
-
-### Deprecation of existing rule
-
-If you want to deprecate an existing rule, you have to follow 2 steps as described below.
-
-#### STEP 1 : deprecate rule
-
-This step is done on next release of plugin (example : version N).
-
-1. Upgrade the rule implementation to add deprecation information : in plugin repository containing the rule implementation, add a new `@DeprecatedRule` annotation on the rule class
-2. Upgrade rules documentation
-   1. in plugin repository containing the rule implementation, in `RULES.md` file, move rule line from standard rules array to deprecated rules array
-   2. in `ecoCode-rules-specification` repository, add deprecation to current rule
-
-Thus in next release of plugin, the rule will be still present but displayed as deprecated in SonarQube UI.
-
-#### STEP 2 : remove rule
-
-This step is done on release N+2.
-
-1. Clean implementation code of the rule :
-   1. in plugin repository containing the rule implementation
-      1. delete rule class, clean all references to the rule
-      2. delete unit test classes
-   2. in plugin real test project repository, clean rule test classes
-2. Upgrade rules documentation : in plugin repository containing the rule implementation, in `RULES.md` file, mark the rule as deleted
