@@ -143,10 +143,12 @@ Many ways to do this :
 
 - first and preferred way : pick a plugin in the table bottom and check if a rule is waiting to be implemented.
 
-| Plugin Language | Plugin Rules Ideas                                                                                                |
-|-----------------|-------------------------------------------------------------------------------------------------------------------|
-| Java            | https://github.com/green-code-initiative/ecoCode-java/issues?q=is%3Aissue+is%3Aopen+label%3A%F0%9F%92%A1rule-idea |
-|                 |                                                                                                                   |
+| Plugin Language | Plugin Rules Ideas                                                                                                                                                                                                                              |
+|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Java            | [💡 rule-idea](https://github.com/green-code-initiative/ecoCode-java/issues?q=is%3Aissue+is%3Aopen+label%3A%F0%9F%92%A1rule-idea)                                                                                                               |
+| JavaScript      | [🗃️ rule or 💡 rule-idea](https://github.com/green-code-initiative/ecoCode-javascript/issues?q=is%3Aopen+is%3Aissue+label%3A%22%F0%9F%92%A1+rule-idea%22%2C%22%F0%9F%97%83%EF%B8%8F+rule%22+label%3A%22%F0%9F%8F%86+challenge+%F0%9F%8F%86%22) |
+| HTML            | [🗃️ rule or 💡 rule-idea](https://github.com/green-code-initiative/ecoCode-html/issues?q=is%3Aopen+is%3Aissue+label%3A%22%F0%9F%92%A1+rule-idea%22%2C%22%F0%9F%97%83%EF%B8%8F+rule%22+label%3A%22%F0%9F%8F%86+challenge+%F0%9F%8F%86%22)       |
+|                 |                                                                                                                                                                                                                                                 |
 
 - second way : choose a rule in following tables 
   - [Web rules](https://github.com/green-code-initiative/ecoCode/blob/main/RULES.md)
