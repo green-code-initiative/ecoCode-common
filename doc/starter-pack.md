@@ -160,8 +160,11 @@ Many ways to do this :
 
 For a new rule implementation, we strongly recommend you to follow this check-list during :
 
-- [ ] Check if rule doesn't exist in SonarQube yet (`RULES.md` file or `ecocode-rules-specifications` module in `ecoCode` repository)
+- [ ] Check if rule doesn't exist in our referential list yet (`RULES.md` file or `ecocode-rules-specifications` module in `ecoCode` repository)
 - [ ] Create PR on the `ecocode` repository to add the new rule definition (`ecocode-rules-specifications`)
+  - [ ] To choose the new rule id :
+    - [ ] if rule is already existing in `RULES.md` file or in `ecocode-rules-specifications` module
+    - [ ] if rule doesn't already exists in `RULES.md` file or in `ecocode-rules-specifications` module, please use a random number between 1000 and 1500 (ex : "EC1289") and use it
   - [ ] You can use local SNAPSHOT version of `ecocode-rules-specifications` in your specific language repository to go forward
 - [ ] Implement rule in your local specific language repository
 - [ ] Add documentation and code tags on the rule, along with triggering and non triggering examples
