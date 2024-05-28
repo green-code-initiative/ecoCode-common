@@ -158,21 +158,21 @@ Many ways to do this :
 
 ### Check `Definition Of Done` for new rule implementation
 
-For a new rule implementation, we strongly recommend you to follow this check-list during :
+For a new rule implementation, we strongly recommend you to follow this check-list :
 
-- [ ] Check if rule doesn't exist in our referential list yet (`RULES.md` file or `ecocode-rules-specifications` module in `ecoCode` repository)
+- [ ] Check if rule doesn't exist in our referential rules list yet (`RULES.md` file or `ecocode-rules-specifications` module in `ecoCode` repository)
 - [ ] Create PR on the `ecocode` repository to add the new rule definition (`ecocode-rules-specifications`)
   - [ ] To choose the new rule id :
-    - [ ] if rule is already existing in `RULES.md` file or in `ecocode-rules-specifications` module
+    - [ ] if rule is already existing in `RULES.md` file or in `ecocode-rules-specifications` module, please use the given rule id
     - [ ] if rule doesn't already exists in `RULES.md` file or in `ecocode-rules-specifications` module, please use a random number between 1000 and 1500 (ex : "EC1289") and use it
-  - [ ] You can use local SNAPSHOT version of `ecocode-rules-specifications` in your specific language repository to go forward
-- [ ] Implement rule in your local specific language repository
-- [ ] Add documentation and code tags on the rule, along with triggering and non triggering examples
-- [ ] Write Unit tests (triggering and non triggering cases)
+  - [ ] You can use SNAPSHOT version of `ecocode-rules-specifications` during your local rule implementation to go forward
+- [ ] Implement rule in your local specific language repository with a refrence to local SNAPSHOT for `ecocode-rules-specifications` module (previously, install it locally with maven command)
+- [ ] Write Unit tests (to havce a maximized code coverage)
 - [ ] Update RULES.md
 - [ ] Update `CHANGELOG.md` file (inside `Unreleased` section)
 - [ ] Create PR on the real test project to add a triggering case (check [local procedure](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/starter-pack.md#start-local-environment))
 - [ ] Fix potential SonarCloud issues / out-of-date warnings
+- [ ] In next reviewing step, reviewer will probably ask you to use a specific id rule if you have chosen a random one
 
 ### Test your rule implementation
 
