@@ -154,7 +154,8 @@ Many ways to do this :
   - [Web rules](https://github.com/green-code-initiative/ecoCode/blob/main/RULES.md)
   - [Android (Java) rules](https://github.com/green-code-initiative/ecoCode-android/blob/main/android-plugin/RULES.md)
   - [iOS (Swift) rules](https://github.com/green-code-initiative/ecoCode-ios/blob/main/RULES.md)
-- third way : Go and give a hand to the [spotters team](https://github.com/green-code-initiative/ecoCode-challenge/blob/main/spotters.md) who will give you some rules to implement
+- third way : check rule ideas in Kanban project board [here](https://github.com/orgs/green-code-initiative/projects/1) and select implementable (or hardly implementable) ticket, and create an issue in the right language repositoyr
+- fourth way : Go and give a hand to the [spotters team](https://github.com/green-code-initiative/ecoCode-challenge/blob/main/spotters.md) who will give you some rules to implement
 
 ### Check `Definition Of Done` for new rule implementation
 
