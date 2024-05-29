@@ -32,6 +32,7 @@ For Mac OSX and Linux :
 For Windows :
 
 - `check_requirements.bat` : tool checker for Windows
+- `install_jq.bat` : script to install easily `jq` for Windows with `winget`
 
 Common files:
 
@@ -40,6 +41,7 @@ Common files:
 ## How does it work?
 
 - [OPTIONAL] change the configuration in `config.txt` file
+- [OPTIONAL] launch `install_jq.bat` if you need to install `jq` for Windows
 
 For Mac OSX and Linux :
 
