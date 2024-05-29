@@ -4,6 +4,4 @@ Array containing native SonarQube rules tagged as `eco-design` rules with taggin
 
 | Rules Id | Description | Reference/Validation |
 |--|--|--|
-| css:S4655 | "!important" should not be used on "keyframes" | -- |
-| php:S2014 | "$this" should not be used in a static context | -- |
-| Web:ItemTagNotWithinContainerTagCheck | "\<li>" and "\<dt>" item tags should be in "\<ul>", "\<ol>" or "\<dl>" container tags | -- |
+| Web:DoctypePresenceCheck | "<!DOCTYPE>" declarations should appear before "\<html>" tags | Conso CPU [ticket kanban](https://github.com/orgs/green-code-initiative/projects/1/views/1?filterQuery=CRDOM203&pane=issue&itemId=22378285) |
