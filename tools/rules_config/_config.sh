@@ -15,12 +15,14 @@ DEBUG=1
 SIMULATION=0
 #SIMULATION=1
 
+SONAR_PORT=$1
+
 # your sonar token (previously created in SONAR to secure communication with it)
 # first input param of your script shell
-SONAR_TOKEN=$1
+SONAR_TOKEN=$2
 
 # WARNING : let "http" instead of "https" (because you could have a TLS problem)
-SONAR_URL=http://localhost:9000
+SONAR_URL=http://localhost:$SONAR_PORT
 
 # new tag to add to rules (tagging tools) or to use for rules added to new profiles created (install_profile tool)
 TAG_ECODESIGN=ecocode
