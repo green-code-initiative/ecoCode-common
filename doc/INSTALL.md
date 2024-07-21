@@ -83,6 +83,7 @@ docker ps
 ```
 
 You should see two lines (one for sonarqube and one for postgres).
+Please note the assigned port to your local SonarQube (9000 port used for SonarQube server inside Docker container / the other port is the one you can use to access from your web browser)
 
 Result example :
 ![Result example](resources/docker-ps-result.png)
@@ -114,7 +115,7 @@ sysctl -w vm.max_map_count=262144
 
 #### Change password
 
-- go to your SonarQube homepage `http://localhost:9000/`
+- go to your SonarQube homepage `http://localhost:XXXXX/` (`XXXX` : external docker port used. you can get it when you list availables Docker containers)
 - use default credentials : `admin`/ `admin`
 - the first time after first connexion, you are suggested to change `admin` password
 
@@ -274,7 +275,6 @@ mvn license:format
    1. locally, **go to and update `main`** branch
    2. **execute `git push --tags`** to push new previously created tag
    3. **check Action** launch and result on new tag
-8. **upgrade `docker-compose.yml`** file (if exists) with new SNAPSHOT version
 
 ## HOWTO publish new release on SonarQube Marketplace
 
