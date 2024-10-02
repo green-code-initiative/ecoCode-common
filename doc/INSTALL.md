@@ -40,22 +40,22 @@
       - [Why change these variables ?](#why-change-these-variables--1)
       - [How to generate new values and update Github Secrets ?](#how-to-generate-new-values-and-update-github-secrets--1)
 
-## Global Requirements
+# Global Requirements
 
 - Docker
 - Docker-compose
 
-## DEVELOPMENT 
+# DEVELOPMENT 
 
-### Installing Local environment (local SonarQube)
+## Installing Local environment (local SonarQube)
 
-#### HOWTO build the SonarQube ecoCode plugins
+### HOWTO build the SonarQube ecoCode plugins
 
-##### Requirements
+#### Requirements
 
 check requirements : https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/starter-pack.md#requirements
 
-##### Build the code
+#### Build the code
 
 You can build the project code by running the following command in the root directory.
 Maven will download the required dependencies.
@@ -66,13 +66,13 @@ Maven will download the required dependencies.
 
 Each plugin is generated in its own `<plugin>/target` directory, but they are also copied to the `lib` directory.
 
-#### HOWTO install SonarQube dev environment
+### HOWTO install SonarQube dev environment
 
-##### Requirements
+#### Requirements
 
 You must have built the plugins (see the steps above).
 
-##### Start SonarQube (if first time)
+#### Start SonarQube (if first time)
 
 Run the SonarQube + PostgreSQL stack:
 
@@ -113,24 +113,24 @@ wsl -d docker-desktop
 sysctl -w vm.max_map_count=262144
 ```
 
-##### Configuration SonarQube
+#### Configuration SonarQube
 
 *Purposes* : Configure SonarQube to have all ecocode plugins rules enabled by default.
 
-###### Change password
+##### Change password
 
 - go to your SonarQube homepage `http://localhost:XXXXX/` (`XXXX` : external docker port used. you can get it when you list availables Docker containers)
 - use default credentials : `admin`/ `admin`
 - the first time after first connexion, you are suggested to change `admin` password
 
-###### Check plugins installation
+##### Check plugins installation
 
 - go to "Adminitration" tab
 - go to "Marketplace" sub-tab
 - go bottom, and clic on "Installed" sub-tab
 - check here, if you have ecoCode plugins displayed with a SNAPSHOT version
 
-###### Generate access token
+##### Generate access token
 
 When you are connected, generate a new token on `My Account -> Security -> Generate Tokens`
 
@@ -139,7 +139,7 @@ When you are connected, generate a new token on `My Account -> Security -> Gener
 
 Instead of login+password authentication, this token can now be used as value for `sonar.login` variable when needed (examples : call sonar scanner to send metrics to SonarQube, on use internal tools, ...)
 
-###### Initialize default profiles for `ecocode` plugins
+##### Initialize default profiles for `ecocode` plugins
 
 - use tool `install_profile.sh` in `ecocode-common` repository (inside directory `tools/rules_config`)
   - if you want, you can check default configuration of this tool in `_config.sh` file
@@ -147,7 +147,7 @@ Instead of login+password authentication, this token can now be used as value fo
 
 After this step, all code source for your language will be analyzed with your new Profile (and its activated plugins rules).
 
-#### HOWTO reinstall SonarQube (if needed)
+### HOWTO reinstall SonarQube (if needed)
 
 ```sh
 # first clean all containers and resources used
@@ -160,7 +160,7 @@ After this step, all code source for your language will be analyzed with your ne
 ./tool_docker-init.sh
 ```
 
-#### HOWTO start or stop service (already installed)
+### HOWTO start or stop service (already installed)
 
 Once you did the installation a first time (and then you did custom configuration like quality gates, quality
 profiles, ...),
@@ -178,7 +178,7 @@ if you only want to start (or stop properly) existing services :
 ./tool_stop.sh
 ```
 
-#### HOWTO install new plugin version
+### HOWTO install new plugin version
 
 1. Install dependencies from the root directory:
 
@@ -198,9 +198,9 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 ./tool_start.sh
 ```
 
-### Contribution / concrete development
+## Contribution / concrete development
 
-#### HOWTO debug a rule (with logs)
+### HOWTO debug a rule (with logs)
 
 1. Add logs like in [OptimizeReadFileExceptions](https://github.com/green-code-initiative/ecoCode/blob/main/java-plugin/src/main/java/fr/greencodeinitiative/java/checks/OptimizeReadFileExceptions.java) class file
 2. Build plugin JARs with `tool_build.sh`
@@ -211,11 +211,11 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
    - if login and password : `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=MY_LOGIN -Dsonar.password=MY_PASSWORD -X`
 5. logs will appear in console (debug logs will appear if `-X` option is given like above)
 
-#### HOWTO Depreciate an existing rule
+### HOWTO Depreciate an existing rule
 
 If you want to deprecate an existing rule, you have to follow 2 steps as described below.
 
-##### STEP 1 : deprecate rule
+#### STEP 1 : deprecate rule
 
 This step is done on next release of plugin (example : version N).
 
@@ -226,7 +226,7 @@ This step is done on next release of plugin (example : version N).
 
 Thus in next release of plugin, the rule will be still present but displayed as deprecated in SonarQube UI.
 
-##### STEP 2 : remove rule
+#### STEP 2 : remove rule
 
 This step is done on release N+2.
 
@@ -237,7 +237,7 @@ This step is done on release N+2.
    2. in plugin real test project repository, clean rule test classes
 2. Upgrade rules documentation : in plugin repository containing the rule implementation, in `RULES.md` file, mark the rule as deleted
 
-#### HOWTO manage license inside code
+### HOWTO manage license inside code
 
 documentation of maven plugin "license" : https://oss.carbou.me/license-maven-plugin/#goals
 
@@ -251,9 +251,9 @@ mvn license:check
 mvn license:format
 ```
 
-## RELEASING
+# RELEASING
 
-### HOWTO create a release (core-contributor rights needed)
+## HOWTO create a release (core-contributor rights needed)
 
 1. IF **new release wanted** is a **major** or **minor** version (`X` or `Y` in `X.Y.Z`)
    1. **THEN** **modify the old version** to the new version in **all XML/YML files**
@@ -284,9 +284,9 @@ mvn license:format
    2. **execute `git push --tags`** to push new previously created tag
    3. **check Action** launch and result on new tag
 
-### HOWTO publish new release on SonarQube Marketplace
+## HOWTO publish new release on SonarQube Marketplace
 
-#### New release from scratch
+### New release from scratch
 
 1. Create a fork of [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties.git) and clone it locally
 2. Create a new branch
@@ -317,7 +317,7 @@ Examples :
 - [PR example 1](https://github.com/SonarSource/sonar-update-center-properties/pull/389)
 - [PR example 2](https://github.com/SonarSource/sonar-update-center-properties/pull/409)
 
-#### New release of existing plugin
+### New release of existing plugin
 
 ... quite like "New release from scratch" section above but ...
 
@@ -325,9 +325,9 @@ Examples :
 - documentation : [README.md](https://github.com/SonarSource/sonar-update-center-properties/blob/master/README.md)
 - example : [PR example](https://github.com/SonarSource/sonar-update-center-properties/pull/468)
 
-### HOWTO publish a new version of ecocode-rules-specifications on Maven Central
+## HOWTO publish a new version of ecocode-rules-specifications on Maven Central
 
-#### Requirements
+### Requirements
 
 You need write rights to use Maven Central publish process (mainteners or core-team members).
 
@@ -336,7 +336,7 @@ You need write rights to use Maven Central publish process (mainteners or core-t
 Why create a new release before ?
 Because publish process of `ecocode-rules-specifications` on Maven Central needs a tag on `ecoCode` repository.
 
-#### Maven Central publish process
+### Maven Central publish process
 
 - go to "Action" tab of `ecoCode` reposiroty
 - click on "Publish to Maven Central" workflow
@@ -347,18 +347,18 @@ Because publish process of `ecocode-rules-specifications` on Maven Central needs
 - 20 minutes later (because of Maven central internal process), check on maven central if new version is published
   - check here : https://central.sonatype.com/artifact/io.ecocode/ecocode-rules-specifications/versions
 
-### HOWTO configure publish process on Maven Central (core-contributor rights needed)
+## HOWTO configure publish process on Maven Central (core-contributor rights needed)
 
-#### Update OSSRH token
+### Update OSSRH token
 
-##### What is OSSRH token ?
+#### What is OSSRH token ?
 
 `OSSRH_TOKEN` and `OSSRH_USERNAME` are used for communication between Github and Sonatype Nexus system for publish process to Maven Central.
 Nexus URL : https://s01.oss.sonatype.org/
 
 These variables are stored in Github Secrets available `Settings` tab of `ecoCode` repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
 
-##### Why change these variables ?
+#### Why change these variables ?
 
 Values are get from a specific Sonatype Nexus account.
 
@@ -366,7 +366,7 @@ Actually, `ecoCode` Sonatype Nexus account was used to generate values correspon
 
 If we want use another account, we need to change these values by generating new ones on this new account.
 
-##### How to generate new values and update Github Secrets ?
+#### How to generate new values and update Github Secrets ?
 
 1. Go to [Sonatype Nexus](https://oss.sonatype.org/)
 2. Login with account (ex : `ecoCode`)
@@ -377,9 +377,9 @@ If we want use another account, we need to change these values by generating new
 7. Copy these values and paste them in Github Secrets in `ecoCode` repository, respectively in `OSSRH_TOKEN` variable (the password) and `OSSRH_USERNAME` variable (the username)
 8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-publish-a-new-version-of-ecocode-rules-specifications-on-maven-central))
 
-#### Update GPG Maven Central keys
+### Update GPG Maven Central keys
 
-##### What is GPG Maven Central keys ?
+#### What is GPG Maven Central keys ?
 
 GPG system is used to sign JAR files before publishing them to Maven Central.
 We have to generate public and private keys, and store them in Github Secrets with `MAVEN_GPG_PRIVATE_KEY` and `MAVEN_GPG_PASSPHRASE` variables.
@@ -388,7 +388,7 @@ These GPG keys are stored in Github Secrets available `Settings` tab of `ecoCode
 
 Values are generated on local machine with "gpg" command line tool.
 
-##### How to install and use GPG command line tool ?
+#### How to install and use GPG command line tool ?
 
 on MAC OS (for the moment) :
 
@@ -420,13 +420,13 @@ Hachage : SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
 Compression : Non compressé, ZIP, ZLIB, BZIP2
 ```
 
-##### Why change these variables ?
+#### Why change these variables ?
 
 We can check expiration date with `gpg --list-keys` command.
 Current keys are valid until **2026-08-07**.
 If we want to upgrade these keys, we need to generate new ones and reconfigure Github Secrets.
 
-##### How to generate new values and update Github Secrets ?
+#### How to generate new values and update Github Secrets ?
 
 1. Generate new keys with `gpg --gen-key` command : we need to give a passphrase (you can give old one)
 2. Send public key to keyserver with `gpg --keyserver keyserver.ubuntu.com --send-keys <MY_PUBLIC_KEY>` command
