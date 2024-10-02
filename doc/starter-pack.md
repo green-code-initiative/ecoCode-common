@@ -3,6 +3,7 @@
   - [Sonarqube Plugin](#sonarqube-plugin)
     - [How a SonarQube plugin works](#how-a-sonarqube-plugin-works)
   - [Gitflow](#gitflow)
+  - [How to develop in open-source mode](#how-to-develop-in-open-source-mode)
   - [Github Green-Code-Initiative](#github-green-code-initiative)
   - [Some rules references](#some-rules-references)
     - [115 web rules details](#115-web-rules-details)
@@ -27,10 +28,11 @@
 
 # Basic Explanations
 
-In order to develop a Sonarqube Plugin in Open source for ecocode, two basics must have been understood :
+In order to develop a Sonarqube Plugin in Open source for ecocode, two basics should have been understood :
 
 - How to develop a Sonarqube plugin
 - Understand and work with the Gitflow
+- How to develop in open-source mode
 
 ## Sonarqube Plugin
 
@@ -49,6 +51,9 @@ The JavaScript Sonar plugin works differently because it doesn't parse the code 
 ## Gitflow
 
 What is GtiFlow and how it works : <https://medium.com/android-news/gitflow-with-github-c675aa4f606a>
+
+## How to develop in open-source mode
+please check following section
 
 ## Github Green-Code-Initiative
 
@@ -117,12 +122,14 @@ Example for Java plugin (with SSH) :
 git clone git@github.com:green-code-initiative/ecoCode-java.git
 ```
 
+*WARNING* : if you are a new contributor (an not identified project `maintainer`), you have to use FORK / Pull Request System like explained here <https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/HOWTO.md#howto-develop-in-open-source-mode>
+
 ## Start local environment
 
 You will find all steps to start and configure your local Sonarqube dev Environment here :
 
-- 1st step - build your local plugin: <https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-build-the-sonarqube-ecocode-plugins>
-- 2nd step - launch local Sonarqube (with installation of previous local plugin built) : <https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-install-sonarqube-dev-environment>
+- 1st step - build your local plugin: <https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/HOWTO.md#howto-build-the-sonarqube-ecocode-plugins>
+- 2nd step - launch local Sonarqube (with installation of previous local plugin built) : <https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/HOWTO.md#howto-install-sonarqube-dev-environment>
 - 3rd step - check that local environment is running perfectly : choose one of repositories with suffix "test-project" (ex : <https://github.com/green-code-initiative/ecoCode-java-test-project/tree/main>)
   - next, launch script `tool_send_to_sonar.sh` (using previous secruitty token created on the first step)
   - finally, open local SonarQube GUI (<http://localhost:9000>) to verify if alone project raises ecoCode errors

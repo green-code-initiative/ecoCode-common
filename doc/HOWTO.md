@@ -16,6 +16,9 @@
     - [HOWTO start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
     - [HOWTO install new plugin version](#howto-install-new-plugin-version)
   - [Contribution / concrete development](#contribution--concrete-development)
+    - [HOWTO develop in open-source mode](#howto-develop-in-open-source-mode)
+      - [Maintainer, write permission](#maintainer-write-permission)
+      - [Contributor, NO write permissions](#contributor-no-write-permissions)
     - [HOWTO debug a rule (with logs)](#howto-debug-a-rule-with-logs)
     - [HOWTO Depreciate an existing rule](#howto-depreciate-an-existing-rule)
       - [STEP 1 : deprecate rule](#step-1--deprecate-rule)
@@ -199,6 +202,41 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 ```
 
 ## Contribution / concrete development
+
+### HOWTO develop in open-source mode
+
+There is two ways to develop in an open-source project :
+- you are one official `maintener`
+- you are `contributor`
+
+#### Maintainer, write permission
+
+If you are an official `maintener` identified in the project, you are in a special team with write permissions.
+Thus you can :
+- create branches and commit directly inside
+- push code directly on project (by the PR way)
+- review and accept Pull Requests
+
+#### Contributor, NO write permissions
+
+If ou are new (or regular) contributor, you don't have specific write permission but only read permission.
+If you want to contribute to the project, you must use the FORK / Pull Request (PR) system.
+But don't worry, if you are a regular contributor, project core-team members evaluates regularly some contributors to be maintainers !!!
+
+To contribute with FORK / PR system, you have to :
+- create a fork of the original project (by clicking on `Create a new fork` button, inside top-right `fork` menu)
+  - check that the new project fork is really present in your personal github projects
+- clone your personal forked project
+  - you can see on github, you have
+    - two new buttons to interact with original project : "Contribute" and "Sync fork"
+    - a status information about synchronization between your forked project and original project (on the left of previous new buttons)
+  - if your fork is recently created, you can see in the status information that your forked project is synchronized
+  - if not "synchronized", you can click on "Sync fork" to update your forked project from the original project
+- create a new local branch to begin development
+- once development done, you can commit an push your work to your github forked project
+- once all is ok, you can create a new Pull Request to original Project by clicking on the new appeared message with "Compare & pull request" button
+  - a new PR form is displayed and you can fill it
+- *TIPS* : when you has already created the PR to original project, when you improve your branch of your forked project (with new commits), the PR in original project is automatically updated. Please mark this PR as "Draft" is you are still working on it (top-right link "convert to draft" in PR inside original project)
 
 ### HOWTO debug a rule (with logs)
 

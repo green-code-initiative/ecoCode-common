@@ -9,5 +9,5 @@ Frequently Ask Questions
 > 
 > If you want to use ecoCode rules (for one language for example), you have many ways to configure it :
 > 1. create a new profile, then select all wanted rules (ecoCode rules or not) for that new profile, and finally use this new profile as "default" profile for the selected language (or set a few projects to this new profile).
-> 2. use our script to create ths kind of profile (explanation here : https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#initialize-default-profiles-for-ecocode-plugins) ... WARNING : the new profile created will be set as the default profile for your language !
+> 2. use our script to create ths kind of profile (explanation here : https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/HOWTO.md#initialize-default-profiles-for-ecocode-plugins) ... WARNING : the new profile created will be set as the default profile for your language !
 > 3. update one of your current profiles you use with new available ecoCode rules
