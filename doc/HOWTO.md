@@ -42,6 +42,11 @@
       - [How to install and use GPG command line tool ?](#how-to-install-and-use-gpg-command-line-tool-)
       - [Why change these variables ?](#why-change-these-variables--1)
       - [How to generate new values and update Github Secrets ?](#how-to-generate-new-values-and-update-github-secrets--1)
+- [CONTACT](#contact)
+  - [HOWTO contact the team](#howto-contact-the-team)
+  - [Feedbacks](#feedbacks)
+    - [User Group](#user-group)
+    - [Contributor Group](#contributor-group)
 
 # Global Requirements
 
@@ -474,3 +479,28 @@ If we want to upgrade these keys, we need to generate new ones and reconfigure G
 6. Paste this content in `MAVEN_GPG_PRIVATE_KEY` variable in Github Secrets
 7. If you changed the passphrase in first step, paste it in `MAVEN_GPG_PASSPHRASE` variable in Github Secrets
 8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-publish-a-new-version-of-ecocode-rules-specifications-on-maven-central))
+
+# CONTACT
+
+## HOWTO contact the team
+
+Several ways existing :
+- go to our website https://ecocode.io/#/ and choose one of different ways :
+  - on of our 3 social media (top-right menu)
+  - go to "entreprise" page and you can fill a contact form : https://ecocode.io/#/entreprise
+- technically : got to our github and create an issue or a discussion
+  - https://github.com/green-code-initiative
+
+## Feedbacks
+
+### User Group
+
+A user group has been created to exchange around our plugins.
+There is a slack channel `#club-utilisateur` on our Slack
+Here are some feedbacks :
+- https://lite.framacalc.org/zxw48y210s-a6z2
+- (TO ADD)
+
+### Contributor Group
+A contributor group has been created to exchange technically around our plugins.
+You can participate to the monthly meeting going to "friday-meet" channel on slack
