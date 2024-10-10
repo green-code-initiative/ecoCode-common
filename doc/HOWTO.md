@@ -499,7 +499,7 @@ A user group has been created to exchange around our plugins.
 There is a slack channel `#club-utilisateur` on our Slack
 Here are some feedbacks :
 - https://lite.framacalc.org/zxw48y210s-a6z2
-- (TO ADD)
+- [2024-10-10 user group feedback](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/resources/Club%20utilisateurs%20ecoCode%20-%20Membres%20(version%20Rencontre%205).xlsx)
 
 ### Contributor Group
 A contributor group has been created to exchange technically around our plugins.
