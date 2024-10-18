@@ -26,6 +26,8 @@
     - [HOWTO manage license inside code](#howto-manage-license-inside-code)
 - [RELEASING](#releasing)
   - [HOWTO create a release (core-contributor rights needed)](#howto-create-a-release-core-contributor-rights-needed)
+    - [Create a release on DYNAMIC versionning system module](#create-a-release-on-dynamic-versionning-system-module)
+    - [Create a release on STATIC versionning system module](#create-a-release-on-static-versionning-system-module)
   - [HOWTO publish new release on SonarQube Marketplace](#howto-publish-new-release-on-sonarqube-marketplace)
     - [New release from scratch](#new-release-from-scratch)
     - [New release of existing plugin](#new-release-of-existing-plugin)
@@ -297,6 +299,29 @@ mvn license:format
 # RELEASING
 
 ## HOWTO create a release (core-contributor rights needed)
+
+### Create a release on DYNAMIC versionning system module
+
+This is the use case for `ecocode` repository
+
+1. **upgrade `CHANGELOG.md`** : add release notes for next release
+    1. **Replace `Unreleased` title** with the new version like `Release X.Y.Z` and the date
+        1. ... where `X.Y.Z` is the new release
+        2. ... follow others examples
+        3. ... clean content of current release changelog (delete empty sub-sections)
+        4. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
+    2. **add above an empty `Unreleased`** section with sub-sections (`Added`, `Changed` and `Deleted`)
+    3. **add a new section in the list at the bottom** of file with new version
+    4. **commit** these modifications
+2. create locally a tag with the previous used version
+   1. **execute `git tag <X.Y.Z>`
+3. push new tag created previously :
+   1. locally, **go to and update `main`** branch
+   2. **execute `git push --tags`** to push new previously created tag
+
+### Create a release on STATIC versionning system module
+
+This is the use case for all plugin repositories except `ecocode` repository
 
 1. IF **new release wanted** is a **major** or **minor** version (`X` or `Y` in `X.Y.Z`)
    1. **THEN** **modify the old version** to the new version in **all XML/YML files**
