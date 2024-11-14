@@ -97,4 +97,14 @@ if errorlevel 1 (
     echo [OK] Git is installed.
 )
 
+echo.
+
+:: Check jq
+call jq --version >nul 2>&1
+if errorlevel 1 (
+    echo [FAIL] jq is not installed.
+) else (
+    echo [OK] jq is installed.
+)
+
 endlocal
