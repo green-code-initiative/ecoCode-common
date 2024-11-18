@@ -79,6 +79,13 @@ This section is to help you to install and configure your first environment to d
 
 ## Requirements
 
+- `Docker` : <https://docs.docker.com/get-docker/>
+- `Docker-compose` : <https://docs.docker.com/compose/install/>
+- `Java` JDK (and not only JRE) for Sonarqube plugin Development : <https://www.java.com/fr/download/manual.jsp>
+- `Maven` for Sonarqube plugin Development : <https://maven.apache.org/download.cgi>
+- `Git` : <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
+- `JQ` : <https://jqlang.github.io/jq/>
+
 ### Method 1 - Automatic check (default method)
 
 In the current repository, go to `tools/check_requirements` directory.
@@ -94,13 +101,6 @@ For Windows OS :
 PS : if you have some problems with this script, please feel free to create a new issue here <https://github.com/green-code-initiative/ecoCode-common/issues>
 
 ### Method 2 - Manual check (if above "method 1" doesn't work)
-
-- `Docker` : <https://docs.docker.com/get-docker/>
-- `Docker-compose` : <https://docs.docker.com/compose/install/>
-- `Java` JDK (and not only JRE) for Sonarqube plugin Development : <https://www.java.com/fr/download/manual.jsp>
-- `Maven` for Sonarqube plugin Development : <https://maven.apache.org/download.cgi>
-- `Git` : <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
-- `JQ` : <https://jqlang.github.io/jq/>
 
 If you want, you can check following file to know what are min and max versions for each tool : <https://github.com/green-code-initiative/ecoCode-common/blob/main/tools/check_requirements/config.txt>
 
