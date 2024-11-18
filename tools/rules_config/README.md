@@ -36,7 +36,7 @@ The new profile becomes the default profile for the language.
 
 Differents environment have been used:
 
-- bash 3.2 on MacOS
+- bash 3.2 on MacOS with extra jq package (`brew install jq`)
 - Ubuntu 20.04.4 LTS (bash 5.0.17(1)-release) with extra jq package (`sudo apt install jq`)
 
 ## Concepts
