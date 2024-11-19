@@ -7,11 +7,11 @@
 Add one new tag to a list of rules from `SONAR_RULES_REUSED.md` (using SonarQube API).
 Why ? because maybe some original SonarQube rules are already ready for being part of this plugin
 
-### EcoCode Quality Profile
+### Creedengo Quality Profile
 
 Add one new Profile by language inherited from SonarWay (using SonarQube API).
 Why ?
-- we must create a custom Profile to use new eco-design rules from ecocode plugins
+- we must create a custom Profile to use new eco-design rules from creedengo plugins
 - the new profile is inherited from SonarWay to keep natives SonarWay rules also
 The script attach the new rules with the new quality profile.
 The new profile becomes the default profile for the language.
@@ -29,7 +29,7 @@ The new profile becomes the default profile for the language.
   - name of tag to add (`TAG_ECODESIGN` variable) : the name of the new tag to add to a list of rules
   - file path to `SONAR_RULES_REUSED.md` (`FILEPATH_SONAR_RULES_REUSED` variable) : filepath in the local folder. Contains all rules.
   - name of profile to add (`PROFILE_ECODESIGN` variable) : the name of the new profile to add for each language
-  - language keys list (string format separated with one comma) (`PROFILES_LANGUAGE_KEYS` variable) : specify here the list of all keys language that you want to add the new ecocode quality profile
+  - language keys list (string format separated with one comma) (`PROFILES_LANGUAGE_KEYS` variable) : specify here the list of all keys language that you want to add the new creedengo quality profile
   - profiles set as default (`IS_PROFILE_ECODESIGN_DEFAULT` variable) : 1 if we want to set created profiles as default profile for each language, 0 if we don't want
 
 ## Local develop Environment

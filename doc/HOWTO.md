@@ -1,7 +1,7 @@
 - [Global Requirements](#global-requirements)
 - [DEVELOPMENT](#development)
   - [Installing Local environment (local SonarQube)](#installing-local-environment-local-sonarqube)
-    - [HOWTO build the SonarQube ecoCode plugins](#howto-build-the-sonarqube-ecocode-plugins)
+    - [HOWTO build the SonarQube creedengo plugins](#howto-build-the-sonarqube-creedengo-plugins)
       - [Requirements](#requirements)
       - [Build the code](#build-the-code)
     - [HOWTO install SonarQube dev environment](#howto-install-sonarqube-dev-environment)
@@ -11,7 +11,7 @@
         - [Change password](#change-password)
         - [Check plugins installation](#check-plugins-installation)
         - [Generate access token](#generate-access-token)
-        - [Initialize default profiles for `ecocode` plugins](#initialize-default-profiles-for-ecocode-plugins)
+        - [Initialize default profiles for `creedengo` plugins](#initialize-default-profiles-for-creedengo-plugins)
     - [HOWTO reinstall SonarQube (if needed)](#howto-reinstall-sonarqube-if-needed)
     - [HOWTO start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
     - [HOWTO install new plugin version](#howto-install-new-plugin-version)
@@ -31,7 +31,7 @@
   - [HOWTO publish new release on SonarQube Marketplace](#howto-publish-new-release-on-sonarqube-marketplace)
     - [New release from scratch](#new-release-from-scratch)
     - [New release of existing plugin](#new-release-of-existing-plugin)
-  - [HOWTO publish a new version of ecocode-rules-specifications on Maven Central](#howto-publish-a-new-version-of-ecocode-rules-specifications-on-maven-central)
+  - [HOWTO publish a new version of creedengo-rules-specifications on Maven Central](#howto-publish-a-new-version-of-creedengo-rules-specifications-on-maven-central)
     - [Requirements](#requirements-2)
     - [Maven Central publish process](#maven-central-publish-process)
   - [HOWTO configure publish process on Maven Central (core-contributor rights needed)](#howto-configure-publish-process-on-maven-central-core-contributor-rights-needed)
@@ -59,11 +59,11 @@
 
 ## Installing Local environment (local SonarQube)
 
-### HOWTO build the SonarQube ecoCode plugins
+### HOWTO build the SonarQube creedengo plugins
 
 #### Requirements
 
-check requirements : https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/starter-pack.md#requirements
+check requirements : https://github.com/green-code-initiative/creedengo-common/blob/main/doc/starter-pack.md#requirements
 
 #### Build the code
 
@@ -125,7 +125,7 @@ sysctl -w vm.max_map_count=262144
 
 #### Configuration SonarQube
 
-*Purposes* : Configure SonarQube to have all ecocode plugins rules enabled by default.
+*Purposes* : Configure SonarQube to have all creedengo plugins rules enabled by default.
 
 ##### Change password
 
@@ -138,7 +138,7 @@ sysctl -w vm.max_map_count=262144
 - go to "Adminitration" tab
 - go to "Marketplace" sub-tab
 - go bottom, and clic on "Installed" sub-tab
-- check here, if you have ecoCode plugins displayed with a SNAPSHOT version
+- check here, if you have creedengo plugins displayed with a SNAPSHOT version
 
 ##### Generate access token
 
@@ -149,9 +149,9 @@ When you are connected, generate a new token on `My Account -> Security -> Gener
 
 Instead of login+password authentication, this token can now be used as value for `sonar.login` variable when needed (examples : call sonar scanner to send metrics to SonarQube, on use internal tools, ...)
 
-##### Initialize default profiles for `ecocode` plugins
+##### Initialize default profiles for `creedengo` plugins
 
-- use tool `install_profile.sh` in `ecocode-common` repository (inside directory `tools/rules_config`)
+- use tool `install_profile.sh` in `creedengo-common` repository (inside directory `tools/rules_config`)
   - if you want, you can check default configuration of this tool in `_config.sh` file
 - launch followed command : `./install_profile.sh <MY_SONAR_PORT> <MY_SONAR_TOKEN>`
 
@@ -267,7 +267,7 @@ This step is done on next release of plugin (example : version N).
 1. Upgrade the rule implementation to add deprecation information : in plugin repository containing the rule implementation, add a new `@DeprecatedRule` annotation on the rule class
 2. Upgrade rules documentation
    1. in plugin repository containing the rule implementation, in `RULES.md` file, move rule line from standard rules array to deprecated rules array
-   2. in `ecoCode-rules-specification` repository, add deprecation to current rule
+   2. in `creedengo-rules-specification` repository, add deprecation to current rule
 
 Thus in next release of plugin, the rule will be still present but displayed as deprecated in SonarQube UI.
 
@@ -302,7 +302,7 @@ mvn license:format
 
 ### Create a release on DYNAMIC versionning system module
 
-This is the use case for `ecocode` repository
+This is the use case for `creedengo` repository
 
 1. **upgrade `CHANGELOG.md`** : add release notes for next release
     1. **Replace `Unreleased` title** with the new version like `Release X.Y.Z` and the date
@@ -321,7 +321,7 @@ This is the use case for `ecocode` repository
 
 ### Create a release on STATIC versionning system module
 
-This is the use case for all plugin repositories except `ecocode` repository
+This is the use case for all plugin repositories except `creedengo` repository
 
 1. IF **new release wanted** is a **major** or **minor** version (`X` or `Y` in `X.Y.Z`)
    1. **THEN** **modify the old version** to the new version in **all XML/YML files**
@@ -358,7 +358,7 @@ This is the use case for all plugin repositories except `ecocode` repository
 
 1. Create a fork of [SonarSource/sonar-update-center-properties](https://github.com/SonarSource/sonar-update-center-properties.git) and clone it locally
 2. Create a new branch
-3. Change corresponding plugin metadata file (for `ecocode-java`: [ecocodejava.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodejava.properties), for `ecocode-php`: [ecocodephp.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodephp.properties), for `ecocode-python`: [ecocodepython.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodepython.properties)): 
+3. Change corresponding plugin metadata file (for `creedengo-java`: [creedengojava.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodejava.properties), for `creedengo-php`: [creedengophp.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodephp.properties), for `creedengo-python`: [creedengopython.properties](https://github.com/SonarSource/sonar-update-center-properties/blob/master/ecocodepython.properties)): 
    - Append new version to `publicVersions` value (comma separated value)
    - Add following properties (where `X.X.X` is new release to publish):
      - `X.X.X.description`: a summary of main changes for user for this version
@@ -393,20 +393,20 @@ Examples :
 - documentation : [README.md](https://github.com/SonarSource/sonar-update-center-properties/blob/master/README.md)
 - example : [PR example](https://github.com/SonarSource/sonar-update-center-properties/pull/468)
 
-## HOWTO publish a new version of ecocode-rules-specifications on Maven Central
+## HOWTO publish a new version of creedengo-rules-specifications on Maven Central
 
 ### Requirements
 
 You need write rights to use Maven Central publish process (mainteners or core-team members).
 
-**Create a new release of `ecoCode` repository** : please see above [HOWTO create a release](#howto-create-a-release-core-contributor-rights-needed).
+**Create a new release of `creedengo` repository** : please see above [HOWTO create a release](#howto-create-a-release-core-contributor-rights-needed).
 
 Why create a new release before ?
-Because publish process of `ecocode-rules-specifications` on Maven Central needs a tag on `ecoCode` repository.
+Because publish process of `creedengo-rules-specifications` on Maven Central needs a tag on `creedengo` repository.
 
 ### Maven Central publish process
 
-- go to "Action" tab of `ecoCode` reposiroty
+- go to "Action" tab of `creedengo` repository
 - click on "Publish to Maven Central" workflow
 - click on "Run workflow" list button
 - choose a tag version (and not a branch because SNAPSHOT version won't be published on Maven Central)
@@ -424,26 +424,26 @@ Because publish process of `ecocode-rules-specifications` on Maven Central needs
 `OSSRH_TOKEN` and `OSSRH_USERNAME` are used for communication between Github and Sonatype Nexus system for publish process to Maven Central.
 Nexus URL : https://s01.oss.sonatype.org/
 
-These variables are stored in Github Secrets available `Settings` tab of `ecoCode` repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
+These variables are stored in Github Secrets available `Settings` tab of `creedengo` repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
 
 #### Why change these variables ?
 
 Values are get from a specific Sonatype Nexus account.
 
-Actually, `ecoCode` Sonatype Nexus account was used to generate values corresponding to `OSSRH_TOKEN` and `OSSRH_USERNAME` variables.
+Actually, `creedengo` Sonatype Nexus account was used to generate values corresponding to `OSSRH_TOKEN` and `OSSRH_USERNAME` variables.
 
 If we want use another account, we need to change these values by generating new ones on this new account.
 
 #### How to generate new values and update Github Secrets ?
 
 1. Go to [Sonatype Nexus](https://oss.sonatype.org/)
-2. Login with account (ex : `ecoCode`)
+2. Login with account (ex : `creedengo`)
 3. Go to `Profile` tab
 4. Go to `User Token` sub-tab present in top list (`Summary` value is selected by default)
 5. Click on `Access User Token` button
 6. New values will be generated and displayed
-7. Copy these values and paste them in Github Secrets in `ecoCode` repository, respectively in `OSSRH_TOKEN` variable (the password) and `OSSRH_USERNAME` variable (the username)
-8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-publish-a-new-version-of-ecocode-rules-specifications-on-maven-central))
+7. Copy these values and paste them in Github Secrets in `creedengo` repository, respectively in `OSSRH_TOKEN` variable (the password) and `OSSRH_USERNAME` variable (the username)
+8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-publish-a-new-version-of-creedengo-rules-specifications-on-maven-central))
 
 ### Update GPG Maven Central keys
 
@@ -452,7 +452,7 @@ If we want use another account, we need to change these values by generating new
 GPG system is used to sign JAR files before publishing them to Maven Central.
 We have to generate public and private keys, and store them in Github Secrets with `MAVEN_GPG_PRIVATE_KEY` and `MAVEN_GPG_PASSPHRASE` variables.
 
-These GPG keys are stored in Github Secrets available `Settings` tab of `ecoCode` repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
+These GPG keys are stored in Github Secrets available `Settings` tab of `creedengo` repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
 
 Values are generated on local machine with "gpg" command line tool.
 
@@ -503,16 +503,16 @@ If we want to upgrade these keys, we need to generate new ones and reconfigure G
 5. Open this local file and copy content (only content between `-----BEGIN PGP PRIVATE KEY BLOCK-----` and `-----END PGP PRIVATE KEY BLOCK-----` included)
 6. Paste this content in `MAVEN_GPG_PRIVATE_KEY` variable in Github Secrets
 7. If you changed the passphrase in first step, paste it in `MAVEN_GPG_PASSPHRASE` variable in Github Secrets
-8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-publish-a-new-version-of-ecocode-rules-specifications-on-maven-central))
+8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-publish-a-new-version-of-creedengo-rules-specifications-on-maven-central))
 
 # CONTACT
 
 ## HOWTO contact the team
 
 Several ways existing :
-- go to our website https://ecocode.io/#/ and choose one of different ways :
+- go to our website https://green-code-initiative.org/# and choose one of different ways :
   - on of our 3 social media (top-right menu)
-  - go to "entreprise" page and you can fill a contact form : https://ecocode.io/#/entreprise
+  - go to "entreprise" page and you can fill a contact form : https://green-code-initiative.org/#/entreprise
 - technically : got to our github and create an issue or a discussion
   - https://github.com/green-code-initiative
 

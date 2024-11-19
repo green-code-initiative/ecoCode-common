@@ -1,4 +1,4 @@
-# Code Style Guide - EcoCode
+# Code Style Guide - Creedengo
 
 - [Introduction](#introduction)
 - [Source File Basics](#source-file-basics)
