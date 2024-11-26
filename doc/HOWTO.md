@@ -247,7 +247,7 @@ To contribute with FORK / PR system, you have to :
 
 ### HOWTO debug a rule (with logs)
 
-1. Add logs like in [OptimizeReadFileExceptions](https://github.com/green-code-initiative/ecoCode/blob/main/java-plugin/src/main/java/fr/greencodeinitiative/java/checks/OptimizeReadFileExceptions.java) class file
+1. Add logs like in [OptimizeReadFileExceptions](https://github.com/green-code-initiative/ecoCode-java/blob/main/src/main/java/fr/greencodeinitiative/java/checks/OptimizeReadFileExceptions.java) class file
 2. Build plugin JARs with `tool_build.sh`
 3. Launch local Sonar with `tool_docker_init.sh`
 4. Launch a sonar scanner on an exemple project with `mvn verify` command (only the first time), followed

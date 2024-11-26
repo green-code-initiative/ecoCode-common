@@ -31,3 +31,7 @@ check_version_max_maven "$mvn_version" "$MAVEN_VERSION_MAX"
 
 echo -e "***** Git 🚀"
 check_installation "git --version"
+
+echo -e "***** jq 🚀"
+check_installation "jq --version"
+
