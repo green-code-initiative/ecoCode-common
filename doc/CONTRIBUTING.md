@@ -1,4 +1,4 @@
-# Contributing - EcoCode
+# Contributing - Creedengo
 
 - [Code of Conduct](#code-of-conduct)
 - [I Have a Question](#i-have-a-question)
@@ -88,7 +88,7 @@ When you create an issue, a template is given to you to help you filling it.
 
 ### Suggesting Enhancements
 
-This section guides you through submitting an enhancement suggestion for Ecocode repositories, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
+This section guides you through submitting an enhancement suggestion for creedengo repositories, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
 
 #### Before Submitting an Enhancement
 
@@ -105,14 +105,14 @@ Enhancement suggestions are tracked as GitHub issues.
 - Provide a **step-by-step description of the suggested enhancement** in as many details as possible.
 - **Describe the current behavior** and **explain which behavior you expected to see instead** and why. At this point you can also tell which alternatives do not work for you.
 - You may want to **include screenshots and animated GIFs** which help you demonstrate the steps or point out the part which the suggestion is related to. You can use [this tool](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and ["silentcast" tool](https://github.com/colinkeenan/silentcast) or ["byzanz" tool](https://github.com/GNOME/byzanz) on Linux.
-- **Explain why this enhancement would be useful** to most Ecocode users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
+- **Explain why this enhancement would be useful** to most creedengo users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
 
 When you create an issue, a template is given to you.
 
 ### How Do I Suggest a New Rule ?
 
 - first of all, check if rule isn't existing yet (in `RULES.md` or in Sonarqube native rules list)
-- if it isn't exist, create a new issue in `ecocode` repository : choose `new rule template`
+- if it isn't exist, create a new issue in `creedengo` repository : choose `new rule template`
 - fill the template and submit issue
 
 ### Your First Code Contribution

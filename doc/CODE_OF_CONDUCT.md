@@ -1,4 +1,4 @@
-# Code of Conduct - EcoCode
+# Code of Conduct - Creedengo
 
 - [Our Pledge](#our-pledge)
 - [Our Standards](#our-standards)
