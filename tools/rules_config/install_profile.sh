@@ -36,7 +36,7 @@ do
   key_profile=$(echo "$res_json" | jq -r '.profiles[].key')
 
   debug "Activate rules for language '$language' and key profile '$key_profile'"
-  activate_rules_ecocode_profile_sonarapi "$language" "$key_profile" "$TAG_ECODESIGN"
+  activate_rules_creedengo_profile_sonarapi "$language" "$key_profile" "$TAG_ECODESIGN"
 
   if [ $IS_PROFILE_ECODESIGN_DEFAULT == 1 ]; then
     debug "Set '$PROFILE_ECODESIGN' profile for language '$language' to Default"

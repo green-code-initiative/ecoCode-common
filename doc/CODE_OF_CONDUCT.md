@@ -1,11 +1,12 @@
-# Code of Conduct - EcoCode
+# Code of Conduct - Creedengo
 
-- [Our Pledge](#our-pledge)
-- [Our Standards](#our-standards)
-- [Our Responsibilities](#our-responsibilities)
-- [Scope](#scope)
-- [Enforcement](#enforcement)
-- [Attribution](#attribution)
+- [Code of Conduct - Creedengo](#code-of-conduct---creedengo)
+  - [Our Pledge](#our-pledge)
+  - [Our Standards](#our-standards)
+  - [Our Responsibilities](#our-responsibilities)
+  - [Scope](#scope)
+  - [Enforcement](#enforcement)
+  - [Attribution](#attribution)
 
 ## Our Pledge
 
@@ -63,7 +64,7 @@ representative at an online or offline event.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders responsible for enforcement with [form contact](https://www.ecocode.io/contact).
+reported to the community leaders responsible for enforcement with [form contact](https://green-code-initiative.org/).
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the

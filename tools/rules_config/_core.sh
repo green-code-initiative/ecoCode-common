@@ -127,7 +127,7 @@ function change_parent_profile_sonarapi(){
 ### $1 :  language
 ### $2 :  key quality Profile
 ### $3 :  tags list in string format separated by comma
-function activate_rules_ecocode_profile_sonarapi(){
+function activate_rules_creedengo_profile_sonarapi(){
     echo $(curl -u $SONAR_TOKEN: --request POST "$SONAR_URL/api/qualityprofiles/activate_rules?languages=$1&targetKey=$2&tags=$3" 2>/dev/null)
 }
 
