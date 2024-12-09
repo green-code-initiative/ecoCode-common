@@ -415,48 +415,41 @@ Because publish process of `creedengo-rules-specifications` on Maven Central nee
 - 20 minutes later (because of Maven central internal process), check on maven central if new version is published
   - check here : https://central.sonatype.com/artifact/org.green-code-initiative/creedengo-rules-specifications/versions
 
-## HOWTO configure publish process on Maven Central (core-contributor rights needed)
+# CONFIGURATION
 
-### Update OSSRH token
+## HOWTO configure publish system on Maven Central
 
-#### What is OSSRH token ?
+requirements : core-contributor rights needed
+technical doc used to configure system : https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88
 
-`OSSRH_TOKEN` and `OSSRH_USERNAME` are used for communication between Github and Sonatype Nexus system for publish process to Maven Central.
-Nexus URL : https://s01.oss.sonatype.org/
+### Step 1 : GPG signing system
 
-These variables are stored in Github Secrets available `Settings` tab of `creedengo` repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
-
-#### Why change these variables ?
-
-Values are get from a specific Sonatype Nexus account.
-
-Actually, `creedengo` Sonatype Nexus account was used to generate values corresponding to `OSSRH_TOKEN` and `OSSRH_USERNAME` variables.
-
-If we want use another account, we need to change these values by generating new ones on this new account.
-
-#### How to generate new values and update Github Secrets ?
-
-1. Go to [Sonatype Nexus](https://oss.sonatype.org/)
-2. Login with account (ex : `gci`)
-3. Go to `Profile` tab
-4. Go to `User Token` sub-tab present in top list (`Summary` value is selected by default)
-5. Click on `Access User Token` button
-6. New values will be generated and displayed
-7. Copy these values and paste them in Github Secrets in `creedengo` repository, respectively in `OSSRH_TOKEN` variable (the password) and `OSSRH_USERNAME` variable (the username)
-8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-publish-a-new-version-of-creedengo-rules-specifications-on-maven-central))
-
-### Update GPG Maven Central keys
-
-#### What is GPG Maven Central keys ?
+#### What is GPG ?
 
 GPG system is used to sign JAR files before publishing them to Maven Central.
 We have to generate public and private keys, and store them in Github Secrets with `MAVEN_GPG_PRIVATE_KEY` and `MAVEN_GPG_PASSPHRASE` variables.
 
-These GPG keys are stored in Github Secrets available `Settings` tab of `creedengo` repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
+These GPG keys are stored in Github Secrets available `Settings` tab of the repository, in `Secrets and variables` sub-tab, in `Actions` sub-section.
+
+#### How to install and use GPG ? METHOD 1 : with "GPG KeyChain" software (MAC OS)
+
+Download and install GPG KeyChain software from [GPG Suite](https://gpgtools.org/)
+Launch GPG KeyChain software and follow these steps :
+- create a new key pair by clicking on `New` button and feed the form
+  - `Name` : your name
+  - `Email` : your email - WARNING : for next maven central process (secrets generation, ...), you must have admin rights on your web site on the same hostname as your email
+  - `Passphrase` / `password` : a passphrase to protect your private key
+  - `expiration date` : never
+  - other options : default values
+- publish your public key to a key server by clicking on `Send` button
+  - (if you open settings option menu, you can see that key server is `hkps://keys.openpgp.org`)
+- get public key (and private key if needed), by clicking on `Export` button
+  - you can export public key to a local file (with `.asc` extension)
+  - you can also export private key if option checked in export form
+
+#### How to install and use GPG ? METHOD 2 : command line tool
 
 Values are generated on local machine with "gpg" command line tool.
-
-#### How to install and use GPG command line tool ?
 
 on MAC OS (for the moment) :
 
@@ -488,21 +481,68 @@ Hachage : SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
 Compression : Non compressé, ZIP, ZLIB, BZIP2
 ```
 
-#### Why change these variables ?
+##### Why change these variables ?
 
 We can check expiration date with `gpg --list-keys` command.
 Current keys are valid until **2026-08-07**.
 If we want to upgrade these keys, we need to generate new ones and reconfigure Github Secrets.
 
-#### How to generate new values and update Github Secrets ?
+##### How to generate new values
 
 1. Generate new keys with `gpg --gen-key` command : we need to give a passphrase (you can give old one)
 2. Send public key to keyserver with `gpg --keyserver keyserver.ubuntu.com --send-keys <MY_PUBLIC_KEY>` command
 3. Check and get public key from keyserver with `gpg --keyserver keyserver.ubuntu.com --recv-keys <MY_PUBLIC_KEY>` command
 4. Export private key to a local `private.pgp` file with `gpg --output private.pgp --armor --export-secret-key "<MY_PUBLIC_KEY>"`
-5. Open this local file and copy content (only content between `-----BEGIN PGP PRIVATE KEY BLOCK-----` and `-----END PGP PRIVATE KEY BLOCK-----` included)
-6. Paste this content in `MAVEN_GPG_PRIVATE_KEY` variable in Github Secrets
-7. If you changed the passphrase in first step, paste it in `MAVEN_GPG_PASSPHRASE` variable in Github Secrets
+
+#### Update Github Secrets
+
+1. Open exported local file and copy content (only content between `-----BEGIN PGP PRIVATE KEY BLOCK-----` and `-----END PGP PRIVATE KEY BLOCK-----` included)
+2. Paste this content in `MAVEN_GPG_PRIVATE_KEY` variable in Github Secrets on the current repository (Secrets and variables / Actions / Repository secrets)
+3. Paste the passphrase used in previous step, in `MAVEN_GPG_PASSPHRASE` variable in Github Secrets on the current repository (Secrets and variables / Actions / Repository secrets)
+4. Check below OSSHR token process and then Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-publish-a-new-version-of-creedengo-rules-specifications-on-maven-central))
+
+### Step 2 : Maven Central account
+
+- Create an account on on central.sonatype.com as described in step 1 [here](https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88)
+- Register your domain as described in step 5 [here](https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88)
+  - WARNING : you need admin rights on your web site (the host used inside your email !) to check de verification process
+
+### Step 3 : Maven Central secrets
+
+#### New way (from march 2024)
+
+- Generate your secrets (username and password) as described in step 7 [here](https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88)
+- Create Github Secrets with these values as described in step 8 [here](https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88)
+- in your code, update `pom.xml` and github action files with your new secrets (GPG and maven central) as described in step 2 and 3 [here](https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88)
+
+#### Legacy way (before march 2024)
+
+##### Update OSSRH token
+
+###### What is OSSRH token ?
+
+`OSSRH_TOKEN` and `OSSRH_USERNAME` are used for communication between Github and Sonatype Nexus system for publish process to Maven Central.
+Nexus URL : https://s01.oss.sonatype.org/
+
+These variables are stored in Github Secrets available `Settings` tab of `creedengo` repository (Secrets and variables / Actions / Repository secrets)
+
+###### Why change these variables ?
+
+Values are get from a specific Sonatype Nexus account.
+
+Actually, `creedengo` Sonatype Nexus account was used to generate values corresponding to `OSSRH_TOKEN` and `OSSRH_USERNAME` variables.
+
+If we want use another account, we need to change these values by generating new ones on this new account.
+
+###### How to generate new values and update Github Secrets ?
+
+1. Go to [Sonatype Nexus](https://s01.oss.sonatype.org/)
+2. Login with account (ex : `gci`)
+3. Go to `Profile` tab
+4. Go to `User Token` sub-tab present in top list (`Summary` value is selected by default)
+5. Click on `Access User Token` button
+6. New values will be generated and displayed
+7. Copy these values and paste them in Github Secrets in `creedengo` repository, respectively in `OSSRH_TOKEN` variable (the password) and `OSSRH_USERNAME` variable (the username)
 8. Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-publish-a-new-version-of-creedengo-rules-specifications-on-maven-central))
 
 # CONTACT
