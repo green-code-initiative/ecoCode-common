@@ -34,16 +34,19 @@
   - [HOWTO publish a new version of creedengo-rules-specifications on Maven Central](#howto-publish-a-new-version-of-creedengo-rules-specifications-on-maven-central)
     - [Requirements](#requirements-2)
     - [Maven Central publish process](#maven-central-publish-process)
-  - [HOWTO configure publish process on Maven Central (core-contributor rights needed)](#howto-configure-publish-process-on-maven-central-core-contributor-rights-needed)
-    - [Update OSSRH token](#update-ossrh-token)
-      - [What is OSSRH token ?](#what-is-ossrh-token-)
-      - [Why change these variables ?](#why-change-these-variables-)
-      - [How to generate new values and update Github Secrets ?](#how-to-generate-new-values-and-update-github-secrets-)
+- [CONFIGURATION](#configuration)
+  - [HOWTO configure publish system on Maven Central](#howto-configure-publish-system-on-maven-central)
     - [Update GPG Maven Central keys](#update-gpg-maven-central-keys)
       - [What is GPG Maven Central keys ?](#what-is-gpg-maven-central-keys-)
-      - [How to install and use GPG command line tool ?](#how-to-install-and-use-gpg-command-line-tool-)
+      - [How to install and use GPG ? METHOD 1 : with "GPG KeyChain" software (MAC OS)](#how-to-install-and-use-gpg--method-1--with-gpg-keychain-software-mac-os)
+      - [How to install and use GPG ? METHOD 2 : command line tool](#how-to-install-and-use-gpg--method-2--command-line-tool)
+        - [Why change these variables ?](#why-change-these-variables-)
+        - [How to generate new values](#how-to-generate-new-values)
+      - [Update Github Secrets](#update-github-secrets)
+    - [Update OSSRH token](#update-ossrh-token)
+      - [What is OSSRH token ?](#what-is-ossrh-token-)
       - [Why change these variables ?](#why-change-these-variables--1)
-      - [How to generate new values and update Github Secrets ?](#how-to-generate-new-values-and-update-github-secrets--1)
+      - [How to generate new values and update Github Secrets ?](#how-to-generate-new-values-and-update-github-secrets-)
 - [CONTACT](#contact)
   - [HOWTO contact the team](#howto-contact-the-team)
   - [Feedbacks](#feedbacks)
@@ -420,11 +423,11 @@ Because publish process of `creedengo-rules-specifications` on Maven Central nee
 ## HOWTO configure publish system on Maven Central
 
 requirements : core-contributor rights needed
-technical doc used to configure system : https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88
+exaplanation : 
 
-### Step 1 : GPG signing system
+### Update GPG Maven Central keys
 
-#### What is GPG ?
+#### What is GPG Maven Central keys ?
 
 GPG system is used to sign JAR files before publishing them to Maven Central.
 We have to generate public and private keys, and store them in Github Secrets with `MAVEN_GPG_PRIVATE_KEY` and `MAVEN_GPG_PASSPHRASE` variables.
@@ -437,7 +440,7 @@ Download and install GPG KeyChain software from [GPG Suite](https://gpgtools.org
 Launch GPG KeyChain software and follow these steps :
 - create a new key pair by clicking on `New` button and feed the form
   - `Name` : your name
-  - `Email` : your email - WARNING : for next maven central process (secrets generation, ...), you must have admin rights on your web site on the same hostname as your email
+  - `Email` : your email
   - `Passphrase` / `password` : a passphrase to protect your private key
   - `expiration date` : never
   - other options : default values
@@ -501,32 +504,16 @@ If we want to upgrade these keys, we need to generate new ones and reconfigure G
 3. Paste the passphrase used in previous step, in `MAVEN_GPG_PASSPHRASE` variable in Github Secrets on the current repository (Secrets and variables / Actions / Repository secrets)
 4. Check below OSSHR token process and then Check publish process with a new release version (see above [HOWTO configure publish process on Maven Central](#howto-publish-a-new-version-of-creedengo-rules-specifications-on-maven-central))
 
-### Step 2 : Maven Central account
+### Update OSSRH token
 
-- Create an account on on central.sonatype.com as described in step 1 [here](https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88)
-- Register your domain as described in step 5 [here](https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88)
-  - WARNING : you need admin rights on your web site (the host used inside your email !) to check de verification process
-
-### Step 3 : Maven Central secrets
-
-#### New way (from march 2024)
-
-- Generate your secrets (username and password) as described in step 7 [here](https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88)
-- Create Github Secrets with these values as described in step 8 [here](https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88)
-- in your code, update `pom.xml` and github action files with your new secrets (GPG and maven central) as described in step 2 and 3 [here](https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88)
-
-#### Legacy way (before march 2024)
-
-##### Update OSSRH token
-
-###### What is OSSRH token ?
+#### What is OSSRH token ?
 
 `OSSRH_TOKEN` and `OSSRH_USERNAME` are used for communication between Github and Sonatype Nexus system for publish process to Maven Central.
 Nexus URL : https://s01.oss.sonatype.org/
 
 These variables are stored in Github Secrets available `Settings` tab of `creedengo` repository (Secrets and variables / Actions / Repository secrets)
 
-###### Why change these variables ?
+#### Why change these variables ?
 
 Values are get from a specific Sonatype Nexus account.
 
@@ -534,7 +521,7 @@ Actually, `creedengo` Sonatype Nexus account was used to generate values corresp
 
 If we want use another account, we need to change these values by generating new ones on this new account.
 
-###### How to generate new values and update Github Secrets ?
+#### How to generate new values and update Github Secrets ?
 
 1. Go to [Sonatype Nexus](https://s01.oss.sonatype.org/)
 2. Login with account (ex : `gci`)
