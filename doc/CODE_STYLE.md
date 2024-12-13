@@ -256,7 +256,7 @@ The use of `var` for variable declarations (_local variable type inference_) is 
 
 #### Protections against ClassCast exceptions
 
-From experience with issue [#42](https://github.com/green-code-initiative/ecoCode/issues/42), when an exception occurs during Sonar analysis with maven command, the consequence is a crash. If this phase is launched in a CI/CD pipeline, this crash will block the pipeline. Thus, our plugins will be deleted until next corrections.
+From experience with issue [#42](https://github.com/green-code-initiative/creedengo-rules-specifications/issues/42), when an exception occurs during Sonar analysis with maven command, the consequence is a crash. If this phase is launched in a CI/CD pipeline, this crash will block the pipeline. Thus, our plugins will be deleted until next corrections.
 
 Please, make a maximum of controls in the code to avoid ClassCast exceptions and thus, avoid uninstalling our plugin from SonarQube.
 

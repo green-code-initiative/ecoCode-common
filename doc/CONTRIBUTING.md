@@ -134,7 +134,7 @@ Please check :
 
 ## Join The Project Team
 
-[contributors](https://github.com/green-code-initiative/ecoCode#-main-contributors)
+[contributors](https://github.com/green-code-initiative/creedengo-rules-specifications#-main-contributors)
 
 ## Attribution
 
